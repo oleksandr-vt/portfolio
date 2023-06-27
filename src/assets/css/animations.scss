@@ -1,0 +1,15 @@
+@keyframes illustrationPulse {
+  25% {
+    transform: scale(0.7);
+  }
+  71% {
+    fill: $color-aqua;
+  }
+  75% {
+    transform: scale(1.3);
+    fill: $color-white;
+  }
+  79% {
+    fill: $color-aqua;
+  }
+}
