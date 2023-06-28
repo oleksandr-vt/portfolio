@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 
 import 'swiper/css'
+import 'swiper/css/free-mode'
 import './assets/css/style.scss'
 
 const app = createApp(App)

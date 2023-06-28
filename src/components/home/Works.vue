@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
+import { FreeMode } from 'swiper'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
 
@@ -45,8 +46,11 @@ const slides = ref([
 
       <swiper
         id="worksSwiper"
-        :slides-per-view="'auto'"
-        :enabled="false"
+        :slidesPerView="'auto'"
+        :enabled="true"
+        :freeMode="true"
+        :breakpoints="{ 992: { enabled: false }}"
+        :modules="[FreeMode]"
       >
         <swiper-slide v-for="(slide, index) in slides" :key="index">
           <img class="swiper-slide-img" :src="slide.imagePath" :alt="slide.imageAlt" loading="lazy">
@@ -81,7 +85,7 @@ const slides = ref([
   }
 
   .swiper-slide {
-    max-width: 650px;
+    width: 650px;
     height: auto;
     display: flex;
     flex-direction: column;
