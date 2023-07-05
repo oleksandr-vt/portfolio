@@ -103,22 +103,6 @@ import BemIcon from '../icons/skills/BemIcon.vue'
     }
   }
 
-  &__title {
-    margin-bottom: 60px;
-
-    @media (max-width: $breakpoint1680) {
-      margin-bottom: 45px;
-    }
-
-    @media (max-width: $breakpoint1200) {
-      margin-bottom: 36px;
-    }
-
-    @media (max-width: $breakpoint768) {
-      margin-bottom: 28px;
-    }
-  }
-
   &__inner {
     padding: 0 40px 140px;
 

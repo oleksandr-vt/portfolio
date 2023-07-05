@@ -28,7 +28,7 @@ import Arrow from '../icons/Arrow.vue'
 
 .hero {
   .container {
-    padding-top: 135px;
+    padding-top: 125px;
     padding-bottom: 455px;
 
     @media (max-width: $breakpoint1680) {

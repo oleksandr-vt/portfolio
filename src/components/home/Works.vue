@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { FreeMode } from 'swiper'
+import { FreeMode, Pagination } from 'swiper'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
 
@@ -40,7 +40,7 @@ const slides = ref([
 </script>
 
 <template>
-  <section class="works">
+  <section class="works section">
     <div class="container">
       <h2 class="works__title title">Works</h2>
 
@@ -49,8 +49,9 @@ const slides = ref([
         :slidesPerView="'auto'"
         :enabled="true"
         :freeMode="true"
+        :pagination="true"
         :breakpoints="{ 992: { enabled: false }}"
-        :modules="[FreeMode]"
+        :modules="[FreeMode, Pagination]"
       >
         <swiper-slide v-for="(slide, index) in slides" :key="index">
           <img class="swiper-slide-img" :src="slide.imagePath" :alt="slide.imageAlt" loading="lazy">
@@ -71,17 +72,12 @@ const slides = ref([
 @import "@/assets/css/variables.scss";
 
 .works {
-  .container {
-    padding-top: 140px;
-    padding-bottom: 140px;
-  }
-
-  &__title {
-    margin-bottom: 60px;
-  }
-
   .swiper {
     overflow: visible;
+
+    @media (max-width: $breakpoint992) {
+      padding-bottom: 46px;
+    }
   }
 
   .swiper-slide {
@@ -93,6 +89,38 @@ const slides = ref([
     box-shadow: $shadow-xl;
     padding: 20px;
     margin-right: 60px;
+
+    @media (max-width: $breakpoint1680) {
+      width: 600px;
+      margin-right: 50px;
+    }
+
+    @media (max-width: $breakpoint1200) {
+      width: 530px;
+      margin-right: 45px;
+      padding: 18px;
+    }
+
+    @media (max-width: $breakpoint992) {
+      width: 470px;
+      margin-right: 40px;
+      box-shadow: $shadow-md;
+    }
+
+    @media (max-width: $breakpoint768) {
+      width: 420px;
+      margin-right: 36px;
+      padding: 16px;
+    }
+
+    @media (max-width: $breakpoint576) {
+      width: 375px;
+    }
+
+    @media (max-width: $breakpoint420) {
+      width: 350px;
+      padding: 14px;
+    }
 
     &:last-child {
       margin-right: 0;
@@ -106,6 +134,18 @@ const slides = ref([
 
     &-text {
       padding: 24px 0;
+
+      @media (max-width: $breakpoint1680) {
+        padding: 18px 0;
+      }
+
+      @media (max-width: $breakpoint1200) {
+        padding: 16px 0;
+      }
+
+      @media (max-width: $breakpoint576) {
+        padding: 14px 0 16px;
+      }
     }
 
     &-btn {
