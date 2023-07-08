@@ -4,7 +4,8 @@ import AppHeader from '../components/AppHeader.vue'
 import Hero from '../components/home/Hero.vue'
 import About from '../components/home/About.vue'
 import Works from '../components/home/Works.vue'
-import Interest from '../components/Interest.vue'
+import Interest from '../components/home/Interest.vue'
+import Testimonials from '../components/home/Testimonials.vue'
 
 const mainWrapper = ref(null)
 const pageWrapper = ref(null)
@@ -114,6 +115,7 @@ onBeforeUnmount(() => {
         <About />
         <Works />
         <Interest />
+        <Testimonials />
       </main>
     </div>
   </div>

@@ -1,10 +1,10 @@
 <script setup>
-import AppButton from './AppButton.vue'
-import Arrow from './icons/Arrow.vue'
+import AppButton from '../AppButton.vue'
+import Arrow from '../icons/Arrow.vue'
 </script>
 
 <template>
-  <section class="interest section">
+  <section class="interest section-padding">
     <div class="container">
       <div class="interest__block">
         <h3 class="interest__title">Interested in collaborating with me?</h3>

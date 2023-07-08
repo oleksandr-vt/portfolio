@@ -43,7 +43,7 @@ section {
   position: relative;
   overflow-x: hidden;
 
-  &.section {
+  &.section-padding {
     .container {
       padding-top: 140px;
       padding-bottom: 140px;
@@ -124,10 +124,56 @@ section {
   bottom: 0 !important;
 
   &-bullet {
-    background-color: $color-aqua;
+    background-color: transparent;
+    border: 1px solid $color-aqua;
+    opacity: 1;
+    width: 16px;
+    height: 16px;
+    margin: 0 6px !important;
+
+    @media (max-width: $breakpoint992) {
+      width: 12px;
+      height: 12px;
+      margin: 0 4px !important;
+    }
   }
 
   &-bullet-active {
     background: $color-white;
+    border-color: $color-white;
   }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 35%;
+  display: flex;
+  padding: 16px;
+  border-radius: 100px;
+  border: 2px solid $color-aqua;
+  background-color: $color-primary;
+  z-index: 10;
+  transition: 0.3s all ease;
+  cursor: pointer;
+
+  @media (max-width: $breakpoint1680) {
+    padding: 13px;
+  }
+
+  @media (max-width: $breakpoint992) {
+    display: none;
+  }
+
+  &:hover {
+    background-color: $color-primary-hover;
+  }
+}
+
+.swiper-button-prev {
+  left: 0;
+}
+
+.swiper-button-next {
+  right: 0;
 }

@@ -40,7 +40,7 @@ const slides = ref([
 </script>
 
 <template>
-  <section class="works section">
+  <section class="works section-padding">
     <div class="container">
       <h2 class="works__title title">Works</h2>
 
@@ -49,7 +49,7 @@ const slides = ref([
         :slidesPerView="'auto'"
         :enabled="true"
         :freeMode="true"
-        :pagination="true"
+        :pagination="{ clickable: true }"
         :breakpoints="{ 992: { enabled: false }}"
         :modules="[FreeMode, Pagination]"
       >
@@ -76,7 +76,11 @@ const slides = ref([
     overflow: visible;
 
     @media (max-width: $breakpoint992) {
-      padding-bottom: 46px;
+      padding-bottom: 60px;
+    }
+
+    @media (max-width: $breakpoint576) {
+      padding-bottom: 50px;
     }
   }
 
