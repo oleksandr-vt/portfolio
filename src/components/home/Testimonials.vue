@@ -59,16 +59,9 @@ const slides = ref([
         <Feather class="testimonials__title-icon" />
       </h2>
 
-      <swiper
-        id="testimonialsSwiper"
-        :slidesPerView="1"
-        :pagination="{ clickable: true }"
-        :navigation="{ clickable: true, nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }"
-        :loop="true"
-        :autoplay="{ delay: 6000 }"
-        :spaceBetween="230"
-        :modules="[Pagination, Navigation, Autoplay]"
-      >
+      <swiper id="testimonialsSwiper" :slidesPerView="1" :pagination="{ clickable: true }"
+        :navigation="{ clickable: true, nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }" :loop="true"
+        :autoplay="{ delay: 6000 }" :spaceBetween="230" :modules="[Pagination, Navigation, Autoplay]">
         <swiper-slide v-for="(slide, index) in slides" :key="index">
           <h3 class="swiper-slide-title">{{ slide.title }}</h3>
           <p class="swiper-slide-text text">{{ slide.text }}</p>
@@ -154,10 +147,10 @@ const slides = ref([
 
   .swiper {
     overflow: visible;
-    padding: 60px 160px 90px;
+    padding: 40px 160px 90px;
 
     @media (max-width: $breakpoint1680) {
-      padding: 40px 90px 75px;
+      padding: 30px 90px 75px;
     }
 
     @media (max-width: $breakpoint992) {

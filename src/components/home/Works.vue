@@ -8,31 +8,31 @@ import Arrow from '../icons/Arrow.vue'
 const slides = ref([
   {
     title: 'Kraudcloud tailwind tailwind tailwind tailwind tailwind',
-    imagePath: 'src/assets/img/kraudcloud.png',
+    imagePath: 'img/kraudcloud.png',
     imageAlt: 'Kraudcloud',
     href: '#',
   },
   {
     title: 'Kraudcloud tailwind',
-    imagePath: 'src/assets/img/kraudcloud.png',
+    imagePath: 'img/kraudcloud.png',
     imageAlt: 'Kraudcloud',
     href: '#',
   },
   {
     title: 'Diistil tailwind tailwind',
-    imagePath: 'src/assets/img/kraudcloud.png',
+    imagePath: 'img/kraudcloud.png',
     imageAlt: 'Kraudcloud',
     href: '#',
   },
   {
     title: 'Diistil tailwind tailwind tailwind tailwind tailwind',
-    imagePath: 'src/assets/img/kraudcloud.png',
+    imagePath: 'img/kraudcloud.png',
     imageAlt: 'Kraudcloud',
     href: '#',
   },
   {
     title: 'Diistil tailwind tailwind',
-    imagePath: 'src/assets/img/kraudcloud.png',
+    imagePath: 'img/kraudcloud.png',
     imageAlt: 'Kraudcloud',
     href: '#',
   },
@@ -44,20 +44,13 @@ const slides = ref([
     <div class="container">
       <h2 class="works__title title">Works</h2>
 
-      <swiper
-        id="worksSwiper"
-        :slidesPerView="'auto'"
-        :enabled="true"
-        :freeMode="true"
-        :pagination="{ clickable: true }"
-        :breakpoints="{ 992: { enabled: false }}"
-        :modules="[FreeMode, Pagination]"
-      >
+      <swiper id="worksSwiper" :slidesPerView="'auto'" :enabled="true" :freeMode="true" :pagination="{ clickable: true }"
+        :breakpoints="{ 992: { enabled: false } }" :modules="[FreeMode, Pagination]">
         <swiper-slide v-for="(slide, index) in slides" :key="index">
           <img class="swiper-slide-img" :src="slide.imagePath" :alt="slide.imageAlt" loading="lazy">
           <h4 class="swiper-slide-text text">{{ slide.title }}</h4>
 
-          <AppButton class="swiper-slide-btn" :text="'Open website'" :href="slide.href">
+          <AppButton class="swiper-slide-btn" :text="'Open website'" :href="slide.href" target="_blank">
             <template v-slot:icon>
               <Arrow style="transform: rotate(-135deg); margin-bottom: 2px;" />
             </template>

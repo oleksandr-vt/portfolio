@@ -47,6 +47,26 @@ section {
     .container {
       padding-top: 140px;
       padding-bottom: 140px;
+
+      @media (max-width: $breakpoint1680) {
+        padding-top: 120px;
+        padding-bottom: 120px;
+      }
+
+      @media (max-width: $breakpoint1450) {
+        padding-top: 110px;
+        padding-bottom: 110px;
+      }
+
+      @media (max-width: $breakpoint992) {
+        padding-top: 90px;
+        padding-bottom: 90px;
+      }
+
+      @media (max-width: $breakpoint768) {
+        padding-top: 70px;
+        padding-bottom: 70px;
+      }
     }
   }
 }

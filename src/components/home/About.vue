@@ -28,9 +28,11 @@ import BemIcon from '../icons/skills/BemIcon.vue'
         <h2 class="about__title title">About</h2>
 
         <p class="about__text text">
-          During almost two years of commercial experience as a freelancer, I have successfully completed more than 50 front-end projects with clients from all over the world.
+          During almost two years of commercial experience as a freelancer, I have successfully completed more than 50
+          front-end projects with clients from all over the world.
           <br><br>
-          I am most focused on Vue and Nuxt development, as well as working on HTML, CSS and JavaScript projects. Here is the full set of technologies I am familiar with:
+          I am most focused on Vue and Nuxt development, as well as working on HTML, CSS and JavaScript projects. Here is
+          the full set of technologies I am familiar with:
         </p>
       </div>
     </div>
@@ -38,7 +40,7 @@ import BemIcon from '../icons/skills/BemIcon.vue'
     <div class="about__inner">
       <div class="about__composition">
         <AboutArt class="about__art" />
-  
+
         <TailwindIcon class="about__icon icon-tailwind" />
         <ViteIcon class="about__icon icon-vite" />
         <GulpIcon class="about__icon icon-gulp" />
@@ -106,8 +108,20 @@ import BemIcon from '../icons/skills/BemIcon.vue'
   &__inner {
     padding: 0 40px 140px;
 
+    @media (max-width: $breakpoint1680) {
+      padding: 0 40px 120px;
+    }
+
+    @media (max-width: $breakpoint1450) {
+      padding: 0 40px 110px;
+    }
+
     @media (max-width: $breakpoint992) {
-      padding: 0 0 140px;
+      padding: 0 0 90px;
+    }
+
+    @media (max-width: $breakpoint768) {
+      padding: 0 0 75px;
     }
   }
 
@@ -227,7 +241,7 @@ import BemIcon from '../icons/skills/BemIcon.vue'
     @media (max-width: $breakpoint576) {
       top: 13%;
     }
-    
+
     @media (max-width: $breakpoint420) {
       left: 85.5%;
     }
