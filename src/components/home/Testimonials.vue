@@ -147,7 +147,7 @@ const slides = ref([
 
   .swiper {
     overflow: visible;
-    padding: 40px 160px 90px;
+    padding: 30px 160px 90px;
 
     @media (max-width: $breakpoint1680) {
       padding: 30px 90px 75px;
@@ -168,11 +168,14 @@ const slides = ref([
     &-title {
       font-size: 54px;
       font-weight: 700;
-      padding-bottom: 45px;
+      padding-bottom: 40px;
+
+      @media (max-width: $breakpoint1680) {
+        padding-bottom: 35px;
+      }
 
       @media (max-width: $breakpoint1450) {
         font-size: 48px;
-        padding-bottom: 35px;
       }
 
       @media (max-width: $breakpoint1200) {
@@ -185,17 +188,16 @@ const slides = ref([
 
       @media (max-width: $breakpoint768) {
         font-size: 32px;
-        padding-bottom: 30px;
+        padding-bottom: 25px;
       }
 
       @media (max-width: $breakpoint576) {
         font-size: 28px;
-        padding-bottom: 24px;
+        padding-bottom: 20px;
       }
 
       @media (max-width: $breakpoint420) {
         font-size: 24px;
-        padding-bottom: 20px;
       }
     }
 

@@ -1,11 +1,14 @@
 <script setup>
 import AppHeader from '../components/AppHeader.vue'
+import Works from '../components/works/Works.vue'
+import Contacts from '../components/Contacts.vue'
 </script>
 
 <template>
   <AppHeader />
 
   <main>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolorem delectus enim perferendis, velit assumenda natus vel sunt eveniet, eaque repellat vero? Deleniti, asperiores. Veniam cum amet fugit. Quos, dolorem.</p>
+    <Works />
+    <Contacts />
   </main>
 </template>

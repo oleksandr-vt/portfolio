@@ -30,12 +30,6 @@ const slides = ref([
     imageAlt: 'Kraudcloud',
     href: '#',
   },
-  {
-    title: 'Diistil tailwind tailwind',
-    imagePath: 'img/kraudcloud.png',
-    imageAlt: 'Kraudcloud',
-    href: '#',
-  },
 ])
 </script>
 
@@ -53,6 +47,14 @@ const slides = ref([
           <AppButton class="swiper-slide-btn" :text="'Open website'" :href="slide.href" target="_blank">
             <template v-slot:icon>
               <Arrow style="transform: rotate(-135deg); margin-bottom: 2px;" />
+            </template>
+          </AppButton>
+        </swiper-slide>
+
+        <swiper-slide>
+          <AppButton :text="'Check out more'" :href="'/works'">
+            <template v-slot:icon>
+              <Arrow style="transform: rotate(-90deg); margin-bottom: 2px;" />
             </template>
           </AppButton>
         </swiper-slide>
@@ -121,6 +123,8 @@ const slides = ref([
 
     &:last-child {
       margin-right: 0;
+      justify-content: center;
+      align-items: center;
     }
 
     &-img {
@@ -130,7 +134,8 @@ const slides = ref([
     }
 
     &-text {
-      padding: 24px 0;
+      font-weight: 500;
+      padding: 20px 0;
 
       @media (max-width: $breakpoint1680) {
         padding: 18px 0;
