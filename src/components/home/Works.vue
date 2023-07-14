@@ -4,33 +4,9 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { FreeMode, Pagination } from 'swiper'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
+import { favouriteWorks } from '../../assets/js/works'
 
-const slides = ref([
-  {
-    title: 'Kraudcloud tailwind tailwind tailwind tailwind tailwind',
-    imagePath: 'img/kraudcloud.png',
-    imageAlt: 'Kraudcloud',
-    href: '#',
-  },
-  {
-    title: 'Kraudcloud tailwind',
-    imagePath: 'img/kraudcloud.png',
-    imageAlt: 'Kraudcloud',
-    href: '#',
-  },
-  {
-    title: 'Diistil tailwind tailwind',
-    imagePath: 'img/kraudcloud.png',
-    imageAlt: 'Kraudcloud',
-    href: '#',
-  },
-  {
-    title: 'Diistil tailwind tailwind tailwind tailwind tailwind',
-    imagePath: 'img/kraudcloud.png',
-    imageAlt: 'Kraudcloud',
-    href: '#',
-  },
-])
+const slides = ref(favouriteWorks)
 </script>
 
 <template>
@@ -85,6 +61,7 @@ const slides = ref([
     display: flex;
     flex-direction: column;
     border: 2px solid $color-aqua;
+    background: $color-primary-hover;
     box-shadow: $shadow-xl;
     padding: 20px;
     margin-right: 60px;
@@ -135,18 +112,18 @@ const slides = ref([
 
     &-text {
       font-weight: 500;
-      padding: 20px 0;
+      padding: 20px 0 28px;
 
       @media (max-width: $breakpoint1680) {
-        padding: 18px 0;
+        padding: 18px 0 24px;
       }
 
       @media (max-width: $breakpoint1200) {
-        padding: 16px 0;
+        padding: 16px 0 24px;
       }
 
       @media (max-width: $breakpoint576) {
-        padding: 14px 0 16px;
+        padding: 14px 0 20px;
       }
     }
 

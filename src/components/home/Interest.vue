@@ -8,7 +8,8 @@ import Arrow from '../icons/Arrow.vue'
     <div class="container">
       <div class="interest__block">
         <h3 class="interest__title">Interested in collaborating with me?</h3>
-        <p class="interest__text text">I am always open to discussing projects, ideas, and things we can arrange to ensure your success.</p>
+        <p class="interest__text text">I am always open to discussing projects, ideas, and things we can arrange to ensure
+          your success.</p>
 
         <AppButton :text="'Contact me'" :href="'#contact'">
           <template v-slot:icon>

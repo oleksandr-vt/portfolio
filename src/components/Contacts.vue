@@ -106,8 +106,6 @@ import UkraineFlag from './icons/UkraineFlag.vue'
     }
 
     @media (max-width: $breakpoint420) {
-      // grid-template-columns: 1fr;
-      // max-width: 155px;
       place-items: center;
     }
   }

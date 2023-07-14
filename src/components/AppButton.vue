@@ -32,7 +32,7 @@ const props = defineProps({
   align-items: center;
   gap: 20px;
   transition: 0.3s all ease;
-  
+
   &:hover {
     background-color: $color-primary-hover;
     border-color: $color-aqua;

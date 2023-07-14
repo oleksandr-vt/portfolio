@@ -2,37 +2,9 @@
 import { ref } from 'vue'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
+import { allWorks } from '../../assets/js/works'
 
-const slides = ref([
-  {
-    title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit saepe tempora',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit saepe tempora sit amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit saepe tempora sit amet consectetur',
-    imagePath: 'img/kraudcloud.png',
-    imageAlt: 'Kraudcloud',
-    href: '#',
-  },
-  {
-    title: 'Kraudcloud tailwind',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit saepe tempora sit amet consectetur',
-    imagePath: 'img/kraudcloud.png',
-    imageAlt: 'Kraudcloud',
-    href: '#',
-  },
-  {
-    title: 'Diistil tailwind tailwind',
-    text: 'Kraudcloud tailwind tailwind tailwind tailwind tailwind',
-    imagePath: 'img/kraudcloud.png',
-    imageAlt: 'Kraudcloud',
-    href: '#',
-  },
-  {
-    title: 'Diistil tailwind tailwind tailwind tailwind tailwind',
-    text: 'Kraudcloud tailwind tailwind tailwind tailwind tailwind',
-    imagePath: 'img/kraudcloud.png',
-    imageAlt: 'Kraudcloud',
-    href: '#',
-  },
-])
+const slides = ref(allWorks)
 </script>
 
 <template>
@@ -80,6 +52,7 @@ const slides = ref([
     align-items: stretch;
     justify-content: space-between;
     border: 2px solid $color-aqua;
+    background: $color-primary-hover;
     box-shadow: $shadow-xl;
     padding: 20px;
     margin-bottom: 50px;
@@ -139,6 +112,8 @@ const slides = ref([
     &-img {
       width: 100%;
       max-width: 475px;
+      object-fit: cover;
+      aspect-ratio: 16/9;
       align-self: flex-start;
       flex-shrink: 0;
       margin-right: 30px;
