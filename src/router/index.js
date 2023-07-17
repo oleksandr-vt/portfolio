@@ -15,7 +15,10 @@ const router = createRouter({
       name: 'works',
       component: WorksView
     },
-  ]
+  ],
+  scrollBehavior() {
+    return { top: 0, behavior: 'instant' }
+  },
 })
 
 export default router
