@@ -18,7 +18,10 @@ const slides = ref(favouriteWorks)
         :breakpoints="{ 992: { enabled: false } }" :modules="[FreeMode, Pagination]">
         <swiper-slide v-for="(slide, index) in slides" :key="index">
           <img class="swiper-slide-img" :src="slide.imagePath" :alt="slide.imageAlt" loading="lazy">
-          <h4 class="swiper-slide-text text">{{ slide.title }}</h4>
+          <h4 class="swiper-slide-text text">
+            <span>{{ slide.title }}</span>
+            {{ slide.text }}
+          </h4>
 
           <AppButton class="swiper-slide-btn" :text="'Open website'" :href="slide.href" target="_blank">
             <template v-slot:icon>
@@ -28,6 +31,8 @@ const slides = ref(favouriteWorks)
         </swiper-slide>
 
         <swiper-slide>
+          <img src="img/last-slide-art.png" alt="img" loading="lazy">
+
           <AppButton :text="'Check out more'" :href="'/works'">
             <template v-slot:icon>
               <Arrow style="transform: rotate(-90deg); margin-bottom: 2px;" />
@@ -100,8 +105,34 @@ const slides = ref(favouriteWorks)
 
     &:last-child {
       margin-right: 0;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
+      gap: 20px;
+
+      img {
+        height: 100%;
+        max-height: 450px;
+
+        @media (max-width: $breakpoint1680) {
+          max-height: 420px;
+        }
+
+        @media (max-width: $breakpoint1200) {
+          max-height: 380px;
+        }
+
+        @media (max-width: $breakpoint992) {
+          max-height: 345px;
+        }
+
+        @media (max-width: $breakpoint768) {
+          max-height: 310px;
+        }
+
+        @media (max-width: $breakpoint576) {
+          max-height: 290px;
+        }
+      }
     }
 
     &-img {
@@ -112,18 +143,48 @@ const slides = ref(favouriteWorks)
 
     &-text {
       font-weight: 500;
-      padding: 20px 0 28px;
+      padding: 18px 0 28px;
 
       @media (max-width: $breakpoint1680) {
-        padding: 18px 0 24px;
-      }
-
-      @media (max-width: $breakpoint1200) {
         padding: 16px 0 24px;
       }
 
+      @media (max-width: $breakpoint992) {
+        padding: 14px 0 24px;
+      }
+
       @media (max-width: $breakpoint576) {
-        padding: 14px 0 20px;
+        padding: 12px 0 20px;
+      }
+
+      span {
+        font-size: 40px;
+        line-height: 1;
+        font-weight: 700;
+
+        @media (max-width: $breakpoint1680) {
+          font-size: 36px;
+        }
+
+        @media (max-width: $breakpoint1450) {
+          font-size: 34px;
+        }
+
+        @media (max-width: $breakpoint1200) {
+          font-size: 32px;
+        }
+
+        @media (max-width: $breakpoint992) {
+          font-size: 30px;
+        }
+
+        @media (max-width: $breakpoint768) {
+          font-size: 28px;
+        }
+
+        @media (max-width: $breakpoint576) {
+          font-size: 25px;
+        }
       }
     }
 

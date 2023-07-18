@@ -106,6 +106,10 @@ const slides = ref(allWorks)
         @media (max-width: $breakpoint992) {
           margin: 0 0 20px;
         }
+
+        @media (max-width: $breakpoint420) {
+          margin: 0 0 16px;
+        }
       }
     }
 
@@ -129,10 +133,6 @@ const slides = ref(allWorks)
 
       @media (max-width: $breakpoint992) {
         max-width: 100%;
-        margin: 0 0 24px;
-      }
-
-      @media (max-width: $breakpoint768) {
         margin: 0 0 20px;
       }
 
@@ -148,10 +148,15 @@ const slides = ref(allWorks)
     }
 
     &-title {
-      font-size: 36px;
+      font-size: 40px;
+      line-height: 1;
       font-weight: 700;
 
       @media (max-width: $breakpoint1680) {
+        font-size: 36px;
+      }
+
+      @media (max-width: $breakpoint1450) {
         font-size: 34px;
       }
 
@@ -159,28 +164,32 @@ const slides = ref(allWorks)
         font-size: 32px;
       }
 
+      @media (max-width: $breakpoint992) {
+        font-size: 36px;
+      }
+
       @media (max-width: $breakpoint768) {
-        font-size: 26px;
+        font-size: 32px;
       }
 
       @media (max-width: $breakpoint576) {
-        font-size: 24px;
+        font-size: 28px;
+      }
+
+      @media (max-width: $breakpoint420) {
+        font-size: 25px;
       }
     }
 
     &-text {
-      padding: 20px 0;
+      padding: 18px 0;
 
-      @media (max-width: $breakpoint1680) {
-        padding: 18px 0;
-      }
-
-      @media (max-width: $breakpoint1200) {
+      @media (max-width: $breakpoint1450) {
         padding: 16px 0;
       }
 
       @media (max-width: $breakpoint992) {
-        padding: 24px 0 32px;
+        padding: 20px 0 32px;
       }
 
       @media (max-width: $breakpoint768) {

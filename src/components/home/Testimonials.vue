@@ -110,10 +110,6 @@ const slides = ref([
       height: auto;
 
       @media (max-width: $breakpoint1680) {
-        max-width: 60px;
-      }
-
-      @media (max-width: $breakpoint1450) {
         max-width: 55px;
         margin-left: 45px;
       }

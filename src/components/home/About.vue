@@ -106,14 +106,14 @@ import BemIcon from '../icons/skills/BemIcon.vue'
   }
 
   &__inner {
-    padding: 0 40px 140px;
+    padding: 0 40px 120px;
 
     @media (max-width: $breakpoint1680) {
-      padding: 0 40px 120px;
+      padding: 0 40px 110px;
     }
 
     @media (max-width: $breakpoint1450) {
-      padding: 0 40px 110px;
+      padding: 0 40px 100px;
     }
 
     @media (max-width: $breakpoint992) {
@@ -121,7 +121,7 @@ import BemIcon from '../icons/skills/BemIcon.vue'
     }
 
     @media (max-width: $breakpoint768) {
-      padding: 0 0 75px;
+      padding: 0 0 70px;
     }
   }
 
@@ -132,7 +132,7 @@ import BemIcon from '../icons/skills/BemIcon.vue'
     margin: 0 auto;
 
     @media (max-width: $breakpoint1680) {
-      max-width: 1150px;
+      max-width: 1100px;
     }
 
     @media (max-width: $breakpoint992) {

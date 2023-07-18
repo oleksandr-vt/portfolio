@@ -10,7 +10,7 @@ import Arrow from '../icons/Arrow.vue'
       <div class="hero__block">
         <h1 class="hero__title">Front-end developer who gets the job done.</h1>
         <h4 class="hero__text text">Oleksandr Vintoniak</h4>
-    
+
         <AppButton :text="'Explore more'" :href="'#about'">
           <template v-slot:icon>
             <Arrow />
@@ -131,7 +131,7 @@ import Arrow from '../icons/Arrow.vue'
     @media (max-width: $breakpoint576) {
       font-size: 40px;
     }
-    
+
     @media (max-width: $breakpoint420) {
       font-size: 32px;
     }

@@ -12,7 +12,7 @@ const route = useRoute()
         <Arrow />
       </RouterLink>
 
-      <div class="header__links">
+      <div class="header__links text">
         <RouterLink to="/works">Works</RouterLink>
         <span>/</span>
         <RouterLink to="/">About</RouterLink>
@@ -29,20 +29,28 @@ const route = useRoute()
 .header {
   padding: 40px 60px;
 
+  @media (max-width: $breakpoint1680) {
+    padding: 35px 45px;
+  }
+
   @media (max-width: $breakpoint1450) {
-    padding: 40px 45px;
+    padding: 30px 45px;
   }
 
   @media (max-width: $breakpoint1200) {
-    padding: 30px;
+    padding: 25px 30px;
+  }
+
+  @media (max-width: $breakpoint992) {
+    padding: 20px 30px;
   }
 
   @media (max-width: $breakpoint768) {
-    padding: 25px;
+    padding: 20px 25px;
   }
 
   @media (max-width: $breakpoint576) {
-    padding: 25px 20px;
+    padding: 20px;
   }
 
   nav {
@@ -50,15 +58,6 @@ const route = useRoute()
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    height: 26px;
-
-    @media (max-width: $breakpoint992) {
-      height: 22px;
-    }
-
-    @media (max-width: $breakpoint768) {
-      height: 20px;
-    }
   }
 
   &__links {
@@ -76,25 +75,11 @@ const route = useRoute()
     }
 
     a {
-      font-size: 26px;
       line-height: 1;
       font-weight: 500;
 
       &:hover {
         text-decoration: underline;
-      }
-
-      @media (max-width: $breakpoint992) {
-        font-size: 22px;
-      }
-
-      @media (max-width: $breakpoint768) {
-        font-size: 20px;
-      }
-      
-      @media (max-width: $breakpoint576) {
-        font-size: 18px;
-        line-height: 20px;
       }
     }
 
