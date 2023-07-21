@@ -14,22 +14,22 @@ import UkraineFlag from './icons/UkraineFlag.vue'
       <p class="contacts__text text">You can get in touch with me at:</p>
 
       <div class="contacts__grid">
-        <a class="contacts__link text" href="#" target="_blank">
+        <a class="contacts__link text" href="https://www.upwork.com/freelancers/oleksandrvintoniak" target="_blank">
           <Upwork />
           Upwork
         </a>
 
-        <a class="contacts__link text" href="#" target="_blank">
+        <a class="contacts__link text" href="mailto:vintoniakoleksandr12@gmail.com">
           <Gmail />
           Email
         </a>
 
-        <a class="contacts__link text" href="#" target="_blank">
+        <a class="contacts__link text" href="https://www.linkedin.com/in/oleksandr-vintoniak-091b23230/" target="_blank">
           <LinkedIn />
           LinkedIn
         </a>
 
-        <a class="contacts__link text" href="#" target="_blank">
+        <a class="contacts__link text" href="https://github.com/oleksandr-vt" target="_blank">
           <Github />
           Github
         </a>
