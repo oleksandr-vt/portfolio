@@ -1,7 +1,20 @@
 <script setup>
+// import { onMounted } from 'vue'
 import HeroArt from '../icons/HeroArt.vue'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
+
+// onMounted(() => {
+//   const aboutWrapper = document.getElementById('about')
+//   const exploreBtn = document.getElementById('exploreBtn')
+//   const pageWrapper = document.querySelector('.page__wrapper')
+
+//   const { top: aboutTop } = aboutWrapper.getBoundingClientRect()
+
+//   exploreBtn.addEventListener('click', function () {
+//     pageWrapper.style.transform = `translate3d(0px, ${-aboutTop}px, 0px)`
+//   }, false)
+// })
 </script>
 
 <template>
@@ -11,6 +24,7 @@ import Arrow from '../icons/Arrow.vue'
         <h1 class="hero__title">Front-end developer who gets the job done.</h1>
         <h4 class="hero__text text">Oleksandr Vintoniak</h4>
 
+        <!-- <AppButton id="exploreBtn" :text="'Explore more'" :href="'#about'"> -->
         <AppButton :text="'Explore more'" :href="'#about'">
           <template v-slot:icon>
             <Arrow />

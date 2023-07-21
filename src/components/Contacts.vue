@@ -81,23 +81,26 @@ import UkraineFlag from './icons/UkraineFlag.vue'
 
   &__grid {
     width: 100%;
-    max-width: 600px;
+    max-width: 520px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 70px;
+    gap: 50px;
 
     @media (max-width: $breakpoint1680) {
-      max-width: 510px;
+      max-width: 450px;
     }
 
     @media (max-width: $breakpoint1450) {
-      gap: 50px;
-      max-width: 460px;
+      max-width: 440px;
+    }
+
+    @media (max-width: $breakpoint1200) {
+      max-width: 420px;
     }
 
     @media (max-width: $breakpoint992) {
-      max-width: 430px;
+      max-width: 410px;
     }
 
     @media (max-width: $breakpoint768) {
@@ -117,7 +120,7 @@ import UkraineFlag from './icons/UkraineFlag.vue'
     gap: 30px;
     font-weight: 500;
 
-    @media (max-width: $breakpoint1450) {
+    @media (max-width: $breakpoint1680) {
       gap: 25px;
     }
 
@@ -134,10 +137,14 @@ import UkraineFlag from './icons/UkraineFlag.vue'
     }
 
     svg {
-      @media (max-width: $breakpoint1450) {
+      @media (max-width: $breakpoint1680) {
         width: 100%;
-        max-width: 60px;
+        max-width: 65px;
         height: auto;
+      }
+
+      @media (max-width: $breakpoint1450) {
+        max-width: 60px;
       }
 
       @media (max-width: $breakpoint768) {
@@ -146,7 +153,7 @@ import UkraineFlag from './icons/UkraineFlag.vue'
     }
 
     &-resume {
-      margin: 160px auto;
+      margin: 140px auto;
 
       @media (max-width: $breakpoint1680) {
         margin: 120px auto;
@@ -157,6 +164,10 @@ import UkraineFlag from './icons/UkraineFlag.vue'
       }
 
       svg {
+        @media (max-width: $breakpoint1680) {
+          max-width: 55px;
+        }
+
         @media (max-width: $breakpoint1450) {
           max-width: 50px;
         }
@@ -174,7 +185,7 @@ import UkraineFlag from './icons/UkraineFlag.vue'
     justify-content: center;
     gap: 30px;
 
-    @media (max-width: $breakpoint1450) {
+    @media (max-width: $breakpoint1680) {
       gap: 25px;
     }
 
@@ -183,7 +194,7 @@ import UkraineFlag from './icons/UkraineFlag.vue'
     }
 
     svg {
-      @media (max-width: $breakpoint1450) {
+      @media (max-width: $breakpoint1680) {
         width: 100%;
         max-width: 46px;
         height: auto;

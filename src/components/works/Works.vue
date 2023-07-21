@@ -182,6 +182,7 @@ const slides = ref(allWorks)
     }
 
     &-text {
+      font-weight: 500;
       padding: 18px 0;
 
       @media (max-width: $breakpoint1450) {

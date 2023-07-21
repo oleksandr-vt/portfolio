@@ -10,14 +10,19 @@ const props = defineProps({
     type: String,
     required: true
   },
+  isRouterLink: {
+    type: Boolean,
+    required: false
+  }
 })
 </script>
 
 <template>
-  <RouterLink class="app-button text" :to="props.href">
+  <component class="app-button text" :is="isRouterLink ? 'RouterLink' : 'a'" :to="isRouterLink ? props.href : null"
+    :href="!isRouterLink ? props.href : null">
     <span>{{ props.text }}</span>
     <slot name="icon"></slot>
-  </RouterLink>
+  </component>
 </template>
 
 <style scoped lang="scss">
@@ -31,6 +36,7 @@ const props = defineProps({
   display: flex;
   align-items: center;
   gap: 20px;
+  cursor: pointer;
   transition: 0.3s all ease;
 
   &:hover {

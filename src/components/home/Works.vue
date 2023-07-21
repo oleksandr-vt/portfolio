@@ -33,7 +33,7 @@ const slides = ref(favouriteWorks)
         <swiper-slide>
           <img src="img/last-slide-art.png" alt="img" loading="lazy">
 
-          <AppButton :text="'Check out more'" :href="'/works'">
+          <AppButton :text="'Check out more'" :href="'/works'" :isRouterLink="true">
             <template v-slot:icon>
               <Arrow style="transform: rotate(-90deg); margin-bottom: 2px;" />
             </template>
@@ -163,10 +163,6 @@ const slides = ref(favouriteWorks)
         font-weight: 700;
 
         @media (max-width: $breakpoint1680) {
-          font-size: 36px;
-        }
-
-        @media (max-width: $breakpoint1450) {
           font-size: 34px;
         }
 
