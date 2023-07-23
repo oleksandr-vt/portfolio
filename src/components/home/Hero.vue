@@ -1,39 +1,133 @@
 <script setup>
-// import { onMounted } from 'vue'
 import HeroArt from '../icons/HeroArt.vue'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
+import { slideUp, fadeIn } from '../../assets/js/animations'
 
-// onMounted(() => {
-//   const aboutWrapper = document.getElementById('about')
-//   const exploreBtn = document.getElementById('exploreBtn')
-//   const pageWrapper = document.querySelector('.page__wrapper')
+// Animations
+const beforeEnterSlide = (el) => {
+  el.style.opacity = 0
+  el.style.transform = 'translateY(65%)'
+}
 
-//   const { top: aboutTop } = aboutWrapper.getBoundingClientRect()
+const beforeEnterFade = (el) => {
+  el.style.opacity = 0
+}
 
-//   exploreBtn.addEventListener('click', function () {
-//     pageWrapper.style.transform = `translate3d(0px, ${-aboutTop}px, 0px)`
-//   }, false)
-// })
+const enterFront = (el) => {
+  slideUp({ el, delay: 0.28 })
+}
+
+const enterDev = (el) => {
+  slideUp({ el, delay: 0.45 })
+}
+
+const enterWho = (el) => {
+  slideUp({ el, delay: 0.63 })
+}
+
+const enterGets = (el) => {
+  slideUp({ el, delay: 0.95 })
+}
+
+const enterThe = (el) => {
+  slideUp({ el, delay: 1.1 })
+}
+
+const enterJob = (el) => {
+  slideUp({ el, delay: 1.25 })
+}
+
+const enterDone = (el) => {
+  slideUp({ el, delay: 1.4 })
+}
+
+const enterDot = (el) => {
+  fadeIn({ el, duration: 0.5, delay: 1.85 })
+}
+
+const enterName = (el) => {
+  fadeIn({ el, delay: 1.6 })
+}
+
+const enterBtn = (el) => {
+  fadeIn({ el, delay: 1.7 })
+}
+
+const enterArt = (el) => {
+  fadeIn({ el, duration: 1, delay: 1.55 })
+}
 </script>
 
 <template>
   <section class="hero">
     <div class="container">
       <div class="hero__block">
-        <h1 class="hero__title">Front-end developer who gets the job done.</h1>
-        <h4 class="hero__text text">Oleksandr Vintoniak</h4>
+        <h1 class="hero__title">
+          <div class="hero__title-limiter">
+            <Transition appear @before-enter="beforeEnterSlide" @enter="enterFront">
+              <span>Front-end&nbsp;</span>
+            </Transition>
+          </div>
 
-        <!-- <AppButton id="exploreBtn" :text="'Explore more'" :href="'#about'"> -->
-        <AppButton :text="'Explore more'" :href="'#about'">
-          <template v-slot:icon>
-            <Arrow />
-          </template>
-        </AppButton>
+          <div class="hero__title-limiter">
+            <Transition appear @before-enter="beforeEnterSlide" @enter="enterDev">
+              <span>developer&nbsp;</span>
+            </Transition>
+          </div>
+
+          <div class="hero__title-limiter">
+            <Transition appear @before-enter="beforeEnterSlide" @enter="enterWho">
+              <span>who&nbsp;</span>
+            </Transition>
+          </div>
+
+          <div class="hero__title-limiter">
+            <Transition appear @before-enter="beforeEnterSlide" @enter="enterGets">
+              <span>gets&nbsp;</span>
+            </Transition>
+          </div>
+
+          <div class="hero__title-limiter">
+            <Transition appear @before-enter="beforeEnterSlide" @enter="enterThe">
+              <span>the&nbsp;</span>
+            </Transition>
+          </div>
+
+          <div class="hero__title-limiter">
+            <Transition appear @before-enter="beforeEnterSlide" @enter="enterJob">
+              <span>job&nbsp;</span>
+            </Transition>
+          </div>
+
+          <div class="hero__title-limiter">
+            <Transition appear @before-enter="beforeEnterSlide" @enter="enterDone">
+              <span>done<span class="dot-mobile">.</span></span>
+            </Transition>
+          </div>
+
+          <Transition appear @before-enter="beforeEnterFade" @enter="enterDot">
+            <span class="dot-desktop">.</span>
+          </Transition>
+        </h1>
+
+        <Transition appear @before-enter="beforeEnterFade" @enter="enterName">
+          <h4 class="hero__text text">Oleksandr Vintoniak</h4>
+        </Transition>
+
+        <Transition appear @before-enter="beforeEnterFade" @enter="enterBtn">
+          <AppButton :text="'Explore more'" :href="'#about'">
+            <template v-slot:icon>
+              <Arrow />
+            </template>
+          </AppButton>
+        </Transition>
       </div>
     </div>
 
-    <HeroArt class="hero__art" />
+    <Transition appear @before-enter="beforeEnterFade" @enter="enterArt">
+      <HeroArt class="hero__art" />
+    </Transition>
   </section>
 </template>
 
@@ -103,7 +197,6 @@ import Arrow from '../icons/Arrow.vue'
 
     @media (max-width: $breakpoint992) {
       align-items: center;
-      text-align: center;
       margin: 0 auto;
       max-width: 850px;
     }
@@ -121,6 +214,8 @@ import Arrow from '../icons/Arrow.vue'
     font-weight: 800;
     font-size: 110px;
     line-height: 110%;
+    display: flex;
+    flex-wrap: wrap;
 
     @media (max-width: $breakpoint1680) {
       font-size: 100px;
@@ -136,6 +231,7 @@ import Arrow from '../icons/Arrow.vue'
 
     @media (max-width: $breakpoint992) {
       font-size: 64px;
+      justify-content: center;
     }
 
     @media (max-width: $breakpoint768) {
@@ -148,6 +244,28 @@ import Arrow from '../icons/Arrow.vue'
 
     @media (max-width: $breakpoint420) {
       font-size: 32px;
+    }
+
+    &-limiter {
+      overflow: hidden;
+    }
+
+    span {
+      display: inline-block;
+    }
+
+    .dot-desktop {
+      @media (max-width: $breakpoint992) {
+        display: none;
+      }
+    }
+
+    .dot-mobile {
+      display: none;
+
+      @media (max-width: $breakpoint992) {
+        display: inline;
+      }
     }
   }
 
