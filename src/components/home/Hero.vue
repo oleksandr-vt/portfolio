@@ -1,54 +1,48 @@
 <script setup>
+import { ref, onMounted } from 'vue'
+import { gsap } from 'gsap'
+import { slideUp, fadeIn } from '../../assets/js/animations'
 import HeroArt from '../icons/HeroArt.vue'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
-import { slideUp, fadeIn } from '../../assets/js/animations'
 
-// Animations
-const beforeEnterSlide = (el) => {
-  el.style.opacity = 0
-  el.style.transform = 'translateY(65%)'
+const titleFirstLine = ref(null)
+const titleWho = ref(null)
+const titleGets = ref(null)
+const titleThe = ref(null)
+const titleJob = ref(null)
+const titleDone = ref(null)
+const heroName = ref(null)
+const heroBtn = ref(null)
+const heroArt = ref(null)
+
+const heroAnimation = () => {
+  const tlTitleFirstLine = slideUp({ el: titleFirstLine.value, duration: 0.75 })
+  const tlTitleWho = slideUp({ el: titleWho.value })
+  const tlTitleGets = slideUp({ el: titleGets.value })
+  const tlTitleThe = slideUp({ el: titleThe.value })
+  const tlTitleJob = slideUp({ el: titleJob.value })
+  const tlTitleDone = slideUp({ el: titleDone.value })
+  const tlName = fadeIn({ el: heroName.value })
+  const tlButton = fadeIn({ el: heroBtn.value })
+  const tlArt = fadeIn({ el: heroArt.value, duration: 1 })
+
+  const timeline = gsap.timeline({ paused: true })
+    .add(tlTitleFirstLine, 0.25)
+    .add(tlTitleWho, 0.55)
+    .add(tlTitleGets, 1)
+    .add(tlTitleThe, 1.15)
+    .add(tlTitleJob, 1.3)
+    .add(tlTitleDone, 1.45)
+    .add(tlArt, 1.6)
+    .add(tlName, 1.65)
+    .add(tlButton, 1.8)
+    .play()
 }
 
-const beforeEnterFade = (el) => {
-  el.style.opacity = 0
-}
-
-const enterFirstLine = (el) => {
-  slideUp({ el, duration: 0.75, delay: 0.3 })
-}
-
-const enterWho = (el) => {
-  slideUp({ el, delay: 0.6 })
-}
-
-const enterGets = (el) => {
-  slideUp({ el, delay: 1.05 })
-}
-
-const enterThe = (el) => {
-  slideUp({ el, delay: 1.2 })
-}
-
-const enterJob = (el) => {
-  slideUp({ el, delay: 1.35 })
-}
-
-const enterDone = (el) => {
-  slideUp({ el, delay: 1.5 })
-}
-
-const enterName = (el) => {
-  fadeIn({ el, delay: 1.7 })
-}
-
-const enterBtn = (el) => {
-  fadeIn({ el, delay: 1.8 })
-}
-
-const enterArt = (el) => {
-  fadeIn({ el, duration: 1, delay: 1.65 })
-}
+onMounted(() => {
+  heroAnimation()
+})
 </script>
 
 <template>
@@ -57,59 +51,45 @@ const enterArt = (el) => {
       <div class="hero__block">
         <h1 class="hero__title">
           <div class="hero__title-limiter">
-            <Transition appear @before-enter="beforeEnterSlide" @enter="enterFirstLine">
-              <span>Front-end developer&nbsp;</span>
-            </Transition>
+            <span ref="titleFirstLine">Front-end developer&nbsp;</span>
           </div>
 
           <div class="hero__title-limiter">
-            <Transition appear @before-enter="beforeEnterSlide" @enter="enterWho">
-              <span>who&nbsp;</span>
-            </Transition>
+            <span ref="titleWho">who&nbsp;</span>
           </div>
 
           <div class="hero__title-limiter">
-            <Transition appear @before-enter="beforeEnterSlide" @enter="enterGets">
-              <span>gets&nbsp;</span>
-            </Transition>
+            <span ref="titleGets">gets&nbsp;</span>
           </div>
 
           <div class="hero__title-limiter">
-            <Transition appear @before-enter="beforeEnterSlide" @enter="enterThe">
-              <span>the&nbsp;</span>
-            </Transition>
+            <span ref="titleThe">the&nbsp;</span>
           </div>
 
           <div class="hero__title-limiter">
-            <Transition appear @before-enter="beforeEnterSlide" @enter="enterJob">
-              <span>job&nbsp;</span>
-            </Transition>
+            <span ref="titleJob">job&nbsp;</span>
           </div>
 
           <div class="hero__title-limiter">
-            <Transition appear @before-enter="beforeEnterSlide" @enter="enterDone">
-              <span>done.</span>
-            </Transition>
+            <span ref="titleDone">done.</span>
           </div>
         </h1>
 
-        <Transition appear @before-enter="beforeEnterFade" @enter="enterName">
-          <h4 class="hero__text text">Oleksandr Vintoniak</h4>
-        </Transition>
+        <h4 class="hero__text text" ref="heroName">Oleksandr Vintoniak</h4>
 
-        <Transition appear @before-enter="beforeEnterFade" @enter="enterBtn">
+        <div ref="heroBtn">
           <AppButton :text="'Explore more'" :href="'#about'">
             <template v-slot:icon>
               <Arrow />
             </template>
           </AppButton>
-        </Transition>
+        </div>
       </div>
     </div>
 
-    <Transition appear @before-enter="beforeEnterFade" @enter="enterArt">
+    <div ref="heroArt">
       <HeroArt class="hero__art" />
-    </Transition>
+    </div>
   </section>
 </template>
 

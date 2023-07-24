@@ -1,4 +1,8 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { slideUp, fadeIn, scaleUp } from '../../assets/js/animations'
 import AboutArt from '../icons/AboutArt.vue'
 import TailwindIcon from '../icons/skills/TailwindIcon.vue'
 import ViteIcon from '../icons/skills/ViteIcon.vue'
@@ -19,26 +23,75 @@ import PiniaIcon from '../icons/skills/PiniaIcon.vue'
 import ParcelIcon from '../icons/skills/ParcelIcon.vue'
 import GitIcon from '../icons/skills/GitIcon.vue'
 import BemIcon from '../icons/skills/BemIcon.vue'
+
+const scrollTriggerRef = ref(null)
+const sectionAbout = ref(null)
+
+const aboutTitle = ref(null)
+const aboutTextOne = ref(null)
+const aboutTextTwo = ref(null)
+const aboutArt = ref(null)
+
+const aboutAnimation = () => {
+  const tlTitle = slideUp({ el: aboutTitle.value })
+  const tlTextOne = fadeIn({ el: aboutTextOne.value })
+  const tlTextTwo = fadeIn({ el: aboutTextTwo.value })
+  const tlArtFade = fadeIn({ el: aboutArt.value, duration: 0.9 })
+  const tlArtScale = scaleUp({ el: aboutArt.value })
+
+  const timeline = gsap.timeline({ paused: true })
+    .add(tlTitle, 0)
+    .add(tlTextOne, 0.3)
+    .add(tlTextTwo, 0.5)
+    .add(tlArtFade, 0.6)
+    .add(tlArtScale, 0.6)
+
+  if (scrollTriggerRef.value) {
+    scrollTriggerRef.value.kill()
+  }
+
+  scrollTriggerRef.value = ScrollTrigger.create({
+    trigger: sectionAbout.value,
+    start: 'top 80%',
+    animation: timeline,
+  })
+}
+
+onMounted(() => {
+  aboutAnimation()
+})
+
+onUnmounted(() => {
+  scrollTriggerRef.value.kill()
+})
 </script>
 
 <template>
-  <section class="about">
+  <section class="about" ref="sectionAbout">
     <div class="container">
       <div class="about__block">
-        <h2 class="about__title title">About</h2>
+        <div class="about__title title">
+          <h2 ref="aboutTitle">About</h2>
+        </div>
 
         <p class="about__text text">
-          During almost two years of commercial experience as a freelancer, I have successfully completed more than 50
-          front-end projects with clients from all over the world.
+          <span ref="aboutTextOne">
+            During almost two years of commercial experience as a freelancer, I have successfully completed more than 50
+            front-end projects with clients from all over the world.
+          </span>
+
           <br><br>
-          I am most focused on Vue and Nuxt development, as well as working on HTML, CSS and JavaScript projects. Here is
-          the full set of technologies I am familiar with:
+
+          <span ref="aboutTextTwo">
+            I am most focused on Vue and Nuxt development, as well as working on HTML, CSS and JavaScript projects. Here
+            is the full set of technologies I am familiar with:
+          </span>
         </p>
       </div>
     </div>
 
     <div class="about__inner">
-      <div class="about__composition">
+      <div class="about__composition" ref="aboutArt">
         <AboutArt class="about__art" />
 
         <TailwindIcon class="about__icon icon-tailwind" />

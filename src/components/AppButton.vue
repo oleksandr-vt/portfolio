@@ -29,6 +29,7 @@ const props = defineProps({
 @import "@/assets/css/variables.scss";
 
 .app-button {
+  display: inline-block;
   padding: 10px 25px;
   background-color: $color-primary;
   border: 2px solid $color-white;

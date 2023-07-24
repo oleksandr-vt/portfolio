@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import AppHeader from '../components/AppHeader.vue'
 import Hero from '../components/home/Hero.vue'
 import About from '../components/home/About.vue'
@@ -101,7 +101,7 @@ onMounted(() => {
   })
 })
 
-onBeforeUnmount(() => {
+onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 </script>
