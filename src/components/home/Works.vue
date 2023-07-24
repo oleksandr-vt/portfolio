@@ -1,5 +1,8 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { slideUp } from '../../assets/js/animations'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { FreeMode, Pagination } from 'swiper'
 import AppButton from '../AppButton.vue'
@@ -7,39 +10,76 @@ import Arrow from '../icons/Arrow.vue'
 import { favouriteWorks } from '../../assets/js/works'
 
 const slides = ref(favouriteWorks)
+
+const scrollTriggerRef = ref(null)
+const sectionWorks = ref(null)
+
+const worksTitle = ref(null)
+const worksSwiper = ref(null)
+
+const worksAnimation = () => {
+  const tlTitle = slideUp({ el: worksTitle.value })
+  const tlSwiper = slideUp({ el: worksSwiper.value, duration: 0.8, y: '25%' })
+
+  const timeline = gsap.timeline({ paused: true })
+    .add(tlTitle, 0)
+    .add(tlSwiper, 0.2)
+
+  if (scrollTriggerRef.value) {
+    scrollTriggerRef.value.kill()
+  }
+
+  scrollTriggerRef.value = ScrollTrigger.create({
+    trigger: sectionWorks.value,
+    start: 'top 70%',
+    animation: timeline,
+  })
+}
+
+onMounted(() => {
+  worksAnimation()
+})
+
+onUnmounted(() => {
+  scrollTriggerRef.value.kill()
+})
 </script>
 
 <template>
-  <section class="works section-padding">
+  <section class="works section-padding" ref="sectionWorks">
     <div class="container">
-      <h2 class="works__title title">Works</h2>
+      <div class="works__title title">
+        <h2 ref="worksTitle">Works</h2>
+      </div>
 
-      <swiper id="worksSwiper" :slidesPerView="'auto'" :enabled="true" :freeMode="true" :pagination="{ clickable: true }"
-        :breakpoints="{ 992: { enabled: false } }" :modules="[FreeMode, Pagination]">
-        <swiper-slide v-for="(slide, index) in slides" :key="index">
-          <img class="swiper-slide-img" :src="slide.imagePath" :alt="slide.imageAlt" loading="lazy">
-          <h4 class="swiper-slide-text text">
-            <span>{{ slide.title }}</span>
-            {{ slide.text }}
-          </h4>
+      <div ref="worksSwiper">
+        <swiper id="worksSwiper" :slidesPerView="'auto'" :enabled="true" :freeMode="true"
+          :pagination="{ clickable: true }" :breakpoints="{ 992: { enabled: false } }" :modules="[FreeMode, Pagination]">
+          <swiper-slide v-for="(slide, index) in slides" :key="index">
+            <img class="swiper-slide-img" :src="slide.imagePath" :alt="slide.imageAlt" loading="lazy">
+            <h4 class="swiper-slide-text text">
+              <span>{{ slide.title }}</span>
+              {{ slide.text }}
+            </h4>
 
-          <AppButton class="swiper-slide-btn" :text="'Open website'" :href="slide.href" target="_blank">
-            <template v-slot:icon>
-              <Arrow style="transform: rotate(-135deg); margin-bottom: 2px;" />
-            </template>
-          </AppButton>
-        </swiper-slide>
+            <AppButton class="swiper-slide-btn" :text="'Open website'" :href="slide.href" target="_blank">
+              <template v-slot:icon>
+                <Arrow style="transform: rotate(-135deg); margin-bottom: 2px;" />
+              </template>
+            </AppButton>
+          </swiper-slide>
 
-        <swiper-slide>
-          <img src="img/last-slide-art.png" alt="img" loading="lazy">
+          <swiper-slide>
+            <img src="img/last-slide-art.png" alt="img" loading="lazy">
 
-          <AppButton :text="'Check out more'" :href="'/works'" :isRouterLink="true">
-            <template v-slot:icon>
-              <Arrow style="transform: rotate(-90deg); margin-bottom: 2px;" />
-            </template>
-          </AppButton>
-        </swiper-slide>
-      </swiper>
+            <AppButton :text="'Check out more'" :href="'/works'" :isRouterLink="true">
+              <template v-slot:icon>
+                <Arrow style="transform: rotate(-90deg); margin-bottom: 2px;" />
+              </template>
+            </AppButton>
+          </swiper-slide>
+        </swiper>
+      </div>
     </div>
   </section>
 </template>

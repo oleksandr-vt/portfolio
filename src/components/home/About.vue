@@ -52,7 +52,7 @@ const aboutAnimation = () => {
 
   scrollTriggerRef.value = ScrollTrigger.create({
     trigger: sectionAbout.value,
-    start: 'top 80%',
+    start: 'top 70%',
     animation: timeline,
   })
 }

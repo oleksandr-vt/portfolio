@@ -6,7 +6,8 @@ import HeroArt from '../icons/HeroArt.vue'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
 
-const titleFirstLine = ref(null)
+const titleFront = ref(null)
+const titleDev = ref(null)
 const titleWho = ref(null)
 const titleGets = ref(null)
 const titleThe = ref(null)
@@ -17,7 +18,8 @@ const heroBtn = ref(null)
 const heroArt = ref(null)
 
 const heroAnimation = () => {
-  const tlTitleFirstLine = slideUp({ el: titleFirstLine.value, duration: 0.75 })
+  const tlTitleFront = slideUp({ el: titleFront.value, duration: 0.75 })
+  const tlTitleDev = slideUp({ el: titleDev.value, duration: 0.75 })
   const tlTitleWho = slideUp({ el: titleWho.value })
   const tlTitleGets = slideUp({ el: titleGets.value })
   const tlTitleThe = slideUp({ el: titleThe.value })
@@ -28,15 +30,16 @@ const heroAnimation = () => {
   const tlArt = fadeIn({ el: heroArt.value, duration: 1 })
 
   const timeline = gsap.timeline({ paused: true })
-    .add(tlTitleFirstLine, 0.25)
-    .add(tlTitleWho, 0.55)
-    .add(tlTitleGets, 1)
-    .add(tlTitleThe, 1.15)
-    .add(tlTitleJob, 1.3)
-    .add(tlTitleDone, 1.45)
-    .add(tlArt, 1.6)
-    .add(tlName, 1.65)
-    .add(tlButton, 1.8)
+    .add(tlTitleFront, 0.25)
+    .add(tlTitleDev, 0.25)
+    .add(tlTitleWho, 0.4)
+    .add(tlTitleGets, 0.65)
+    .add(tlTitleThe, 0.8)
+    .add(tlTitleJob, 0.95)
+    .add(tlTitleDone, 1.15)
+    .add(tlArt, 1.25)
+    .add(tlName, 1.3)
+    .add(tlButton, 1.45)
     .play()
 }
 
@@ -51,7 +54,11 @@ onMounted(() => {
       <div class="hero__block">
         <h1 class="hero__title">
           <div class="hero__title-limiter">
-            <span ref="titleFirstLine">Front-end developer&nbsp;</span>
+            <span ref="titleFront">Front-end&nbsp;</span>
+          </div>
+
+          <div class="hero__title-limiter">
+            <span ref="titleDev">developer&nbsp;</span>
           </div>
 
           <div class="hero__title-limiter">
