@@ -17,7 +17,7 @@ export const slideUp = ({ el, duration = 0.6, delay = 0 }) => {
   }
 }
 
-export const staggerIn = ({ el, index, duration = 0.5, delay = 0 }) => {
+export const staggerIn = ({ el, index, duration = 0.6, delay = 0 }) => {
   try {
     const tl = gsap.timeline({ delay })
       .to(el, {

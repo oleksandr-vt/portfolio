@@ -14,48 +14,40 @@ const beforeEnterFade = (el) => {
   el.style.opacity = 0
 }
 
-const enterFront = (el) => {
-  slideUp({ el, delay: 0.28 })
-}
-
-const enterDev = (el) => {
-  slideUp({ el, delay: 0.45 })
+const enterFirstLine = (el) => {
+  slideUp({ el, duration: 0.75, delay: 0.3 })
 }
 
 const enterWho = (el) => {
-  slideUp({ el, delay: 0.63 })
+  slideUp({ el, delay: 0.6 })
 }
 
 const enterGets = (el) => {
-  slideUp({ el, delay: 0.95 })
+  slideUp({ el, delay: 1.05 })
 }
 
 const enterThe = (el) => {
-  slideUp({ el, delay: 1.1 })
+  slideUp({ el, delay: 1.2 })
 }
 
 const enterJob = (el) => {
-  slideUp({ el, delay: 1.25 })
+  slideUp({ el, delay: 1.35 })
 }
 
 const enterDone = (el) => {
-  slideUp({ el, delay: 1.4 })
-}
-
-const enterDot = (el) => {
-  fadeIn({ el, duration: 0.5, delay: 1.85 })
+  slideUp({ el, delay: 1.5 })
 }
 
 const enterName = (el) => {
-  fadeIn({ el, delay: 1.6 })
-}
-
-const enterBtn = (el) => {
   fadeIn({ el, delay: 1.7 })
 }
 
+const enterBtn = (el) => {
+  fadeIn({ el, delay: 1.8 })
+}
+
 const enterArt = (el) => {
-  fadeIn({ el, duration: 1, delay: 1.55 })
+  fadeIn({ el, duration: 1, delay: 1.65 })
 }
 </script>
 
@@ -65,14 +57,8 @@ const enterArt = (el) => {
       <div class="hero__block">
         <h1 class="hero__title">
           <div class="hero__title-limiter">
-            <Transition appear @before-enter="beforeEnterSlide" @enter="enterFront">
-              <span>Front-end&nbsp;</span>
-            </Transition>
-          </div>
-
-          <div class="hero__title-limiter">
-            <Transition appear @before-enter="beforeEnterSlide" @enter="enterDev">
-              <span>developer&nbsp;</span>
+            <Transition appear @before-enter="beforeEnterSlide" @enter="enterFirstLine">
+              <span>Front-end developer&nbsp;</span>
             </Transition>
           </div>
 
@@ -102,13 +88,9 @@ const enterArt = (el) => {
 
           <div class="hero__title-limiter">
             <Transition appear @before-enter="beforeEnterSlide" @enter="enterDone">
-              <span>done<span class="dot-mobile">.</span></span>
+              <span>done.</span>
             </Transition>
           </div>
-
-          <Transition appear @before-enter="beforeEnterFade" @enter="enterDot">
-            <span class="dot-desktop">.</span>
-          </Transition>
         </h1>
 
         <Transition appear @before-enter="beforeEnterFade" @enter="enterName">
@@ -252,20 +234,6 @@ const enterArt = (el) => {
 
     span {
       display: inline-block;
-    }
-
-    .dot-desktop {
-      @media (max-width: $breakpoint992) {
-        display: none;
-      }
-    }
-
-    .dot-mobile {
-      display: none;
-
-      @media (max-width: $breakpoint992) {
-        display: inline;
-      }
     }
   }
 
