@@ -36,15 +36,13 @@ const aboutAnimation = () => {
   const tlTitle = slideUp({ el: aboutTitle.value })
   const tlTextOne = fadeIn({ el: aboutTextOne.value })
   const tlTextTwo = fadeIn({ el: aboutTextTwo.value })
-  const tlArtFade = fadeIn({ el: aboutArt.value, duration: 0.9 })
-  const tlArtScale = scaleUp({ el: aboutArt.value })
+  const tlArt = scaleUp({ el: aboutArt.value })
 
   const timeline = gsap.timeline({ paused: true })
     .add(tlTitle, 0)
     .add(tlTextOne, 0.3)
     .add(tlTextTwo, 0.5)
-    .add(tlArtFade, 0.6)
-    .add(tlArtScale, 0.6)
+    .add(tlArt, 0.6)
 
   if (scrollTriggerRef.value) {
     scrollTriggerRef.value.kill()

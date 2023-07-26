@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { slideUp } from '../../assets/js/animations'
+import { slideUp, staggerIn } from '../../assets/js/animations'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { FreeMode, Pagination } from 'swiper'
 import AppButton from '../AppButton.vue'
@@ -70,7 +70,7 @@ onUnmounted(() => {
           </swiper-slide>
 
           <swiper-slide>
-            <img src="img/last-slide-art.png" alt="img" loading="lazy">
+            <img :src="'img/last-slide-art.png'" alt="img" loading="lazy">
 
             <AppButton :text="'Check out more'" :href="'/works'" :isRouterLink="true">
               <template v-slot:icon>

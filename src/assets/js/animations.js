@@ -13,7 +13,7 @@ export const slideUp = ({ el, duration = 0.6, delay = 0, y = '65%' }) => {
 
     return tl
   } catch (e) {
-    console.log(e)
+    console.error(e)
   }
 }
 
@@ -30,7 +30,7 @@ export const staggerIn = ({ el, index, duration = 0.6, delay = 0, y = '65%' }) =
 
     return tl
   } catch (e) {
-    console.log(e)
+    console.error(e)
   }
 }
 
@@ -45,7 +45,7 @@ export const fadeIn = ({ el, duration = 0.6, delay = 0 }) => {
 
     return tl
   } catch (e) {
-    console.log(e)
+    console.error(e)
   }
 }
 
@@ -55,11 +55,12 @@ export const scaleUp = ({ el, duration = 0.7, delay = 0 }) => {
       .from(el, {
         duration: duration,
         scale: 0.5,
+        opacity: 0,
         ease: 'circ.out',
       })
 
     return tl
   } catch (e) {
-    console.log(e)
+    console.error(e)
   }
 }

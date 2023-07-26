@@ -1,12 +1,45 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { slideUp, scaleUp } from '../../assets/js/animations'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
+
+const scrollTriggerRef = ref(null)
+
+const interestBlock = ref(null)
+
+const interestAnimation = () => {
+  const tlBlock = scaleUp({ el: interestBlock.value })
+
+  const timeline = gsap.timeline({ paused: true })
+    .add(tlBlock, 0)
+
+  if (scrollTriggerRef.value) {
+    scrollTriggerRef.value.kill()
+  }
+
+  scrollTriggerRef.value = ScrollTrigger.create({
+    trigger: interestBlock.value,
+    start: 'center center',
+    animation: timeline,
+  })
+}
+
+onMounted(() => {
+  interestAnimation()
+})
+
+onUnmounted(() => {
+  scrollTriggerRef.value.kill()
+})
 </script>
 
 <template>
   <section class="interest section-padding">
     <div class="container">
-      <div class="interest__block">
+      <div class="interest__block" ref="interestBlock">
         <h3 class="interest__title">Interested in collaborating with me?</h3>
         <p class="interest__text text">I am always open to discussing projects, ideas, and things we can arrange to ensure
           your success.</p>
