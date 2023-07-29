@@ -2,13 +2,23 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { slideUp, scaleUp } from '../../assets/js/animations'
+import { scaleUp } from '../../assets/js/animations'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
 
 const scrollTriggerRef = ref(null)
 
 const interestBlock = ref(null)
+
+const animationPlaceholderPX = () => {
+  const mediaQuery = window.matchMedia('(max-width: 991.98px)')
+
+  if (mediaQuery.matches) return 0
+
+  const swiperWrapper = document.getElementById('worksSwiper')
+  const swiperTrack = swiperWrapper.querySelector('.swiper-wrapper')
+  return swiperTrack.scrollWidth - swiperWrapper.clientWidth
+}
 
 const interestAnimation = () => {
   const tlBlock = scaleUp({ el: interestBlock.value })
@@ -17,22 +27,26 @@ const interestAnimation = () => {
     .add(tlBlock, 0)
 
   if (scrollTriggerRef.value) {
-    scrollTriggerRef.value.kill()
+    // scrollTriggerRef.value.kill()
+    scrollTriggerRef.value = null
   }
 
   scrollTriggerRef.value = ScrollTrigger.create({
     trigger: interestBlock.value,
-    start: 'center center',
+    start: `center center-=${animationPlaceholderPX()}`,
     animation: timeline,
   })
 }
 
 onMounted(() => {
   interestAnimation()
+  window.addEventListener("resize", interestAnimation)
 })
 
 onUnmounted(() => {
-  scrollTriggerRef.value.kill()
+  window.removeEventListener("resize", interestAnimation)
+  // scrollTriggerRef.value.kill()
+  scrollTriggerRef.value = null
 })
 </script>
 

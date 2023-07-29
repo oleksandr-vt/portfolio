@@ -1,5 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+// import { gsap } from 'gsap'
+// import { ScrollTrigger } from "gsap/ScrollTrigger"
 import AppHeader from '../components/AppHeader.vue'
 import Hero from '../components/home/Hero.vue'
 import About from '../components/home/About.vue'
@@ -71,6 +73,23 @@ const setPageHeight = () => {
     mainWrapper.value.style.minHeight = `${totalHeight}px`
   }
 }
+
+// const handleScroll = () => {
+//   const worksList = document.getElementById('worksList')
+//   const worksPlaceholderPX = worksList.scrollWidth - worksList.offsetWidth
+
+//   let scrollTween = gsap.to(worksList, {
+//     x: () => -worksPlaceholderPX,
+//     ease: 'none',
+//     scrollTrigger: {
+//       trigger: worksList,
+//       pin: true,
+//       scrub: 0.1,
+//       start: 'center center',
+//       end: '+=2000',
+//     }
+//   })
+// }
 
 onMounted(() => {
   const mediaQuery = window.matchMedia('(max-width: 991.98px)')

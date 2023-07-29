@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { slideUp, staggerIn } from '../../assets/js/animations'
+import { slideUp, fadeIn } from '../../assets/js/animations'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { FreeMode, Pagination } from 'swiper'
 import AppButton from '../AppButton.vue'
@@ -19,11 +19,11 @@ const worksSwiper = ref(null)
 
 const worksAnimation = () => {
   const tlTitle = slideUp({ el: worksTitle.value })
-  const tlSwiper = slideUp({ el: worksSwiper.value, duration: 0.8, y: '25%' })
+  const tlSwiper = fadeIn({ el: worksSwiper.value, duration: 0.8 })
 
   const timeline = gsap.timeline({ paused: true })
     .add(tlTitle, 0)
-    .add(tlSwiper, 0.2)
+    .add(tlSwiper, 0.3)
 
   if (scrollTriggerRef.value) {
     scrollTriggerRef.value.kill()
