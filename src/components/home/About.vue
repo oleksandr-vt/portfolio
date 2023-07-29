@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { slideUp, fadeIn, scaleUp } from '../../assets/js/animations'
+import { slideUp, fadeIn } from '../../assets/js/animations'
 import AboutArt from '../icons/AboutArt.vue'
 import TailwindIcon from '../icons/skills/TailwindIcon.vue'
 import ViteIcon from '../icons/skills/ViteIcon.vue'
@@ -36,7 +36,7 @@ const aboutAnimation = () => {
   const tlTitle = slideUp({ el: aboutTitle.value })
   const tlTextOne = fadeIn({ el: aboutTextOne.value })
   const tlTextTwo = fadeIn({ el: aboutTextTwo.value })
-  const tlArt = scaleUp({ el: aboutArt.value })
+  const tlArt = fadeIn({ el: aboutArt.value, duration: 1 })
 
   const timeline = gsap.timeline({ paused: true })
     .add(tlTitle, 0)
@@ -65,7 +65,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="about" id="about" ref="sectionAbout">
+  <section class="about" ref="sectionAbout">
+    <div class="about__href" id="about"></div>
+
     <div class="container">
       <div class="about__block">
         <div class="about__title title">
@@ -121,6 +123,16 @@ onUnmounted(() => {
 
 .about {
   text-align: center;
+
+  &__href {
+    position: absolute;
+    top: -50px;
+    left: 0;
+
+    @media (max-width: $breakpoint992) {
+      top: 0;
+    }
+  }
 
   .container {
     padding-bottom: 90px;

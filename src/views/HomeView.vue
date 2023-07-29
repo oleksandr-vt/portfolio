@@ -7,7 +7,6 @@ import Works from '../components/home/Works.vue'
 import Interest from '../components/home/Interest.vue'
 import Testimonials from '../components/home/Testimonials.vue'
 import Contacts from '../components/Contacts.vue'
-import { scrollToElementById } from '../assets/js/scrollToElementById'
 
 const mainWrapper = ref(null)
 const pageWrapper = ref(null)

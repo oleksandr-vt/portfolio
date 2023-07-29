@@ -8,41 +8,46 @@ import UkraineFlag from './icons/UkraineFlag.vue'
 </script>
 
 <template>
-  <section class="contacts section-padding" id="contacts">
+  <section class="contacts section-padding">
     <div class="container">
-      <h2 class="contacts__title title">Contacts</h2>
-      <p class="contacts__text text">You can get in touch with me at:</p>
+      <div class="contacts__block">
+        <div class="contacts__href" id="contacts"></div>
 
-      <div class="contacts__grid">
-        <a class="contacts__link text" href="https://www.upwork.com/freelancers/oleksandrvintoniak" target="_blank">
-          <Upwork />
-          Upwork
+        <h2 class="contacts__title title">Contacts</h2>
+        <p class="contacts__text text">You can get in touch with me at:</p>
+
+        <div class="contacts__grid">
+          <a class="contacts__link text" href="https://www.upwork.com/freelancers/oleksandrvintoniak" target="_blank">
+            <Upwork />
+            Upwork
+          </a>
+
+          <a class="contacts__link text" href="mailto:vintoniakoleksandr12@gmail.com">
+            <Gmail />
+            Email
+          </a>
+
+          <a class="contacts__link text" href="https://www.linkedin.com/in/oleksandr-vintoniak-091b23230/"
+            target="_blank">
+            <LinkedIn />
+            LinkedIn
+          </a>
+
+          <a class="contacts__link text" href="https://github.com/oleksandr-vt" target="_blank">
+            <Github />
+            Github
+          </a>
+        </div>
+
+        <a class="contacts__link contacts__link-resume text" href="Oleksandr_Vintoniak.pdf" target="_blank" download>
+          <Resume />
+          Download PDF Resume
         </a>
 
-        <a class="contacts__link text" href="mailto:vintoniakoleksandr12@gmail.com">
-          <Gmail />
-          Email
-        </a>
-
-        <a class="contacts__link text" href="https://www.linkedin.com/in/oleksandr-vintoniak-091b23230/" target="_blank">
-          <LinkedIn />
-          LinkedIn
-        </a>
-
-        <a class="contacts__link text" href="https://github.com/oleksandr-vt" target="_blank">
-          <Github />
-          Github
-        </a>
-      </div>
-
-      <a class="contacts__link contacts__link-resume text" href="Oleksandr_Vintoniak.pdf" target="_blank" download>
-        <Resume />
-        Download PDF Resume
-      </a>
-
-      <div class="contacts__insert">
-        <UkraineFlag />
-        <span class="text">Peace.</span>
+        <div class="contacts__insert">
+          <UkraineFlag />
+          <span class="text">Peace.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -59,6 +64,20 @@ import UkraineFlag from './icons/UkraineFlag.vue'
 
     @media (max-width: $breakpoint768) {
       padding-bottom: 30px;
+    }
+  }
+
+  &__block {
+    position: relative;
+  }
+
+  &__href {
+    position: absolute;
+    top: -50px;
+    left: 0;
+
+    @media (max-width: $breakpoint992) {
+      top: -30px;
     }
   }
 

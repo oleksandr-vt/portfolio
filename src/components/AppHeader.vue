@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink, useRoute } from 'vue-router'
 import Arrow from './icons/Arrow.vue'
-import { scrollToElementById } from '../assets/js/scrollToElementById';
+import { scrollToElementById } from '../assets/js/helpers';
 
 const route = useRoute()
 </script>
@@ -13,7 +13,7 @@ const route = useRoute()
         <Arrow />
       </RouterLink>
 
-      <div class="header__links text">
+      <div class="header__links text" v-else>
         <RouterLink to="/works">Works</RouterLink>
         <span>/</span>
         <a @click="scrollToElementById('about')">About</a>
@@ -59,6 +59,27 @@ const route = useRoute()
     justify-content: space-between;
     align-items: center;
     gap: 16px;
+    height: 39px;
+
+    @media (max-width: $breakpoint1680) {
+      height: 34px;
+    }
+
+    @media (max-width: $breakpoint1200) {
+      height: 32px;
+    }
+
+    @media (max-width: $breakpoint992) {
+      height: 29px;
+    }
+
+    @media (max-width: $breakpoint768) {
+      height: 26px;
+    }
+
+    @media (max-width: $breakpoint576) {
+      height: 24px;
+    }
   }
 
   &__links {
@@ -91,9 +112,19 @@ const route = useRoute()
   }
 
   &__back {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     flex-shrink: 0;
+
+    @media (max-width: $breakpoint1680) {
+      width: 26px;
+      height: 26px;
+    }
+
+    @media (max-width: $breakpoint1450) {
+      width: 24px;
+      height: 24px;
+    }
 
     @media (max-width: $breakpoint992) {
       width: 22px;
@@ -108,6 +139,7 @@ const route = useRoute()
     svg {
       width: 100%;
       height: 100%;
+      max-width: none;
       transform: rotate(90deg);
     }
   }

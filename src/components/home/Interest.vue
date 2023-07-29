@@ -6,20 +6,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { scaleUp } from '../../assets/js/animations'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
-import { scrollToElementById } from '../../assets/js/scrollToElementById'
+import { scrollToElementById, animationPlaceholderPX } from '../../assets/js/helpers'
 
 const scrollTriggerRef = ref(null)
 const interestBlock = ref(null)
-
-const animationPlaceholderPX = () => {
-  const mediaQuery = window.matchMedia('(max-width: 991.98px)')
-
-  if (mediaQuery.matches) return 0
-
-  const swiperWrapper = document.getElementById('worksSwiper')
-  const swiperTrack = swiperWrapper.querySelector('.swiper-wrapper')
-  return swiperTrack.scrollWidth - swiperWrapper.clientWidth
-}
 
 const timeline = ref(null)
 

@@ -5,7 +5,7 @@ import { slideUp, fadeIn } from '../../assets/js/animations'
 import HeroArt from '../icons/HeroArt.vue'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
-import { scrollToElementById } from "../../assets/js/scrollToElementById"
+import { scrollToElementById } from "../../assets/js/helpers"
 
 const titleFront = ref(null)
 const titleDev = ref(null)
