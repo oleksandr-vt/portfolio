@@ -65,7 +65,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="about" ref="sectionAbout">
+  <section class="about" id="about" ref="sectionAbout">
     <div class="container">
       <div class="about__block">
         <div class="about__title title">

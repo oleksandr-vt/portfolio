@@ -1,7 +1,5 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-// import { gsap } from 'gsap'
-// import { ScrollTrigger } from "gsap/ScrollTrigger"
 import AppHeader from '../components/AppHeader.vue'
 import Hero from '../components/home/Hero.vue'
 import About from '../components/home/About.vue'
@@ -9,6 +7,7 @@ import Works from '../components/home/Works.vue'
 import Interest from '../components/home/Interest.vue'
 import Testimonials from '../components/home/Testimonials.vue'
 import Contacts from '../components/Contacts.vue'
+import { scrollToElementById } from '../assets/js/scrollToElementById'
 
 const mainWrapper = ref(null)
 const pageWrapper = ref(null)
@@ -74,23 +73,6 @@ const setPageHeight = () => {
   }
 }
 
-// const handleScroll = () => {
-//   const worksList = document.getElementById('worksList')
-//   const worksPlaceholderPX = worksList.scrollWidth - worksList.offsetWidth
-
-//   let scrollTween = gsap.to(worksList, {
-//     x: () => -worksPlaceholderPX,
-//     ease: 'none',
-//     scrollTrigger: {
-//       trigger: worksList,
-//       pin: true,
-//       scrub: 0.1,
-//       start: 'center center',
-//       end: '+=2000',
-//     }
-//   })
-// }
-
 onMounted(() => {
   const mediaQuery = window.matchMedia('(max-width: 991.98px)')
 
@@ -102,10 +84,11 @@ onMounted(() => {
   window.addEventListener("resize", () => {
     if (mediaQuery.matches) {
       window.removeEventListener('scroll', handleScroll)
-    } else {
-      setPageHeight()
-      window.addEventListener('scroll', handleScroll, { passive: false })
+      return
     }
+
+    setPageHeight()
+    window.addEventListener('scroll', handleScroll, { passive: false })
   })
 
   // Animated ellipses

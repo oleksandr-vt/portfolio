@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "debounce": "^1.2.1",
     "gsap": "^3.12.2",
     "swiper": "^9.4.1",
     "vue": "^3.3.4",

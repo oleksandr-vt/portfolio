@@ -5,6 +5,7 @@ import { slideUp, fadeIn } from '../../assets/js/animations'
 import HeroArt from '../icons/HeroArt.vue'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
+import { scrollToElementById } from "../../assets/js/scrollToElementById"
 
 const titleFront = ref(null)
 const titleDev = ref(null)
@@ -85,7 +86,7 @@ onMounted(() => {
         <h4 class="hero__text text" ref="heroName">Oleksandr Vintoniak</h4>
 
         <div ref="heroBtn">
-          <AppButton :text="'Explore more'" :href="'#about'">
+          <AppButton :text="'Explore more'" @click="scrollToElementById('about')">
             <template v-slot:icon>
               <Arrow />
             </template>

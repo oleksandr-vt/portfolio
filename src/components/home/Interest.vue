@@ -1,13 +1,14 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
+import debounce from "debounce"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { scaleUp } from '../../assets/js/animations'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
+import { scrollToElementById } from '../../assets/js/scrollToElementById'
 
 const scrollTriggerRef = ref(null)
-
 const interestBlock = ref(null)
 
 const animationPlaceholderPX = () => {
@@ -20,33 +21,36 @@ const animationPlaceholderPX = () => {
   return swiperTrack.scrollWidth - swiperWrapper.clientWidth
 }
 
-const interestAnimation = () => {
-  const tlBlock = scaleUp({ el: interestBlock.value })
+const timeline = ref(null)
 
-  const timeline = gsap.timeline({ paused: true })
-    .add(tlBlock, 0)
+const killScrollTrigger = () => {
+  if (!scrollTriggerRef.value) return
+  scrollTriggerRef.value.kill()
+  scrollTriggerRef.value = null
+}
 
-  if (scrollTriggerRef.value) {
-    // scrollTriggerRef.value.kill()
-    scrollTriggerRef.value = null
-  }
-
+const updateScrollTrigger = () => {
+  killScrollTrigger()
   scrollTriggerRef.value = ScrollTrigger.create({
     trigger: interestBlock.value,
-    start: `center center-=${animationPlaceholderPX()}`,
-    animation: timeline,
+    start: `top 70%-=${animationPlaceholderPX()}`,
+    animation: timeline.value,
   })
 }
 
+const debouncedUpdateScrollTrigger = debounce(updateScrollTrigger, 100)
+
 onMounted(() => {
-  interestAnimation()
-  window.addEventListener("resize", interestAnimation)
+  const tlBlock = scaleUp({ el: interestBlock.value })
+  timeline.value = gsap.timeline({ paused: true }).add(tlBlock, 0)
+
+  updateScrollTrigger()
+  window.addEventListener("resize", debouncedUpdateScrollTrigger)
 })
 
 onUnmounted(() => {
-  window.removeEventListener("resize", interestAnimation)
-  // scrollTriggerRef.value.kill()
-  scrollTriggerRef.value = null
+  window.removeEventListener("resize", debouncedUpdateScrollTrigger)
+  killScrollTrigger()
 })
 </script>
 
@@ -58,7 +62,7 @@ onUnmounted(() => {
         <p class="interest__text text">I am always open to discussing projects, ideas, and things we can arrange to ensure
           your success.</p>
 
-        <AppButton :text="'Contact me'" :href="'#contact'">
+        <AppButton :text="'Contact me'" @click="scrollToElementById('contacts')">
           <template v-slot:icon>
             <Arrow />
           </template>

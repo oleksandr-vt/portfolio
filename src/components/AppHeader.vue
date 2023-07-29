@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, useRoute } from 'vue-router'
 import Arrow from './icons/Arrow.vue'
+import { scrollToElementById } from '../assets/js/scrollToElementById';
 
 const route = useRoute()
 </script>
@@ -15,9 +16,9 @@ const route = useRoute()
       <div class="header__links text">
         <RouterLink to="/works">Works</RouterLink>
         <span>/</span>
-        <RouterLink to="/">About</RouterLink>
+        <a @click="scrollToElementById('about')">About</a>
         <span>/</span>
-        <RouterLink to="/">Contact</RouterLink>
+        <a @click="scrollToElementById('contacts')">Contact</a>
       </div>
     </nav>
   </header>
@@ -77,6 +78,7 @@ const route = useRoute()
     a {
       line-height: 1;
       font-weight: 500;
+      cursor: pointer;
 
       &:hover {
         text-decoration: underline;

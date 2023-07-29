@@ -8,7 +8,7 @@ import UkraineFlag from './icons/UkraineFlag.vue'
 </script>
 
 <template>
-  <section class="contacts section-padding">
+  <section class="contacts section-padding" id="contacts">
     <div class="container">
       <h2 class="contacts__title title">Contacts</h2>
       <p class="contacts__text text">You can get in touch with me at:</p>

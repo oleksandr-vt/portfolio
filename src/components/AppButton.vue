@@ -8,7 +8,7 @@ const props = defineProps({
   },
   href: {
     type: String,
-    required: true
+    required: false
   },
   isRouterLink: {
     type: Boolean,
