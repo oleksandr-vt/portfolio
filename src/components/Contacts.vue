@@ -1,50 +1,117 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { gsap } from 'gsap'
+import debounce from "debounce"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { slideUp, fadeIn } from '../assets/js/animations'
+import { animationPlaceholderPX } from '../assets/js/helpers'
 import Upwork from './icons/contacts/Upwork.vue'
 import Gmail from './icons/contacts/Gmail.vue'
 import LinkedIn from './icons/contacts/LinkedIn.vue'
 import Github from './icons/contacts/Github.vue'
 import Resume from './icons/contacts/Resume.vue'
 import UkraineFlag from './icons/UkraineFlag.vue'
+
+const scrollTriggerRef = ref(null)
+const sectionContacts = ref(null)
+
+const contactsTitle = ref(null)
+const contactsText = ref(null)
+const [contactsLink1, contactsLink2, contactsLink3, contactsLink4, contactsLink5] = [ref(null), ref(null), ref(null), ref(null), ref(null)]
+const contactsPeace = ref(null)
+
+const timeline = ref(null)
+
+const killScrollTrigger = () => {
+  if (!scrollTriggerRef.value) return
+  scrollTriggerRef.value.kill()
+  scrollTriggerRef.value = null
+}
+
+const updateScrollTrigger = () => {
+  killScrollTrigger()
+  scrollTriggerRef.value = ScrollTrigger.create({
+    trigger: sectionContacts.value,
+    start: `top 70%-=${animationPlaceholderPX()}`,
+    animation: timeline.value,
+  })
+}
+
+const debouncedUpdateScrollTrigger = debounce(updateScrollTrigger, 100)
+
+onMounted(() => {
+  const tlTitle = slideUp({ el: contactsTitle.value })
+  const tlText = fadeIn({ el: contactsText.value })
+  const tlLink1 = slideUp({ el: contactsLink1.value, y: '25%' })
+  const tlLink2 = slideUp({ el: contactsLink2.value, y: '25%' })
+  const tlLink3 = slideUp({ el: contactsLink3.value, y: '25%' })
+  const tlLink4 = slideUp({ el: contactsLink4.value, y: '25%' })
+  const tlLink5 = slideUp({ el: contactsLink5.value, y: '25%' })
+  const tlPeace = fadeIn({ el: contactsPeace.value })
+
+  timeline.value = gsap.timeline({ paused: true })
+    .add(tlTitle, 0)
+    .add(tlText, 0.3)
+    .add(tlLink1, 0.5)
+    .add(tlLink2, 0.65)
+    .add(tlLink3, 0.8)
+    .add(tlLink4, 0.95)
+    .add(tlLink5, 1.1)
+    .add(tlPeace, 1.25)
+
+  updateScrollTrigger()
+  window.addEventListener("resize", debouncedUpdateScrollTrigger)
+})
+
+onUnmounted(() => {
+  window.removeEventListener("resize", debouncedUpdateScrollTrigger)
+  killScrollTrigger()
+})
 </script>
 
 <template>
-  <section class="contacts section-padding">
+  <section class="contacts section-padding" ref="sectionContacts">
     <div class="container">
       <div class="contacts__block">
         <div class="contacts__href" id="contacts"></div>
 
-        <h2 class="contacts__title title">Contacts</h2>
-        <p class="contacts__text text">You can get in touch with me at:</p>
+        <div class="contacts__title title">
+          <h2 ref="contactsTitle">Contacts</h2>
+        </div>
+
+        <p class="contacts__text text" ref="contactsText">You can get in touch with me at:</p>
 
         <div class="contacts__grid">
-          <a class="contacts__link text" href="https://www.upwork.com/freelancers/oleksandrvintoniak" target="_blank">
+          <a class="contacts__link text" ref="contactsLink1" href="https://www.upwork.com/freelancers/oleksandrvintoniak"
+            target="_blank">
             <Upwork />
             Upwork
           </a>
 
-          <a class="contacts__link text" href="mailto:vintoniakoleksandr12@gmail.com">
+          <a class="contacts__link text" ref="contactsLink2" href="mailto:vintoniakoleksandr12@gmail.com">
             <Gmail />
             Email
           </a>
 
-          <a class="contacts__link text" href="https://www.linkedin.com/in/oleksandr-vintoniak-091b23230/"
-            target="_blank">
+          <a class="contacts__link text" ref="contactsLink3"
+            href="https://www.linkedin.com/in/oleksandr-vintoniak-091b23230/" target="_blank">
             <LinkedIn />
             LinkedIn
           </a>
 
-          <a class="contacts__link text" href="https://github.com/oleksandr-vt" target="_blank">
+          <a class="contacts__link text" ref="contactsLink4" href="https://github.com/oleksandr-vt" target="_blank">
             <Github />
             Github
           </a>
         </div>
 
-        <a class="contacts__link contacts__link-resume text" href="Oleksandr_Vintoniak.pdf" target="_blank" download>
+        <a class="contacts__link contacts__link-resume text" ref="contactsLink5" href="Oleksandr_Vintoniak.pdf"
+          target="_blank" download>
           <Resume />
           Download PDF Resume
         </a>
 
-        <div class="contacts__insert">
+        <div class="contacts__insert" ref="contactsPeace">
           <UkraineFlag />
           <span class="text">Peace.</span>
         </div>

@@ -94,3 +94,46 @@ export const allWorks = [
     href: 'http://geodata.if.ua/',
   },
 ]
+
+export const testimonials = [
+  {
+    title: `Exceptional work with the front-end task`,
+    text: `“Oleksandr did exceptional work with the front-end task. The resulting code was very efficient, well structured, and, most importantly, exactly up to spec. I will work with Oleksandr again!”`,
+    author: 'Yaroslav T.',
+  },
+  {
+    title: `Completed work faster and better`,
+    text: `“He's really good dev. Completed work faster and better. Will work in future again.”`,
+    author: `Edmund K.`,
+  },
+  {
+    title: `Really enjoyed working with Oleksandr!`,
+    text: `“Really enjoyed working with Oleksandr! He's polite, punctual and gets the job done. Will use again for front end jobs.”`,
+    author: `John R.`,
+  },
+  {
+    title: `Work has exceeded my expectations`,
+    text: `“I wanted to express my utmost satisfaction and gratitude for the exceptional job you have done. Your work has exceeded my expectations, and I am truly impressed with the quality and efficiency you have demonstrated throughout the project.”`,
+    author: `Abhishek S.`,
+  },
+  {
+    title: `Will definately hire again!`,
+    text: `“Oleksandr was a pleasure to work with. He completed the work very quickly as promised, he communicated well, and adhered to timeline commitments. Will definately hire again!”`,
+    author: `Peter R.`,
+  },
+  {
+    title: `Smart, fast, offers many solutions`,
+    text: `“Smart, fast, offers many solutions, 100% recommend, everything way too perfect”`,
+    author: `Valerian G.`,
+  },
+  {
+    title: `Great coder`,
+    text: `“Great coder, A++ communication and fast work! Will work, for sure again with Oleksandr”`,
+    author: `Andy H.`,
+  },
+  {
+    title: `One of the best freelancers I worked with`,
+    text: `“One of the best freelancers I worked with, Oleksandr knows his stuff and works fast and offers quality works. Will definitely hire him again”`,
+    author: `Red B.`,
+  },
+]

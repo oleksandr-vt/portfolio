@@ -1,89 +1,99 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { gsap } from 'gsap'
+import debounce from "debounce"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { slideUp, fadeIn } from '../../assets/js/animations'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination, Navigation, Autoplay } from 'swiper'
 import Star from '../icons/Star.vue'
 import Feather from '../icons/Feather.vue'
 import Arrow from '../icons/Arrow.vue'
+import { testimonials } from '../../assets/js/works'
+import { animationPlaceholderPX } from '../../assets/js/helpers'
 
-const slides = ref([
-  {
-    title: `Exceptional work with the front-end task`,
-    text: `“Oleksandr did exceptional work with the front-end task. The resulting code was very efficient, well structured, and, most importantly, exactly up to spec. I will work with Oleksandr again!”`,
-    author: 'Yaroslav T.',
-  },
-  {
-    title: `Completed work faster and better`,
-    text: `“He's really good dev. Completed work faster and better. Will work in future again.”`,
-    author: `Edmund K.`,
-  },
-  {
-    title: `Really enjoyed working with Oleksandr!`,
-    text: `“Really enjoyed working with Oleksandr! He's polite, punctual and gets the job done. Will use again for front end jobs.”`,
-    author: `John R.`,
-  },
-  {
-    title: `Work has exceeded my expectations`,
-    text: `“I wanted to express my utmost satisfaction and gratitude for the exceptional job you have done. Your work has exceeded my expectations, and I am truly impressed with the quality and efficiency you have demonstrated throughout the project.”`,
-    author: `Abhishek S.`,
-  },
-  {
-    title: `Will definately hire again!`,
-    text: `“Oleksandr was a pleasure to work with. He completed the work very quickly as promised, he communicated well, and adhered to timeline commitments. Will definately hire again!”`,
-    author: `Peter R.`,
-  },
-  {
-    title: `Smart, fast, offers many solutions`,
-    text: `“Smart, fast, offers many solutions, 100% recommend, everything way too perfect”`,
-    author: `Valerian G.`,
-  },
-  {
-    title: `Great coder`,
-    text: `“Great coder, A++ communication and fast work! Will work, for sure again with Oleksandr”`,
-    author: `Andy H.`,
-  },
-  {
-    title: `One of the best freelancers I worked with`,
-    text: `“One of the best freelancers I worked with, Oleksandr knows his stuff and works fast and offers quality works. Will definitely hire him again”`,
-    author: `Red B.`,
-  },
-])
+const slides = ref(testimonials)
+
+const scrollTriggerRef = ref(null)
+const sectionTestimonials = ref(null)
+
+const testimonialsTitle = ref(null)
+const testimonialsSwiper = ref(null)
+
+const timeline = ref(null)
+
+const killScrollTrigger = () => {
+  if (!scrollTriggerRef.value) return
+  scrollTriggerRef.value.kill()
+  scrollTriggerRef.value = null
+}
+
+const updateScrollTrigger = () => {
+  killScrollTrigger()
+  scrollTriggerRef.value = ScrollTrigger.create({
+    trigger: sectionTestimonials.value,
+    start: `top 70%-=${animationPlaceholderPX()}`,
+    animation: timeline.value,
+  })
+}
+
+const debouncedUpdateScrollTrigger = debounce(updateScrollTrigger, 100)
+
+onMounted(() => {
+  const tlTitle = slideUp({ el: testimonialsTitle.value })
+  const tlSwiper = fadeIn({ el: testimonialsSwiper.value })
+
+  timeline.value = gsap.timeline({ paused: true })
+    .add(tlTitle, 0)
+    .add(tlSwiper, 0.3)
+
+  updateScrollTrigger()
+  window.addEventListener("resize", debouncedUpdateScrollTrigger)
+})
+
+onUnmounted(() => {
+  window.removeEventListener("resize", debouncedUpdateScrollTrigger)
+  killScrollTrigger()
+})
 </script>
 
 <template>
-  <section class="testimonials section-padding">
+  <section class="testimonials section-padding" ref="sectionTestimonials">
     <div class="container">
-      <h2 class="testimonials__title title">
-        Testimonials
+      <div class="testimonials__title title">
+        <h2 ref="testimonialsTitle">
+          Testimonials&nbsp;
+          <Feather class="testimonials__title-icon" />
+        </h2>
+      </div>
 
-        <Feather class="testimonials__title-icon" />
-      </h2>
+      <div ref="testimonialsSwiper">
+        <swiper id="testimonialsSwiper" :slidesPerView="1" :pagination="{ clickable: true }"
+          :navigation="{ clickable: true, nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }" :loop="true"
+          :autoplay="{ delay: 6000 }" :spaceBetween="230" :modules="[Pagination, Navigation, Autoplay]">
+          <swiper-slide v-for="(slide, index) in slides" :key="index">
+            <h3 class="swiper-slide-title">{{ slide.title }}</h3>
+            <p class="swiper-slide-text text">{{ slide.text }}</p>
 
-      <swiper id="testimonialsSwiper" :slidesPerView="1" :pagination="{ clickable: true }"
-        :navigation="{ clickable: true, nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }" :loop="true"
-        :autoplay="{ delay: 6000 }" :spaceBetween="230" :modules="[Pagination, Navigation, Autoplay]">
-        <swiper-slide v-for="(slide, index) in slides" :key="index">
-          <h3 class="swiper-slide-title">{{ slide.title }}</h3>
-          <p class="swiper-slide-text text">{{ slide.text }}</p>
+            <div class="swiper-slide-stars">
+              <Star />
+              <Star />
+              <Star />
+              <Star />
+              <Star />
+            </div>
 
-          <div class="swiper-slide-stars">
-            <Star />
-            <Star />
-            <Star />
-            <Star />
-            <Star />
+            <h5 class="swiper-slide-author text">{{ slide.author }}</h5>
+          </swiper-slide>
+
+          <div class="swiper-button-prev">
+            <Arrow style="transform: rotate(90deg);" />
           </div>
-
-          <h5 class="swiper-slide-author text">{{ slide.author }}</h5>
-        </swiper-slide>
-
-        <div class="swiper-button-prev">
-          <Arrow style="transform: rotate(90deg);" />
-        </div>
-        <div class="swiper-button-next">
-          <Arrow style="transform: rotate(-90deg);" />
-        </div>
-      </swiper>
+          <div class="swiper-button-next">
+            <Arrow style="transform: rotate(-90deg);" />
+          </div>
+        </swiper>
+      </div>
     </div>
   </section>
 </template>
@@ -104,39 +114,32 @@ const slides = ref([
     justify-content: center;
 
     &-icon {
-      margin-left: 55px;
       width: 100%;
       max-width: 65px;
       height: auto;
 
       @media (max-width: $breakpoint1680) {
         max-width: 55px;
-        margin-left: 45px;
       }
 
       @media (max-width: $breakpoint1200) {
         max-width: 48px;
-        margin-left: 40px;
       }
 
       @media (max-width: $breakpoint992) {
         max-width: 42px;
-        margin-left: 35px;
       }
 
       @media (max-width: $breakpoint768) {
         max-width: 36px;
-        margin-left: 28px;
       }
 
       @media (max-width: $breakpoint576) {
         max-width: 30px;
-        margin-left: 24px;
       }
 
       @media (max-width: $breakpoint420) {
         max-width: 26px;
-        margin-left: 20px;
       }
     }
   }

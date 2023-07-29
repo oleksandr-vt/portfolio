@@ -1,11 +1,14 @@
 export const animationPlaceholderPX = () => {
   const mediaQuery = window.matchMedia('(max-width: 991.98px)')
+  const currentRoute = new URL(window.location.href).pathname
 
-  if (mediaQuery.matches) return 0
+  if (currentRoute === '/' && !mediaQuery.matches) {
+    const swiperWrapper = document.getElementById('worksSwiper')
+    const swiperTrack = swiperWrapper.querySelector('.swiper-wrapper')
+    return swiperTrack.scrollWidth - swiperWrapper.clientWidth
+  }
 
-  const swiperWrapper = document.getElementById('worksSwiper')
-  const swiperTrack = swiperWrapper.querySelector('.swiper-wrapper')
-  return swiperTrack.scrollWidth - swiperWrapper.clientWidth
+  return 0
 }
 
 export const scrollToElementById = (id) => {
