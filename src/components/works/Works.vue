@@ -1,19 +1,47 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import gsap from 'gsap'
+import { slideUp, staggerIn } from '../../assets/js/animations'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
 import { allWorks } from '../../assets/js/works'
 
 const slides = ref(allWorks)
+
+const worksTitle = ref(null)
+const sliderRefs = ref(null)
+
+const worksAnimation = () => {
+  const sliderElements = sliderRefs.value
+
+  const tlTitle = slideUp({ el: worksTitle.value })
+
+  const tlWorks = sliderElements.map(el => {
+    const index = sliderElements.indexOf(el)
+    const tl = staggerIn({ el, index })
+    return tl
+  })
+
+  const timeline = gsap.timeline({ paused: true })
+    .add(tlTitle, 0)
+    .add(tlWorks, 0.2)
+    .play()
+}
+
+onMounted(() => {
+  worksAnimation()
+})
 </script>
 
 <template>
   <section class="works section-padding">
     <div class="container">
-      <h2 class="works__title title">Works</h2>
+      <div class="works__title title">
+        <h2 ref="worksTitle">Works</h2>
+      </div>
 
       <div class="works__list">
-        <div class="works__block" v-for="(slide, index) in slides" :key="index">
+        <div class="works__block" v-for="(slide, index) in slides" :key="index" ref="sliderRefs">
           <img class="works__block-img" :src="slide.imagePath" :alt="slide.imageAlt" loading="lazy">
 
           <div class="works__block-inner">
