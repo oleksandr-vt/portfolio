@@ -12,6 +12,8 @@ const mainWrapper = ref(null)
 const pageWrapper = ref(null)
 
 const destructureScrollOffset = (currentScrollPosition) => {
+  if (!pageWrapper.value) return
+
   const swiperWrapper = document.getElementById('worksSwiper')
   const swiperTrack = swiperWrapper.querySelector('.swiper-wrapper')
 
@@ -44,6 +46,8 @@ const destructureScrollOffset = (currentScrollPosition) => {
 }
 
 const handleScroll = () => {
+  if (!pageWrapper.value) return
+
   const swiperWrapper = document.getElementById('worksSwiper')
   const swiperTrack = swiperWrapper.querySelector('.swiper-wrapper')
   const currentScrollPosition = document.documentElement.scrollTop
