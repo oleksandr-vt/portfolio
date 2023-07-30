@@ -25,7 +25,7 @@ export const favouriteWorks = [
     text: 'Ready-made UI for a cryptocurrency tracking website, built with HTML, SCSS, JavaScript, jQuery',
     imagePath: 'img/griffin.png',
     imageAlt: 'Griffin page screenshot',
-    href: '#',
+    href: 'https://oleksandr-vt.github.io/griffin/',
   },
 ]
 
@@ -56,7 +56,7 @@ export const allWorks = [
     text: 'A ready-made UI for a cryptocurrency tracking website, built with HTML, SCSS, JavaScript, jQuery.',
     imagePath: 'img/griffin.png',
     imageAlt: 'Griffin page screenshot',
-    href: '#',
+    href: 'https://oleksandr-vt.github.io/griffin/',
   },
   {
     title: 'Reviewfinder',
@@ -70,7 +70,7 @@ export const allWorks = [
     text: 'A clean, ready-to-use template for an online store homepage. Plain HTML, CSS, JavaScript.',
     imagePath: 'img/dudeshape.png',
     imageAlt: 'Dudeshape page screenshot',
-    href: '#',
+    href: 'https://oleksandr-vt.github.io/dudeshape/',
   },
   {
     title: 'Exitlag',
@@ -84,7 +84,7 @@ export const allWorks = [
     text: 'A landing page for NFT minting website, built with HTML, SCSS, JavaScript, gulp.js.',
     imagePath: 'img/wallstreet.png',
     imageAlt: 'Wallstreet page screenshot',
-    href: '#',
+    href: 'https://oleksandr-vt.github.io/wallstreet/',
   },
   {
     title: 'Geodata',
