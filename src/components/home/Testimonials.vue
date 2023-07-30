@@ -39,6 +39,10 @@ const updateScrollTrigger = () => {
 
 const debouncedUpdateScrollTrigger = debounce(updateScrollTrigger, 100)
 
+const handleButtonClick = () => {
+  gtag('event', `testimonials_slider_buttons`)
+}
+
 onMounted(() => {
   const tlTitle = slideUp({ el: testimonialsTitle.value })
   const tlSwiper = fadeIn({ el: testimonialsSwiper.value })
@@ -86,10 +90,10 @@ onUnmounted(() => {
             <h5 class="swiper-slide-author text">{{ slide.author }}</h5>
           </swiper-slide>
 
-          <div class="swiper-button-prev">
+          <div class="swiper-button-prev" @click="handleButtonClick()">
             <Arrow style="transform: rotate(90deg);" />
           </div>
-          <div class="swiper-button-next">
+          <div class="swiper-button-next" @click="handleButtonClick()">
             <Arrow style="transform: rotate(-90deg);" />
           </div>
         </swiper>

@@ -1,24 +1,32 @@
 <script setup>
 import { RouterLink, useRoute } from 'vue-router'
 import Arrow from './icons/Arrow.vue'
-import { scrollToElementById } from '../assets/js/helpers';
+import { scrollToElementById } from '../assets/js/helpers'
 
 const route = useRoute()
+
+const handleButtonClick = (str) => {
+  gtag('event', `header_${str}_button`)
+
+  if (str === 'about' || str === 'contacts') {
+    scrollToElementById(str)
+  }
+}
 </script>
 
 <template>
   <header class="header">
     <nav>
-      <RouterLink class="header__back" to="/" v-if="route.path !== '/'">
+      <RouterLink class="header__back" @click="handleButtonClick('back')" to="/" v-if="route.path !== '/'">
         <Arrow />
       </RouterLink>
 
       <div class="header__links text" v-else>
-        <RouterLink to="/works">Works</RouterLink>
+        <RouterLink @click="handleButtonClick('works')" to="/works">Works</RouterLink>
         <span>/</span>
-        <a @click="scrollToElementById('about')">About</a>
+        <a @click="handleButtonClick('about')">About</a>
         <span>/</span>
-        <a @click="scrollToElementById('contacts')">Contact</a>
+        <a @click="handleButtonClick('contacts')">Contact</a>
       </div>
     </nav>
   </header>

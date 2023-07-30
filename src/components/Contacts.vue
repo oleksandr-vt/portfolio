@@ -39,6 +39,10 @@ const updateScrollTrigger = () => {
 
 const debouncedUpdateScrollTrigger = debounce(updateScrollTrigger, 100)
 
+const handleButtonClick = (str) => {
+  gtag('event', `contacts_${str}_button`)
+}
+
 onMounted(() => {
   const tlTitle = slideUp({ el: contactsTitle.value })
   const tlText = fadeIn({ el: contactsText.value })
@@ -82,31 +86,33 @@ onUnmounted(() => {
         <p class="contacts__text text" ref="contactsText">You can get in touch with me at:</p>
 
         <div class="contacts__grid">
-          <a class="contacts__link text" ref="contactsLink1" href="https://www.upwork.com/freelancers/oleksandrvintoniak"
-            target="_blank">
+          <a class="contacts__link text" ref="contactsLink1" @click="handleButtonClick('upwork')"
+            href="https://www.upwork.com/freelancers/oleksandrvintoniak" target="_blank">
             <Upwork />
             Upwork
           </a>
 
-          <a class="contacts__link text" ref="contactsLink2" href="mailto:vintoniakoleksandr12@gmail.com">
+          <a class="contacts__link text" ref="contactsLink2" @click="handleButtonClick('email')"
+            href="mailto:vintoniakoleksandr12@gmail.com">
             <Gmail />
             Email
           </a>
 
-          <a class="contacts__link text" ref="contactsLink3"
+          <a class="contacts__link text" ref="contactsLink3" @click="handleButtonClick('linkedin')"
             href="https://www.linkedin.com/in/oleksandr-vintoniak-091b23230/" target="_blank">
             <LinkedIn />
             LinkedIn
           </a>
 
-          <a class="contacts__link text" ref="contactsLink4" href="https://github.com/oleksandr-vt" target="_blank">
+          <a class="contacts__link text" ref="contactsLink4" @click="handleButtonClick('github')"
+            href="https://github.com/oleksandr-vt" target="_blank">
             <Github />
             Github
           </a>
         </div>
 
-        <a class="contacts__link contacts__link-resume text" ref="contactsLink5" href="Oleksandr_Vintoniak.pdf"
-          target="_blank" download>
+        <a class="contacts__link contacts__link-resume text" ref="contactsLink5" @click="handleButtonClick('resume')"
+          href="Oleksandr_Vintoniak.pdf" target="_blank" download>
           <Resume />
           Download PDF Resume
         </a>

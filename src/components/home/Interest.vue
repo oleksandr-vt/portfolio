@@ -30,6 +30,11 @@ const updateScrollTrigger = () => {
 
 const debouncedUpdateScrollTrigger = debounce(updateScrollTrigger, 100)
 
+const handleButtonClick = () => {
+  gtag('event', `cta_interest_button`)
+  scrollToElementById('contacts')
+}
+
 onMounted(() => {
   const tlBlock = scaleUp({ el: interestBlock.value })
   timeline.value = gsap.timeline({ paused: true }).add(tlBlock, 0)
@@ -52,7 +57,7 @@ onUnmounted(() => {
         <p class="interest__text text">I am always open to discussing projects, ideas, and things we can arrange to ensure
           your success.</p>
 
-        <AppButton :text="'Contact me'" @click="scrollToElementById('contacts')">
+        <AppButton :text="'Contact me'" @click="handleButtonClick()">
           <template v-slot:icon>
             <Arrow />
           </template>

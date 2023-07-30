@@ -28,6 +28,11 @@ const worksAnimation = () => {
     .play()
 }
 
+const handleButtonClick = (str) => {
+  const formattedStr = str.toLowerCase().replace(/\s+/g, '')
+  gtag('event', `list_works_${formattedStr}_button`)
+}
+
 onMounted(() => {
   worksAnimation()
 })
@@ -48,7 +53,8 @@ onMounted(() => {
             <h4 class="works__block-title">{{ slide.title }}</h4>
             <p class="works__block-text text">{{ slide.text }}</p>
 
-            <AppButton class="works__block-btn" :text="'Open website'" :href="slide.href" target="_blank">
+            <AppButton class="works__block-btn" @click="handleButtonClick(slide.title)" :text="'Open website'"
+              :href="slide.href" target="_blank">
               <template v-slot:icon>
                 <Arrow style="transform: rotate(-135deg); margin-bottom: 2px;" />
               </template>

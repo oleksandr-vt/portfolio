@@ -7,6 +7,11 @@ import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
 import { scrollToElementById } from "../../assets/js/helpers"
 
+const handleButtonClick = () => {
+  gtag('event', 'hero_button')
+  scrollToElementById('about')
+}
+
 const titleFront = ref(null)
 const titleDev = ref(null)
 const titleWho = ref(null)
@@ -86,7 +91,7 @@ onMounted(() => {
         <h4 class="hero__text text" ref="heroName">Oleksandr Vintoniak</h4>
 
         <div ref="heroBtn">
-          <AppButton :text="'Explore more'" @click="scrollToElementById('about')">
+          <AppButton :text="'Explore more'" @click="handleButtonClick()">
             <template v-slot:icon>
               <Arrow />
             </template>

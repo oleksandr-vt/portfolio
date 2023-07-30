@@ -36,6 +36,10 @@ const worksAnimation = () => {
   })
 }
 
+const handleButtonClick = (str) => {
+  gtag('event', `slider_works_${str}_button`)
+}
+
 onMounted(() => {
   worksAnimation()
 })
@@ -62,7 +66,8 @@ onUnmounted(() => {
               {{ slide.text }}
             </h4>
 
-            <AppButton class="swiper-slide-btn" :text="'Open website'" :href="slide.href" target="_blank">
+            <AppButton class="swiper-slide-btn" @click="handleButtonClick(`item${index + 1}`)" :text="'Open website'"
+              :href="slide.href" target="_blank">
               <template v-slot:icon>
                 <Arrow style="transform: rotate(-135deg); margin-bottom: 2px;" />
               </template>
@@ -72,7 +77,7 @@ onUnmounted(() => {
           <swiper-slide>
             <img :src="'img/last-slide-art.png'" alt="img" loading="lazy">
 
-            <AppButton :text="'Check out more'" :href="'/works'" :isRouterLink="true">
+            <AppButton :text="'Check out more'" @click="handleButtonClick('last')" :href="'/works'" :isRouterLink="true">
               <template v-slot:icon>
                 <Arrow style="transform: rotate(-90deg); margin-bottom: 2px;" />
               </template>
