@@ -207,6 +207,7 @@ onMounted(() => {
     @media (max-width: $breakpoint992) {
       font-size: 64px;
       justify-content: center;
+      margin-right: -1rem;
     }
 
     @media (max-width: $breakpoint768) {

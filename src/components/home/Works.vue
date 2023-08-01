@@ -144,7 +144,7 @@ onUnmounted(() => {
     }
 
     @media (max-width: $breakpoint420) {
-      width: 350px;
+      width: 100%;
       padding: 14px;
     }
 
@@ -176,6 +176,11 @@ onUnmounted(() => {
 
         @media (max-width: $breakpoint576) {
           max-height: 290px;
+        }
+
+        @media (max-width: $breakpoint420) {
+          width: 100%;
+          height: auto;
         }
       }
     }
