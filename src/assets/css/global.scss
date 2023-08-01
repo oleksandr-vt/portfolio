@@ -148,6 +148,10 @@ section {
 
   &__animated {
     animation: 3s illustrationPulse infinite linear;
+
+    @media (max-width: $breakpoint992) {
+      animation: none;
+    }
   }
 }
 
