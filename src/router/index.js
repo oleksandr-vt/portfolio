@@ -15,6 +15,10 @@ const router = createRouter({
       name: 'works',
       component: WorksView
     },
+    {
+      path: '/:id',
+      redirect: '/',
+    }
   ],
   scrollBehavior() {
     return { top: 0, behavior: 'instant' }
