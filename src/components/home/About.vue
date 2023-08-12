@@ -40,9 +40,9 @@ const aboutAnimation = () => {
 
   const timeline = gsap.timeline({ paused: true })
     .add(tlTitle, 0)
-    .add(tlTextOne, 0.3)
+    .add(tlTextOne, 0.25)
     .add(tlTextTwo, 0.5)
-    .add(tlArt, 0.6)
+    .add(tlArt, 0.65)
 
   if (scrollTriggerRef.value) {
     scrollTriggerRef.value.kill()

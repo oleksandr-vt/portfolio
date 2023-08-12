@@ -45,7 +45,7 @@ const heroAnimation = () => {
     .add(tlTitleDone, 1.05)
     .add(tlArt, 1.15)
     .add(tlName, 1.2)
-    .add(tlButton, 1.35)
+    .add(tlButton, 1.32)
     .play()
 }
 

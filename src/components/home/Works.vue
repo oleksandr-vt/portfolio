@@ -23,7 +23,7 @@ const worksAnimation = () => {
 
   const timeline = gsap.timeline({ paused: true })
     .add(tlTitle, 0)
-    .add(tlSwiper, 0.3)
+    .add(tlSwiper, 0.25)
 
   if (scrollTriggerRef.value) {
     scrollTriggerRef.value.kill()
@@ -57,7 +57,7 @@ onUnmounted(() => {
       </div>
 
       <div ref="worksSwiper">
-        <swiper id="worksSwiper" :slidesPerView="'auto'" :enabled="true" :freeMode="true"
+        <swiper id="worksSwiper" :slidesPerView="'auto'" :enabled="true"
           :pagination="{ clickable: true }" :breakpoints="{ 992: { enabled: false } }" :modules="[FreeMode, Pagination]">
           <swiper-slide v-for="(slide, index) in slides" :key="index">
             <img class="swiper-slide-img" :src="slide.imagePath" :alt="slide.imageAlt" loading="lazy">

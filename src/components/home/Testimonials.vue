@@ -49,7 +49,7 @@ onMounted(() => {
 
   timeline.value = gsap.timeline({ paused: true })
     .add(tlTitle, 0)
-    .add(tlSwiper, 0.3)
+    .add(tlSwiper, 0.25)
 
   updateScrollTrigger()
   window.addEventListener("resize", debouncedUpdateScrollTrigger)
