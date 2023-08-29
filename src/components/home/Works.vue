@@ -57,10 +57,10 @@ onUnmounted(() => {
       </div>
 
       <div ref="worksSwiper">
-        <swiper id="worksSwiper" :slidesPerView="'auto'" :enabled="true"
-          :pagination="{ clickable: true }" :breakpoints="{ 992: { enabled: false } }" :modules="[FreeMode, Pagination]">
+        <swiper id="worksSwiper" :slidesPerView="'auto'" :enabled="true" :pagination="{ clickable: true }"
+          :breakpoints="{ 992: { enabled: false } }" :modules="[FreeMode, Pagination]">
           <swiper-slide v-for="(slide, index) in slides" :key="index">
-            <img class="swiper-slide-img" :src="slide.imagePath" :alt="slide.imageAlt" loading="lazy">
+            <img class="swiper-slide-img" :src="slide.imagePath" :alt="slide.imageAlt">
             <h4 class="swiper-slide-text text">
               <span>{{ slide.title }}</span>
               {{ slide.text }}
@@ -75,7 +75,7 @@ onUnmounted(() => {
           </swiper-slide>
 
           <swiper-slide>
-            <img :src="'img/last-slide-art.png'" alt="img" loading="lazy">
+            <img :src="'img/last-slide-art.png'" alt="img">
 
             <AppButton :text="'Check out more'" @click="handleButtonClick('last')" :href="'/works'" :isRouterLink="true">
               <template v-slot:icon>
