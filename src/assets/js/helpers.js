@@ -2,7 +2,7 @@ export const animationPlaceholderPX = () => {
   const mediaQuery = window.matchMedia('(max-width: 991.98px)')
   const currentRoute = new URL(window.location.href).pathname
 
-  if (currentRoute === '/' && !mediaQuery.matches) {
+  if (currentRoute === import.meta.env.BASE_URL && !mediaQuery.matches) {
     const swiperWrapper = document.getElementById('worksSwiper')
     const swiperTrack = swiperWrapper.querySelector('.swiper-wrapper')
     return swiperTrack.scrollWidth - swiperWrapper.clientWidth
@@ -20,7 +20,7 @@ export const scrollToElementById = (id) => {
   const mediaQuery = window.matchMedia('(max-width: 991.98px)')
   const currentRoute = new URL(window.location.href).pathname
 
-  if (currentRoute === '/' && !mediaQuery.matches) {
+  if (currentRoute === import.meta.env.BASE_URL && !mediaQuery.matches) {
     const swiperWrapper = document.getElementById('worksSwiper')
     const swiperTop = swiperWrapper.getBoundingClientRect().top
     const currentScrollPosition = document.documentElement.scrollTop
