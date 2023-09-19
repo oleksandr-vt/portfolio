@@ -24,7 +24,7 @@ const worksAnimation = () => {
 
   const timeline = gsap.timeline({ paused: true })
     .add(tlTitle, 0)
-    .add(tlWorks, 0.2)
+    .add(tlWorks, 0.25)
     .play()
 }
 
