@@ -36,7 +36,7 @@ const handleButtonClick = (str) => {
 @import "@/assets/css/variables.scss";
 
 .header {
-  padding: 10px 60px;
+  padding: 40px 60px;
 
   @media (max-width: $breakpoint1680) {
     padding: 35px 45px;
