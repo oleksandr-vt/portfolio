@@ -4,7 +4,7 @@ import gsap from 'gsap'
 import { slideUp, staggerIn } from '../../assets/js/animations'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
-import { allWorks } from '../../assets/js/works'
+import { allWorks } from '../../assets/js/data'
 
 const slides = ref(allWorks)
 
@@ -242,4 +242,4 @@ onMounted(() => {
     }
   }
 }
-</style>
+</style>../../assets/js/data

@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { FreeMode, Pagination } from 'swiper'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
-import { favouriteWorks } from '../../assets/js/works'
+import { favouriteWorks } from '../../assets/js/data'
 
 const slides = ref(favouriteWorks)
 
@@ -75,7 +75,7 @@ onUnmounted(() => {
           </swiper-slide>
 
           <swiper-slide>
-            <img :src="'img/last-slide-art.png'" alt="img">
+            <img :src="'img/last-slide-art.webp'" alt="img">
 
             <AppButton :text="'Check out more'" @click="handleButtonClick('last')" :href="'/works'" :isRouterLink="true">
               <template v-slot:icon>
@@ -240,4 +240,4 @@ onUnmounted(() => {
     }
   }
 }
-</style>
+</style>../../assets/js/data

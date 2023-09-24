@@ -9,7 +9,7 @@ import { Pagination, Navigation, Autoplay } from 'swiper'
 import Star from '../icons/Star.vue'
 import Feather from '../icons/Feather.vue'
 import Arrow from '../icons/Arrow.vue'
-import { testimonials } from '../../assets/js/works'
+import { testimonials } from '../../assets/js/data'
 import { animationPlaceholderPX } from '../../assets/js/helpers'
 
 const slides = ref(testimonials)
@@ -247,4 +247,4 @@ onUnmounted(() => {
     }
   }
 }
-</style>
+</style>../../assets/js/data

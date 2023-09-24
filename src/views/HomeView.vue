@@ -76,11 +76,24 @@ const setPageHeight = () => {
   }
 }
 
+const animateEllipses = () => {
+  const animatedEllipses = document.querySelectorAll('.illustration__animated')
+
+  animatedEllipses.forEach((ellipse) => {
+    const bbox = ellipse.getBBox()
+    const centerX = bbox.x + bbox.width / 2
+    const centerY = bbox.y + bbox.height / 2
+
+    ellipse.style.transformOrigin = centerX + 'px ' + centerY + 'px'
+  })
+}
+
 onMounted(() => {
   const mediaQuery = window.matchMedia('(max-width: 991.98px)')
 
   if (!mediaQuery.matches) {
     setPageHeight()
+    animateEllipses()
     window.addEventListener('scroll', handleScroll, { passive: false })
   }
 
@@ -91,18 +104,8 @@ onMounted(() => {
     }
 
     setPageHeight()
+    animateEllipses()
     window.addEventListener('scroll', handleScroll, { passive: false })
-  })
-
-  // Animated ellipses
-  const animatedEllipses = document.querySelectorAll('.illustration__animated')
-
-  animatedEllipses.forEach((ellipse) => {
-    const bbox = ellipse.getBBox()
-    const centerX = bbox.x + bbox.width / 2
-    const centerY = bbox.y + bbox.height / 2
-
-    ellipse.style.transformOrigin = centerX + 'px ' + centerY + 'px'
   })
 })
 
