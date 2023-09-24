@@ -58,7 +58,6 @@ const aboutAnimation = () => {
     trigger: sectionAbout.value,
     start: 'top 70%',
     animation: timeline,
-    once: true,
   })
 }
 
