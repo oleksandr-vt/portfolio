@@ -33,12 +33,18 @@ const aboutTextTwo = ref(null)
 const aboutArt = ref(null)
 
 const aboutAnimation = () => {
+  const tlSection = gsap.timeline().to(sectionAbout.value, {
+    duration: 0.1,
+    opacity: 1,
+    ease: 'Cubic.easeOut',
+  })
   const tlTitle = slideUp({ el: aboutTitle.value })
   const tlTextOne = fadeIn({ el: aboutTextOne.value })
   const tlTextTwo = fadeIn({ el: aboutTextTwo.value })
   const tlArt = fadeIn({ el: aboutArt.value, duration: 1 })
 
   const timeline = gsap.timeline({ paused: true })
+    .add(tlSection, 0)
     .add(tlTitle, 0)
     .add(tlTextOne, 0.25)
     .add(tlTextTwo, 0.5)
@@ -52,11 +58,19 @@ const aboutAnimation = () => {
     trigger: sectionAbout.value,
     start: 'top 70%',
     animation: timeline,
+    once: true,
   })
 }
 
+const hasUserScrolled = ref(false)
+
 onMounted(() => {
-  aboutAnimation()
+  window.addEventListener('scroll', () => {
+    if (!hasUserScrolled.value) {
+      hasUserScrolled.value = true
+      aboutAnimation()
+    }
+  })
 })
 
 onUnmounted(() => {
@@ -65,7 +79,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="about" ref="sectionAbout">
+  <section class="about" ref="sectionAbout" style="opacity: 0;">
     <div class="about__href" id="about"></div>
 
     <div class="container">

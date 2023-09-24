@@ -97,7 +97,7 @@ onMounted(() => {
     window.addEventListener('scroll', handleScroll, { passive: false })
   }
 
-  window.addEventListener("resize", () => {
+  window.addEventListener('resize', () => {
     if (mediaQuery.matches) {
       window.removeEventListener('scroll', handleScroll)
       return
