@@ -242,4 +242,4 @@ onMounted(() => {
     }
   }
 }
-</style>../../assets/js/data
+</style>

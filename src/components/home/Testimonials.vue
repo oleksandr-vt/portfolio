@@ -247,4 +247,4 @@ onUnmounted(() => {
     }
   }
 }
-</style>../../assets/js/data
+</style>
