@@ -85,6 +85,7 @@ const animateEllipses = () => {
     const centerY = bbox.y + bbox.height / 2
 
     ellipse.style.transformOrigin = centerX + 'px ' + centerY + 'px'
+    ellipse.style.animationDelay = `${Math.random() * 2500}ms`
   })
 }
 

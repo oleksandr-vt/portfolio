@@ -78,7 +78,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="about" ref="sectionAbout" style="opacity: 0;">
+  <section class="about" ref="sectionAbout" :style="gsap ? 'opacity: 0;' : ''">
     <div class="about__href" id="about"></div>
 
     <div class="container">
