@@ -74,17 +74,14 @@ onUnmounted(() => {
       <div ref="testimonialsSwiper">
         <swiper id="testimonialsSwiper" :slidesPerView="1" :pagination="{ clickable: true }"
           :navigation="{ clickable: true, nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }" :loop="true"
-          :autoplay="{ delay: 6000 }" :spaceBetween="230" :modules="[Pagination, Navigation, Autoplay]">
+          :autoplay="{ delay: 6000, pauseOnMouseEnter: true }" :spaceBetween="230"
+          :modules="[Pagination, Navigation, Autoplay]">
           <swiper-slide v-for="(slide, index) in slides" :key="index">
             <h3 class="swiper-slide-title">{{ slide.title }}</h3>
             <p class="swiper-slide-text text">{{ slide.text }}</p>
 
             <div class="swiper-slide-stars">
-              <Star />
-              <Star />
-              <Star />
-              <Star />
-              <Star />
+              <Star v-for="i in 5" />
             </div>
 
             <h5 class="swiper-slide-author text">{{ slide.author }}</h5>

@@ -89,8 +89,8 @@ onUnmounted(() => {
 
         <p class="about__text text">
           <span ref="aboutTextOne">
-            During almost two years of commercial experience as a freelancer, I have successfully completed more than 50
-            front-end projects with clients from all over the world.
+            During more than two years of commercial experience as a freelancer, I have successfully completed more than
+            50 front-end projects with clients from all over the world.
           </span>
 
           <br><br>
