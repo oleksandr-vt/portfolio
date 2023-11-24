@@ -73,7 +73,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  scrollTriggerRef.value.kill()
+  if (hasUserScrolled.value) scrollTriggerRef.value.kill()
 })
 </script>
 
