@@ -17,6 +17,4 @@ app.use(router).use(VueGtag, {
   config: { id: import.meta.env.VITE_GTAG_TOKEN },
 })
 
-console.log(import.meta.env.VITE_GTAG_TOKEN)
-
 app.mount('#app')
