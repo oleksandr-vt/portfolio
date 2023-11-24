@@ -14,7 +14,9 @@ gsap.registerPlugin(ScrollTrigger)
 const app = createApp(App)
 
 app.use(router).use(VueGtag, {
-  config: { id: 'G-V6HG63TW1M' },
+  config: { id: import.meta.env.VITE_GTAG_TOKEN },
 })
+
+console.log(import.meta.env.VITE_GTAG_TOKEN)
 
 app.mount('#app')
