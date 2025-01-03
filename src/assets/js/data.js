@@ -45,7 +45,7 @@ export const allWorks = [
     href: 'https://www.diistil.com/',
   },
   {
-    title: 'My favorite movies:',
+    title: 'My favorite movies',
     text: 'Nuxt 3 web app to discover, explore, and save your favorite movies with ease.',
     imagePath: 'img/favorite-movies.webp',
     imageAlt: 'My favorite movies page screenshot',
