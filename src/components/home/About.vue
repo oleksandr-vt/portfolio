@@ -89,15 +89,13 @@ onUnmounted(() => {
 
         <p class="about__text text">
           <span ref="aboutTextOne">
-            During over 2 years of commercial experience as a freelancer, I have successfully completed more than
-            50 front-end projects with clients from all over the world.
+            During over 3 years of commercial experience as a freelancer, I have successfully completed more than 60 front-end projects with clients from all over the world.
           </span>
 
           <br><br>
 
           <span ref="aboutTextTwo">
-            I am most focused on Vue and Nuxt development, as well as working on HTML, CSS and JavaScript projects. Here
-            is the full set of technologies I am familiar with:
+            I am most focused on Vue and Nuxt development, as well as working on HTML, CSS and JavaScript projects. Here is the full set of technologies I am familiar with:
           </span>
         </p>
       </div>

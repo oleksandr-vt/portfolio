@@ -62,7 +62,7 @@ onUnmounted(() => {
           <swiper-slide v-for="(slide, index) in slides" :key="index">
             <img class="swiper-slide-img" :src="slide.imagePath" :alt="slide.imageAlt">
             <h4 class="swiper-slide-text text">
-              <span>{{ slide.title }}</span>
+              <span>{{ slide.title }}:</span>
               {{ slide.text }}
             </h4>
 

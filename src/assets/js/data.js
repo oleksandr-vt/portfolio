@@ -1,27 +1,37 @@
 export const favouriteWorks = [
   {
-    title: 'Kraudcloud:',
-    text: 'Vue3, Nuxt3, TypeScript CRM web application that provides users with managed Kubernetes',
+    title: 'Kraudcloud',
+    text: 'Nuxt 3 & TypeScript CRM web application that provides users with managed Kubernetes',
     imagePath: 'img/kraudcloud.webp',
     imageAlt: 'Kraudcloud page screenshot',
     href: 'https://kraudcloud.com/',
   },
   {
-    title: 'Diistil:',
+    title: 'Diistil',
     text: 'Online store of distillates and spirits built with HTML, Tailwind CSS and JavaScript',
     imagePath: 'img/diistil.webp',
     imageAlt: 'Diistil page screenshot',
     href: 'https://www.diistil.com/',
   },
   {
-    title: 'Was Here TV:',
-    text: 'Vue3 application of TV show party series',
-    imagePath: 'img/washere.webp',
-    imageAlt: 'Was Here TV page screenshot',
-    href: 'https://washere.tv/',
+    title: 'My favorite movies',
+    text: 'Nuxt 3 web app to discover, explore, and save your favorite movies with ease',
+    imagePath: 'img/favorite-movies.webp',
+    imageAlt: 'My favorite movies page screenshot',
+    href: 'https://oleksandr-vt.github.io/favorite-movies/',
   },
+
+  // --------------------
+
+  // {
+  //   title: 'EfficientEther',
+  //   text: 'A Nuxt platform to optimize managing your cloud resources, complete with an integrated blog',
+  //   imagePath: 'img/efficientether.webp',
+  //   imageAlt: 'EfficientEther page screenshot',
+  //   href: 'https://www.efficientether.co.uk/',
+  // },
   {
-    title: 'Griffin:',
+    title: 'Griffin',
     text: 'Ready-made UI for a cryptocurrency tracking website, built with HTML, SCSS, JavaScript, jQuery',
     imagePath: 'img/griffin.webp',
     imageAlt: 'Griffin page screenshot',
@@ -32,7 +42,7 @@ export const favouriteWorks = [
 export const allWorks = [
   {
     title: 'Kraudcloud',
-    text: `CRM web application that provides users with managed Kubernetes. Stack of technologies - Vue3, Nuxt3, TypeScript, Pinia. Log in and try to run your own apps, it's free!`,
+    text: `CRM web application that provides users with managed Kubernetes. Stack of technologies - Vue 3, Nuxt 3, TypeScript, Pinia. Log in and try to run your own apps, it's free!`,
     imagePath: 'img/kraudcloud.webp',
     imageAlt: 'Kraudcloud page screenshot',
     href: 'https://kraudcloud.com/',
@@ -45,12 +55,26 @@ export const allWorks = [
     href: 'https://www.diistil.com/',
   },
   {
-    title: 'Was Here TV',
-    text: 'Vue3 application of reality television show party series.',
-    imagePath: 'img/washere.webp',
-    imageAlt: 'Was Here TV page screenshot',
-    href: 'https://washere.tv/',
+    title: 'My favorite movies',
+    text: 'Nuxt 3 web app to discover, explore, and save your favorite movies with ease.',
+    imagePath: 'img/favorite-movies.webp',
+    imageAlt: 'My favorite movies page screenshot',
+    href: 'https://oleksandr-vt.github.io/favorite-movies/',
   },
+  // {
+  //   title: 'EfficientEther',
+  //   text: 'A Nuxt platform to optimize managing your cloud resources, complete with an integrated blog.',
+  //   imagePath: 'img/efficientether.webp',
+  //   imageAlt: 'EfficientEther page screenshot',
+  //   href: 'https://www.efficientether.co.uk/',
+  // },
+  // {
+  //   title: 'EtherAssist',
+  //   text: 'A powerful AI agent designed to streamline IT infrastructure management. Front-end built with Vue 3.',
+  //   imagePath: 'img/etherassist.webp',
+  //   imageAlt: 'EtherAssist page screenshot',
+  //   href: 'https://www.etherassist.ai/',
+  // },
   {
     title: 'Griffin',
     text: 'A ready-made UI for a cryptocurrency tracking website, built with HTML, SCSS, JavaScript, jQuery.',
@@ -64,6 +88,13 @@ export const allWorks = [
     imagePath: 'img/reviewfinder.webp',
     imageAlt: 'Reviewfinder page screenshot',
     href: 'https://reviewfinder.ph/l/best-of/electric-unicycles/',
+  },
+  {
+    title: 'Was Here TV',
+    text: 'Vue 3 application of reality television show party series.',
+    imagePath: 'img/washere.webp',
+    imageAlt: 'Was Here TV page screenshot',
+    href: 'https://washere.tv/',
   },
   {
     title: 'Dudeshape',
