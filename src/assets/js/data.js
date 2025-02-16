@@ -20,23 +20,20 @@ export const favouriteWorks = [
     imageAlt: 'My favorite movies page screenshot',
     href: 'https://oleksandr-vt.github.io/favorite-movies/',
   },
-
-  // --------------------
-
-  // {
-  //   title: 'EfficientEther',
-  //   text: 'A Nuxt platform to optimize managing your cloud resources, complete with an integrated blog',
-  //   imagePath: 'img/efficientether.webp',
-  //   imageAlt: 'EfficientEther page screenshot',
-  //   href: 'https://www.efficientether.co.uk/',
-  // },
   {
-    title: 'Griffin',
-    text: 'Ready-made UI for a cryptocurrency tracking website, built with HTML, SCSS, JavaScript, jQuery',
-    imagePath: 'img/griffin.webp',
-    imageAlt: 'Griffin page screenshot',
-    href: 'https://oleksandr-vt.github.io/griffin/',
+    title: 'EfficientEther',
+    text: 'A Nuxt platform to optimize managing your cloud resources, complete with an integrated blog',
+    imagePath: 'img/efficientether.webp',
+    imageAlt: 'EfficientEther page screenshot',
+    href: 'https://www.efficientether.co.uk/',
   },
+  // {
+  //   title: 'Griffin',
+  //   text: 'Ready-made UI for a cryptocurrency tracking website, built with HTML, SCSS, JavaScript, jQuery',
+  //   imagePath: 'img/griffin.webp',
+  //   imageAlt: 'Griffin page screenshot',
+  //   href: 'https://oleksandr-vt.github.io/griffin/',
+  // },
 ]
 
 export const allWorks = [
@@ -61,20 +58,20 @@ export const allWorks = [
     imageAlt: 'My favorite movies page screenshot',
     href: 'https://oleksandr-vt.github.io/favorite-movies/',
   },
-  // {
-  //   title: 'EfficientEther',
-  //   text: 'A Nuxt platform to optimize managing your cloud resources, complete with an integrated blog.',
-  //   imagePath: 'img/efficientether.webp',
-  //   imageAlt: 'EfficientEther page screenshot',
-  //   href: 'https://www.efficientether.co.uk/',
-  // },
-  // {
-  //   title: 'EtherAssist',
-  //   text: 'A powerful AI agent designed to streamline IT infrastructure management. Front-end built with Vue 3.',
-  //   imagePath: 'img/etherassist.webp',
-  //   imageAlt: 'EtherAssist page screenshot',
-  //   href: 'https://www.etherassist.ai/',
-  // },
+  {
+    title: 'EfficientEther',
+    text: 'A Nuxt platform to optimize managing your cloud resources, complete with an integrated blog.',
+    imagePath: 'img/efficientether.webp',
+    imageAlt: 'EfficientEther page screenshot',
+    href: 'https://www.efficientether.co.uk/',
+  },
+  {
+    title: 'EtherAssist',
+    text: 'A powerful AI agent designed to streamline IT infrastructure management. Front-end built with Vue 3.',
+    imagePath: 'img/etherassist.webp',
+    imageAlt: 'EtherAssist page screenshot',
+    href: 'https://www.etherassist.ai/',
+  },
   {
     title: 'Griffin',
     text: 'A ready-made UI for a cryptocurrency tracking website, built with HTML, SCSS, JavaScript, jQuery.',
