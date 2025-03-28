@@ -111,7 +111,7 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     border: 2px solid $color-aqua;
-    background: $color-primary-hover;
+    background: $color-primary;
     box-shadow: $shadow-xl;
     padding: 20px;
     margin-right: 60px;

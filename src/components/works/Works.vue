@@ -86,7 +86,7 @@ onMounted(() => {
     align-items: stretch;
     justify-content: space-between;
     border: 2px solid $color-aqua;
-    background: $color-primary-hover;
+    background: $color-primary;
     box-shadow: $shadow-xl;
     padding: 20px;
     margin-bottom: 50px;

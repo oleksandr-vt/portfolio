@@ -32,7 +32,7 @@ const props = defineProps({
   display: inline-block;
   padding: 10px 25px;
   background-color: $color-primary;
-  border: 2px solid $color-white;
+  border: 2px solid $color-black;
   font-weight: 500;
   display: flex;
   align-items: center;

@@ -1,6 +1,6 @@
 <template>
   <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M11.5 2.5V21.5M11.5 21.5L20 12.5278M11.5 21.5L3 12.5278" stroke="#e8e8e8" stroke-width="1.53125"
+    <path d="M11.5 2.5V21.5M11.5 21.5L20 12.5278M11.5 21.5L3 12.5278" stroke="#111111" stroke-width="1.53125"
       stroke-linecap="round" stroke-linejoin="round" />
   </svg>
 </template>
