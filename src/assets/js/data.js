@@ -8,7 +8,7 @@ export const favouriteWorks = [
   },
   {
     title: 'Fuchsjobs',
-    text: 'Vue 3 app where users can find and post jobs, streamlining the hiring process',
+    text: 'Vue 3 and Tailwind CSS app where users can find and post jobs, streamlining the hiring process',
     imagePath: 'img/fuchsjobs.webp',
     imageAlt: 'Fuchsjobs page screenshot',
     href: 'https://www.fuchsjobs.de/',
@@ -39,7 +39,7 @@ export const allWorks = [
   },
   {
     title: 'Fuchsjobs',
-    text: 'Vue 3 app where users can find and post jobs, streamlining the hiring process.',
+    text: 'Vue 3 and Tailwind CSS app where users can find and post jobs, streamlining the hiring process.',
     imagePath: 'img/fuchsjobs.webp',
     imageAlt: 'Fuchsjobs page screenshot',
     href: 'https://www.fuchsjobs.de/',
