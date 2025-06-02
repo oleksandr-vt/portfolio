@@ -15,7 +15,7 @@ export const favouriteWorks = [
   },
   {
     title: 'My favorite movies',
-    text: 'Nuxt 3 web app to discover, explore, and save your favorite movies with ease.',
+    text: 'Nuxt 3 web app to discover, explore, and save your favorite movies with ease',
     imagePath: 'img/favorite-movies.webp',
     imageAlt: 'My favorite movies page screenshot',
     href: 'https://oleksandr-vt.github.io/favorite-movies/',
@@ -95,7 +95,7 @@ export const allWorks = [
   },
   {
     title: 'Geodata',
-    text: 'The website of a company engaged in topographic and geodetic works. HTML, CSS, Bootstrap, JavaScript',
+    text: 'The website of a company engaged in topographic and geodetic works. HTML, CSS, Bootstrap, JavaScript.',
     imagePath: 'img/geodata.webp',
     imageAlt: 'Geodata page screenshot',
     href: 'http://geodata.if.ua/',
