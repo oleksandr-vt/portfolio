@@ -6,7 +6,7 @@ import { useLenis } from './assets/js/lenis'
 useLenis()
 
 onMounted(() => {
-  window.scrollTo(0, 0)
+  document.documentElement.scrollTop = 0
 })
 </script>
 
