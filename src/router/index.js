@@ -18,11 +18,15 @@ const router = createRouter({
     {
       path: '/:id',
       redirect: '/',
-    }
+    },
   ],
-  scrollBehavior() {
-    return { top: 0, behavior: 'instant' }
-  },
+  // scrollBehavior() {
+  //   return { top: 0, behavior: 'instant' }
+  // },
+})
+
+router.afterEach(() => {
+  window.lenis?.scrollTo(0, { immediate: true })
 })
 
 export default router
