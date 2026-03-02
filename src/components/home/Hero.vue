@@ -91,7 +91,7 @@ onMounted(() => {
         <h4 class="hero__text text" ref="heroName">Oleksandr Vintoniak</h4>
 
         <div ref="heroBtn">
-          <AppButton :text="'Explore more'" @click="handleButtonClick()">
+          <AppButton :text="'Explore more'" @click="handleButtonClick()" tag="button">
             <template v-slot:icon>
               <Arrow />
             </template>

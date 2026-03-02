@@ -57,7 +57,7 @@ onUnmounted(() => {
         <p class="interest__text text">I am always open to discussing projects, ideas, and things we can arrange to ensure
           your success.</p>
 
-        <AppButton :text="'Contact me'" @click="handleButtonClick()">
+        <AppButton :text="'Contact me'" @click="handleButtonClick()" tag="button">
           <template v-slot:icon>
             <Arrow />
           </template>
