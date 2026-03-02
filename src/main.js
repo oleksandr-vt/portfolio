@@ -9,6 +9,8 @@ import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
 import './assets/css/style.scss'
 
+history.scrollRestoration = 'manual'
+
 gsap.registerPlugin(ScrollTrigger)
 
 const app = createApp(App)
