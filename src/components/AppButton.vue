@@ -24,7 +24,7 @@ const props = defineProps({
     class="app-button text"
     :is="tag === 'RouterLink' ? RouterLink : tag"
     :to="tag === 'RouterLink' ? props.href : null"
-    :href="tag === 'a' ? props.href : null"
+    :href="props.href ?? null"
   >
     <span>{{ props.text }}</span>
     <slot name="icon"></slot>
