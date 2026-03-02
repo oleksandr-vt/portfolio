@@ -11,7 +11,6 @@ export function useLenis() {
     })
 
     window.lenis = lenis
-    lenis.scrollTo(0, { immediate: true })
 
     function raf(time) {
       lenis.raf(time)
