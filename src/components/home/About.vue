@@ -10,7 +10,7 @@ import GulpIcon from '../icons/skills/GulpIcon.vue'
 import HtmlIcon from '../icons/skills/HtmlIcon.vue'
 import WebpackIcon from '../icons/skills/WebpackIcon.vue'
 import NuxtIcon from '../icons/skills/NuxtIcon.vue'
-import YarnIcon from '../icons/skills/YarnIcon.vue'
+import I18nIcon from '../icons/skills/I18nIcon.vue'
 import CssIcon from '../icons/skills/CssIcon.vue'
 import VueIcon from '../icons/skills/VueIcon.vue'
 import BootstrapIcon from '../icons/skills/BootstrapIcon.vue'
@@ -20,7 +20,7 @@ import SassIcon from '../icons/skills/SassIcon.vue'
 import NpmIcon from '../icons/skills/NpmIcon.vue'
 import GsapIcon from '../icons/skills/GsapIcon.vue'
 import PiniaIcon from '../icons/skills/PiniaIcon.vue'
-import ParcelIcon from '../icons/skills/ParcelIcon.vue'
+import SocketIcon from '../icons/skills/SocketIcon.vue'
 import GitIcon from '../icons/skills/GitIcon.vue'
 import BemIcon from '../icons/skills/BemIcon.vue'
 
@@ -28,8 +28,9 @@ const scrollTriggerRef = ref(null)
 const sectionAbout = ref(null)
 
 const aboutTitle = ref(null)
-const aboutTextOne = ref(null)
-const aboutTextTwo = ref(null)
+const aboutText1 = ref(null)
+const aboutText2 = ref(null)
+const aboutText3 = ref(null)
 const aboutArt = ref(null)
 
 const aboutAnimation = () => {
@@ -39,16 +40,18 @@ const aboutAnimation = () => {
     ease: 'Cubic.easeOut',
   })
   const tlTitle = slideUp({ el: aboutTitle.value })
-  const tlTextOne = fadeIn({ el: aboutTextOne.value })
-  const tlTextTwo = fadeIn({ el: aboutTextTwo.value })
+  const tlText1 = fadeIn({ el: aboutText1.value })
+  const tlText2 = fadeIn({ el: aboutText2.value })
+  const tlText3 = fadeIn({ el: aboutText3.value })
   const tlArt = fadeIn({ el: aboutArt.value, duration: 1 })
 
   const timeline = gsap.timeline({ paused: true })
     .add(tlSection, 0)
     .add(tlTitle, 0)
-    .add(tlTextOne, 0.25)
-    .add(tlTextTwo, 0.5)
-    .add(tlArt, 0.65)
+    .add(tlText1, 0.25)
+    .add(tlText2, 0.45)
+    .add(tlText3, 0.58)
+    .add(tlArt, 0.7)
 
   if (scrollTriggerRef.value) {
     scrollTriggerRef.value.kill()
@@ -88,14 +91,20 @@ onUnmounted(() => {
         </div>
 
         <p class="about__text text">
-          <span ref="aboutTextOne">
-            During over 4 years of commercial experience as a freelancer, I have successfully completed more than 70 front-end projects with clients from all over the world.
+          <span ref="aboutText1">
+            With over 4 years of commercial experience as a front-end freelancer, I have successfully completed more than 70 projects for clients worldwide.
           </span>
 
           <br><br>
 
-          <span ref="aboutTextTwo">
-            I am most focused on Vue and Nuxt development, as well as working on HTML, CSS and JavaScript projects. Here is the full set of technologies I am familiar with:
+          <span ref="aboutText2">
+            My primary focus is Vue and Nuxt development, as well as HTML, CSS and JavaScript projects. I enjoy working closely with clients to turn their ideas into clean, performant web experiences.
+          </span>
+
+          <br><br>
+
+          <span ref="aboutText3">
+            Here is the tech stack I work with:
           </span>
         </p>
       </div>
@@ -111,7 +120,7 @@ onUnmounted(() => {
         <HtmlIcon class="about__icon icon-html" />
         <WebpackIcon class="about__icon icon-webpack" />
         <NuxtIcon class="about__icon icon-nuxt" />
-        <YarnIcon class="about__icon icon-yarn" />
+        <I18nIcon class="about__icon icon-i18n" />
         <CssIcon class="about__icon icon-css" />
         <VueIcon class="about__icon icon-vue" />
         <BootstrapIcon class="about__icon icon-bootstrap" />
@@ -121,7 +130,7 @@ onUnmounted(() => {
         <NpmIcon class="about__icon icon-npm" />
         <GsapIcon class="about__icon icon-gsap" />
         <PiniaIcon class="about__icon icon-pinia" />
-        <ParcelIcon class="about__icon icon-parcel" />
+        <SocketIcon class="about__icon icon-socket" />
         <GitIcon class="about__icon icon-git" />
         <BemIcon class="about__icon icon-bem" />
       </div>
@@ -393,7 +402,7 @@ onUnmounted(() => {
     }
   }
 
-  .icon-yarn {
+  .icon-i18n {
     top: 34%;
     right: 6%;
 
@@ -592,7 +601,7 @@ onUnmounted(() => {
     }
   }
 
-  .icon-parcel {
+  .icon-socket {
     bottom: 9%;
     left: 43%;
 

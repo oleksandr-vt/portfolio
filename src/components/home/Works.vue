@@ -77,7 +77,7 @@ onUnmounted(() => {
           <swiper-slide>
             <img :src="'img/last-slide-art.webp'" alt="img">
 
-            <AppButton :text="'Check out more'" @click="handleButtonClick('last')" :href="'/works'" :isRouterLink="true">
+            <AppButton :text="'Check out more'" @click="handleButtonClick('last')" :href="'/works'" tag="RouterLink">
               <template v-slot:icon>
                 <Arrow style="transform: rotate(-90deg); margin-bottom: 2px;" />
               </template>

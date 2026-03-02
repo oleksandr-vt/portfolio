@@ -24,9 +24,9 @@ const handleButtonClick = (str) => {
       <div class="header__links text" v-else>
         <RouterLink @click="handleButtonClick('works')" to="/works">Works</RouterLink>
         <span>/</span>
-        <a @click="handleButtonClick('about')">About</a>
+        <button @click="handleButtonClick('about')">About</button>
         <span>/</span>
-        <a @click="handleButtonClick('contacts')">Contact</a>
+        <button @click="handleButtonClick('contacts')">Contact</button>
       </div>
     </nav>
   </header>
@@ -104,7 +104,7 @@ const handleButtonClick = (str) => {
       gap: 14px;
     }
 
-    a {
+    a, button {
       line-height: 1;
       font-weight: 500;
       cursor: pointer;

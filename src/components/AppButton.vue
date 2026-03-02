@@ -10,16 +10,22 @@ const props = defineProps({
     type: String,
     required: false
   },
-  isRouterLink: {
-    type: Boolean,
-    required: false
+  tag: {
+    type: String,
+    required: false,
+    default: 'a',
+    validator: (value) => ['a', 'button', 'RouterLink'].includes(value)
   }
 })
 </script>
 
 <template>
-  <component class="app-button text" :is="isRouterLink ? 'RouterLink' : 'a'" :to="isRouterLink ? props.href : null"
-    :href="!isRouterLink ? props.href : null">
+  <component
+    class="app-button text"
+    :is="tag === 'RouterLink' ? RouterLink : tag"
+    :to="tag === 'RouterLink' ? props.href : null"
+    :href="tag === 'a' ? props.href : null"
+  >
     <span>{{ props.text }}</span>
     <slot name="icon"></slot>
   </component>
@@ -34,6 +40,7 @@ const props = defineProps({
   background-color: $color-primary;
   border: 2px solid $color-white;
   font-weight: 500;
+  line-height: 1.3;
   display: flex;
   align-items: center;
   gap: 20px;
