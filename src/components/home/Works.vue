@@ -4,7 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { slideUp, fadeIn } from '../../assets/js/animations'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { FreeMode, Pagination } from 'swiper'
+import { FreeMode, Pagination } from 'swiper/modules'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
 import { favouriteWorks } from '../../assets/js/data'

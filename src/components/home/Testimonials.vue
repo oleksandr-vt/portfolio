@@ -5,7 +5,7 @@ import debounce from "debounce"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { slideUp, fadeIn } from '../../assets/js/animations'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Pagination, Navigation, Autoplay } from 'swiper'
+import { Pagination, Navigation, Autoplay } from 'swiper/modules'
 import Star from '../icons/Star.vue'
 import Feather from '../icons/Feather.vue'
 import Arrow from '../icons/Arrow.vue'
