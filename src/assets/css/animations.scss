@@ -1,3 +1,5 @@
+@use './variables.scss' as *;
+
 @keyframes illustrationPulse {
   25% {
     transform: scale(0.7);

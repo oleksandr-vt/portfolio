@@ -1,5 +1,4 @@
-@import './variables.scss';
-@import './fonts.scss';
-@import './reset.scss';
-@import './animations.scss';
-@import './global.scss';
+@use './fonts.scss';
+@use './reset.scss';
+@use './animations.scss';
+@use './global.scss';

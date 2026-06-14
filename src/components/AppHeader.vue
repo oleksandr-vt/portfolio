@@ -33,7 +33,7 @@ const handleButtonClick = (str) => {
 </template>
 
 <style scoped lang="scss">
-@import "@/assets/css/variables.scss";
+@use "@/assets/css/variables.scss" as *;
 
 .header {
   padding: 40px 60px;

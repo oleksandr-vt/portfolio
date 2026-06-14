@@ -32,7 +32,7 @@ const props = defineProps({
 </template>
 
 <style scoped lang="scss">
-@import "@/assets/css/variables.scss";
+@use "@/assets/css/variables.scss" as *;
 
 .app-button {
   display: inline-block;
