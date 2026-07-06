@@ -1,9 +1,10 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
+import debounce from "debounce"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { slideUp, fadeIn } from '../../assets/js/animations'
-import AboutArt from '../icons/AboutArt.vue'
+import { slideUp, fadeIn, staggerIn } from '../../assets/js/animations'
+import { animationPlaceholderPX } from '../../assets/js/helpers'
 import TailwindIcon from '../icons/skills/TailwindIcon.vue'
 import ViteIcon from '../icons/skills/ViteIcon.vue'
 import GulpIcon from '../icons/skills/GulpIcon.vue'
@@ -24,115 +25,147 @@ import SocketIcon from '../icons/skills/SocketIcon.vue'
 import GitIcon from '../icons/skills/GitIcon.vue'
 import BemIcon from '../icons/skills/BemIcon.vue'
 
+const stats = [
+  { num: '70+', label: 'Projects delivered' },
+  { num: '5+', label: 'Years freelancing' },
+  { num: 'Vue / Nuxt', label: 'Core stack' },
+]
+
+const clusters = [
+  {
+    title: 'Core Frontend',
+    text: 'Vue & Nuxt applications — SPA, SSR, static — with typed, state-managed code.',
+    skills: [
+      { name: 'Vue.js', icon: VueIcon },
+      { name: 'Nuxt.js', icon: NuxtIcon },
+      { name: 'JavaScript', icon: JSIcon },
+      { name: 'TypeScript', icon: TSIcon },
+      { name: 'Pinia', icon: PiniaIcon },
+    ],
+  },
+  {
+    title: 'Markup & Styling',
+    text: 'Pixel-perfect, responsive, cross-browser builds with a methodical structure.',
+    skills: [
+      { name: 'HTML5', icon: HtmlIcon },
+      { name: 'CSS3', icon: CssIcon },
+      { name: 'Sass', icon: SassIcon },
+      { name: 'Tailwind CSS', icon: TailwindIcon },
+      { name: 'Bootstrap', icon: BootstrapIcon },
+      { name: 'BEM', icon: BemIcon },
+    ],
+  },
+  {
+    title: 'Build & Tooling',
+    text: 'Fast, reliable bundling, task automation, and version control.',
+    skills: [
+      { name: 'Vite', icon: ViteIcon },
+      { name: 'Webpack', icon: WebpackIcon },
+      { name: 'Gulp', icon: GulpIcon },
+      { name: 'npm', icon: NpmIcon },
+      { name: 'Git', icon: GitIcon },
+    ],
+  },
+  {
+    title: 'Motion & Integrations',
+    text: 'Animation, real-time features, and internationalization when projects call for it.',
+    skills: [
+      { name: 'GSAP', icon: GsapIcon },
+      { name: 'Socket.io', icon: SocketIcon },
+      { name: 'i18n', icon: I18nIcon },
+    ],
+  },
+]
+
 const scrollTriggerRef = ref(null)
 const sectionAbout = ref(null)
 
 const aboutTitle = ref(null)
-const aboutText1 = ref(null)
-const aboutText2 = ref(null)
-const aboutText3 = ref(null)
-const aboutArt = ref(null)
+const aboutIntro = ref(null)
+const statRefs = ref(null)
+const clusterRefs = ref(null)
 
-const aboutAnimation = () => {
-  const tlSection = gsap.timeline().to(sectionAbout.value, {
-    duration: 0.1,
-    opacity: 1,
-    ease: 'Cubic.easeOut',
-  })
-  const tlTitle = slideUp({ el: aboutTitle.value })
-  const tlText1 = fadeIn({ el: aboutText1.value })
-  const tlText2 = fadeIn({ el: aboutText2.value })
-  const tlText3 = fadeIn({ el: aboutText3.value })
-  const tlArt = fadeIn({ el: aboutArt.value, duration: 1 })
+const timeline = ref(null)
 
-  const timeline = gsap.timeline({ paused: true })
-    .add(tlSection, 0)
-    .add(tlTitle, 0)
-    .add(tlText1, 0.25)
-    .add(tlText2, 0.45)
-    .add(tlText3, 0.58)
-    .add(tlArt, 0.7)
+const killScrollTrigger = () => {
+  if (!scrollTriggerRef.value) return
+  scrollTriggerRef.value.kill()
+  scrollTriggerRef.value = null
+}
 
-  if (scrollTriggerRef.value) {
-    scrollTriggerRef.value.kill()
-  }
-
+const updateScrollTrigger = () => {
+  killScrollTrigger()
   scrollTriggerRef.value = ScrollTrigger.create({
     trigger: sectionAbout.value,
-    start: 'top 70%',
-    animation: timeline,
+    start: `top 70%`,
+    animation: timeline.value,
   })
 }
 
-const hasUserScrolled = ref(false)
+const debouncedUpdateScrollTrigger = debounce(updateScrollTrigger, 100)
 
 onMounted(() => {
-  window.addEventListener('scroll', () => {
-    if (!hasUserScrolled.value) {
-      hasUserScrolled.value = true
-      aboutAnimation()
-    }
-  })
+  const tlTitle = slideUp({ el: aboutTitle.value })
+  const tlIntro = fadeIn({ el: aboutIntro.value })
+  const tlStats = statRefs.value.map((el, index) => staggerIn({ el, index }))
+  const tlClusters = clusterRefs.value.map((el, index) => staggerIn({ el, index }))
+
+  timeline.value = gsap.timeline({ paused: true })
+    .add(tlTitle, 0)
+    .add(tlIntro, 0.25)
+    .add(tlStats, 0.55)
+    .add(tlClusters, 0.7)
+
+  updateScrollTrigger()
+  window.addEventListener("resize", debouncedUpdateScrollTrigger)
 })
 
 onUnmounted(() => {
-  if (hasUserScrolled.value) scrollTriggerRef.value.kill()
+  window.removeEventListener("resize", debouncedUpdateScrollTrigger)
+  killScrollTrigger()
 })
 </script>
 
 <template>
-  <section class="about" ref="sectionAbout" :style="gsap ? 'opacity: 0;' : ''">
+  <section class="about section-padding" ref="sectionAbout">
     <div class="about__href" id="about"></div>
 
     <div class="container">
-      <div class="about__block">
-        <div class="about__title title">
-          <h2 ref="aboutTitle">About</h2>
-        </div>
+      <div class="about__title title">
+        <h2 ref="aboutTitle">About</h2>
+      </div>
+
+      <div class="about__intro" ref="aboutIntro">
+        <p class="about__text text">
+          I'm a <b>Vue.js</b> &amp; <b>Nuxt.js</b> specialist with over 5 years of commercial freelance
+          experience and 70+ projects delivered for clients across the US, Europe, and beyond.
+        </p>
 
         <p class="about__text text">
-          <span ref="aboutText1">
-            With over 4 years of commercial experience as a front-end freelancer, I have successfully completed more than 70 projects for clients worldwide.
-          </span>
-
-          <br><br>
-
-          <span ref="aboutText2">
-            My primary focus is Vue and Nuxt development, as well as HTML, CSS and JavaScript projects. I enjoy working closely with clients to turn their ideas into clean, performant web experiences.
-          </span>
-
-          <br><br>
-
-          <span ref="aboutText3">
-            Here is the tech stack I work with:
-          </span>
+          My focus is building front-ends the right way the first time — pixel-precise, performant,
+          and easy to hand off. From complex Nuxt apps to real-time dashboards and MVPs, I bring the
+          same care to clean architecture and maintainable code.
         </p>
       </div>
-    </div>
 
-    <div class="about__inner">
-      <div class="about__composition" ref="aboutArt">
-        <AboutArt class="about__art" />
+      <div class="about__stats">
+        <div class="about__stat" v-for="(stat, index) in stats" :key="index" ref="statRefs">
+          <span class="about__stat-num">{{ stat.num }}</span>
+          <span class="about__stat-label">{{ stat.label }}</span>
+        </div>
+      </div>
 
-        <TailwindIcon class="about__icon icon-tailwind" />
-        <ViteIcon class="about__icon icon-vite" />
-        <GulpIcon class="about__icon icon-gulp" />
-        <HtmlIcon class="about__icon icon-html" />
-        <WebpackIcon class="about__icon icon-webpack" />
-        <NuxtIcon class="about__icon icon-nuxt" />
-        <I18nIcon class="about__icon icon-i18n" />
-        <CssIcon class="about__icon icon-css" />
-        <VueIcon class="about__icon icon-vue" />
-        <BootstrapIcon class="about__icon icon-bootstrap" />
-        <TSIcon class="about__icon icon-typescript" />
-        <JSIcon class="about__icon icon-javascript" />
-        <SassIcon class="about__icon icon-sass" />
-        <NpmIcon class="about__icon icon-npm" />
-        <GsapIcon class="about__icon icon-gsap" />
-        <PiniaIcon class="about__icon icon-pinia" />
-        <SocketIcon class="about__icon icon-socket" />
-        <GitIcon class="about__icon icon-git" />
-        <BemIcon class="about__icon icon-bem" />
+      <div class="about__clusters">
+        <div class="about__cluster" v-for="(cluster, index) in clusters" :key="index" ref="clusterRefs">
+          <h3 class="about__cluster-title">{{ cluster.title }}</h3>
+          <p class="about__cluster-text">{{ cluster.text }}</p>
+
+          <div class="about__skills">
+            <div class="about__skill" v-for="skill in cluster.skills" :key="skill.name" :title="skill.name">
+              <component :is="skill.icon" class="about__skill-icon" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -154,27 +187,7 @@ onUnmounted(() => {
     }
   }
 
-  .container {
-    padding-bottom: 90px;
-
-    @media (max-width: $breakpoint1680) {
-      padding-bottom: 75px;
-    }
-
-    @media (max-width: $breakpoint1200) {
-      padding-bottom: 55px;
-    }
-
-    @media (max-width: $breakpoint992) {
-      padding-top: 30px;
-    }
-
-    @media (max-width: $breakpoint768) {
-      padding-bottom: 42px;
-    }
-  }
-
-  &__block {
+  &__intro {
     width: 100%;
     max-width: 1050px;
     margin: 0 auto;
@@ -188,461 +201,204 @@ onUnmounted(() => {
     }
   }
 
-  &__inner {
-    padding: 0 40px 120px;
+  &__text {
+    &:not(:last-child) {
+      margin-bottom: 24px;
 
-    @media (max-width: $breakpoint1680) {
-      padding: 0 40px 110px;
+      @media (max-width: $breakpoint768) {
+        margin-bottom: 18px;
+      }
     }
+
+    b {
+      font-weight: 700;
+      color: $color-aqua;
+    }
+  }
+
+  // Stats row
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 70px;
 
     @media (max-width: $breakpoint1450) {
-      padding: 0 40px 100px;
+      gap: 24px;
     }
-
-    @media (max-width: $breakpoint992) {
-      padding: 0 0 90px;
-    }
-
-    @media (max-width: $breakpoint768) {
-      padding: 0 0 70px;
-    }
-  }
-
-  &__composition {
-    position: relative;
-    width: 100%;
-    max-width: 1264px;
-    margin: 0 auto;
-
-    @media (max-width: $breakpoint1680) {
-      max-width: 1100px;
-    }
-
-    @media (max-width: $breakpoint992) {
-      display: flex;
-      justify-content: center;
-    }
-  }
-
-  &__art {
-    width: 100%;
-    height: auto;
-    opacity: 0.85;
-
-    @media (max-width: $breakpoint992) {
-      width: 1000px;
-    }
-
-    @media (max-width: $breakpoint768) {
-      width: 800px;
-    }
-
-    @media (max-width: $breakpoint576) {
-      width: 650px;
-    }
-  }
-
-  &__icon {
-    position: absolute;
 
     @media (max-width: $breakpoint1200) {
-      transform: scale(0.85);
+      margin-top: 55px;
     }
 
     @media (max-width: $breakpoint768) {
-      transform: scale(0.65);
+      gap: 16px;
+      margin-top: 45px;
     }
 
     @media (max-width: $breakpoint576) {
-      transform: scale(0.55);
+      grid-template-columns: 1fr;
     }
   }
 
-  .icon-tailwind {
-    top: 11.5%;
-    right: 28%;
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 28px 20px;
+    border: 2px solid $color-aqua;
+    background: $color-primary-hover;
+    box-shadow: $shadow-sm;
 
-    @media (max-width: $breakpoint992) {
-      right: 23%;
+    @media (max-width: $breakpoint768) {
+      padding: 20px 16px;
+    }
+
+    &-num {
+      font-size: 46px;
+      font-weight: 700;
+      line-height: 1;
+      color: $color-aqua;
+
+      @media (max-width: $breakpoint1450) {
+        font-size: 40px;
+      }
+
+      @media (max-width: $breakpoint1200) {
+        font-size: 34px;
+      }
+
+      @media (max-width: $breakpoint768) {
+        font-size: 30px;
+      }
+    }
+
+    &-label {
+      font-size: 20px;
+      font-weight: 500;
+
+      @media (max-width: $breakpoint1200) {
+        font-size: 18px;
+      }
+
+      @media (max-width: $breakpoint768) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  // Skill clusters
+  &__clusters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+
+    @media (max-width: $breakpoint1450) {
+      gap: 24px;
     }
 
     @media (max-width: $breakpoint768) {
-      top: 10%;
-      right: 20%;
-    }
-
-    @media (max-width: $breakpoint576) {
-      transform: scale(0.6);
-      top: 6.5%;
-      right: auto;
-      left: 42%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      left: 40%;
+      grid-template-columns: 1fr;
+      gap: 16px;
     }
   }
 
-  .icon-vite {
-    top: 11%;
-    left: 30%;
+  &__cluster {
+    display: flex;
+    flex-direction: column;
+    padding: 36px;
+    text-align: left;
+    border: 2px solid $color-aqua;
+    background: $color-primary-hover;
+    box-shadow: $shadow-md;
 
-    @media (max-width: $breakpoint992) {
-      top: 12%;
-      left: 23%;
+    @media (max-width: $breakpoint1450) {
+      padding: 30px;
     }
 
     @media (max-width: $breakpoint768) {
-      top: 11%;
-      left: 19%;
+      padding: 24px;
+      box-shadow: $shadow-sm;
     }
 
     @media (max-width: $breakpoint576) {
-      top: 6%;
-      left: 17%;
+      padding: 20px;
     }
 
-    @media (max-width: $breakpoint420) {
-      left: 12%;
+    &-title {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.1;
+
+      @media (max-width: $breakpoint1200) {
+        font-size: 28px;
+      }
+
+      @media (max-width: $breakpoint768) {
+        font-size: 26px;
+      }
+    }
+
+    &-text {
+      margin-top: 12px;
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.35;
+      color: rgba($color-white, 0.75);
+
+      @media (max-width: $breakpoint1200) {
+        font-size: 17px;
+      }
+
+      @media (max-width: $breakpoint768) {
+        font-size: 16px;
+      }
     }
   }
 
-  .icon-gulp {
-    top: 18.5%;
-    right: 16.5%;
-
-    @media (max-width: $breakpoint992) {
-      right: 11%;
-    }
+  &__skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
 
     @media (max-width: $breakpoint768) {
-      top: 17%;
-      right: auto;
-      left: 84%;
-    }
-
-    @media (max-width: $breakpoint576) {
-      top: 13%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      left: 85.5%;
+      gap: 10px;
+      margin-top: 22px;
     }
   }
 
-  .icon-html {
-    top: 23%;
-    left: 33.5%;
-
-    @media (max-width: $breakpoint992) {
-      left: 32%;
-    }
+  &__skill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 58px;
+    padding: 0 18px;
+    border: 1px solid rgba($color-aqua, 0.4);
+    background: rgba($color-white, 0.04);
+    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
 
     @media (max-width: $breakpoint768) {
-      top: 21%;
-      left: 31%;
+      height: 50px;
+      padding: 0 14px;
     }
 
-    @media (max-width: $breakpoint576) {
-      top: 15.5%;
-      left: 25%;
+    &:hover {
+      border-color: $color-aqua;
+      background: rgba($color-aqua, 0.12);
+      transform: translateY(-2px);
     }
 
-    @media (max-width: $breakpoint420) {
-      transform: scale(0.5);
-      top: 15%;
-      left: 8%;
-    }
-  }
+    &-icon {
+      width: auto;
+      max-width: 130px;
+      height: 30px;
 
-  .icon-webpack {
-    top: 31%;
-    left: 11%;
-
-    @media (max-width: $breakpoint992) {
-      left: 4%;
-    }
-
-    @media (max-width: $breakpoint768) {
-      left: 2%;
-    }
-
-    @media (max-width: $breakpoint576) {
-      transform: scale(0.6);
-      left: -3%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      left: -5%;
-    }
-  }
-
-  .icon-nuxt {
-    top: 25.5%;
-    left: 49%;
-
-    @media (max-width: $breakpoint1200) {
-      top: 24.5%;
-      left: 47%;
-    }
-
-    @media (max-width: $breakpoint768) {
-      left: 42%;
-    }
-
-    @media (max-width: $breakpoint576) {
-      top: 22%;
-      left: 32%;
-      transform: scale(0.5);
-    }
-
-    @media (max-width: $breakpoint420) {
-      top: 18%;
-      left: 18%;
-    }
-  }
-
-  .icon-i18n {
-    top: 34%;
-    right: 6%;
-
-    @media (max-width: $breakpoint992) {
-      right: 2%;
-    }
-
-    @media (max-width: $breakpoint768) {
-      right: 0;
-    }
-
-    @media (max-width: $breakpoint576) {
-      right: -4%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      transform: scale(0.5);
-      top: 29%;
-      right: -8%;
-    }
-  }
-
-  .icon-css {
-    top: 38%;
-    right: 28%;
-
-    @media (max-width: $breakpoint768) {
-      right: 27%;
-    }
-
-    @media (max-width: $breakpoint576) {
-      top: 43%;
-      right: auto;
-      left: 62%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      transform: scale(0.5);
-      top: 28.5%;
-      left: 45%;
-    }
-  }
-
-  .icon-vue {
-    top: 41.5%;
-    left: 36%;
-
-    @media (max-width: $breakpoint1200) {
-      top: 39%;
-      left: 35%;
-    }
-
-    @media (max-width: $breakpoint992) {
-      left: 30%;
-    }
-
-    @media (max-width: $breakpoint768) {
-      left: 27%;
-    }
-
-    @media (max-width: $breakpoint576) {
-      top: 37%;
-      left: 22%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      left: auto;
-      top: 41%;
-      right: -3%;
-    }
-  }
-
-  .icon-bootstrap {
-    top: 48%;
-    left: 9.5%;
-
-    @media (max-width: $breakpoint992) {
-      top: 46.5%;
-      left: 5%;
-    }
-
-    @media (max-width: $breakpoint576) {
-      top: 42%;
-      left: 2%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      top: 40.5%;
-      left: 0;
-    }
-  }
-
-  .icon-typescript {
-    bottom: 40%;
-    left: 29%;
-
-    @media (max-width: $breakpoint420) {
-      bottom: 41%;
-    }
-  }
-
-  .icon-javascript {
-    bottom: 38%;
-    right: 31%;
-
-    @media (max-width: $breakpoint1200) {
-      right: 28%;
-    }
-
-    @media (max-width: $breakpoint576) {
-      right: auto;
-      left: 67%;
-      bottom: 29%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      bottom: 25%;
-      left: 65%;
-    }
-  }
-
-  .icon-sass {
-    bottom: 30.5%;
-    left: 13.5%;
-
-    @media (max-width: $breakpoint992) {
-      left: 12%;
-    }
-
-    @media (max-width: $breakpoint576) {
-      bottom: 25%;
-      left: 3%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      bottom: 20%;
-      left: 0;
-    }
-  }
-
-  .icon-npm {
-    right: 8%;
-    bottom: 43%;
-
-    @media (max-width: $breakpoint992) {
-      right: 5%;
-    }
-
-    @media (max-width: $breakpoint576) {
-      right: -1%;
-      bottom: 44%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      bottom: 40%;
-    }
-  }
-
-  .icon-gsap {
-    bottom: 28.5%;
-    left: 39%;
-
-    @media (max-width: $breakpoint576) {
-      transform: scale(0.6);
-      bottom: 28%;
-      left: 23%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      bottom: 29%;
-      left: 13%;
-    }
-  }
-
-  .icon-pinia {
-    bottom: 16.5%;
-    left: 24%;
-
-    @media (max-width: $breakpoint992) {
-      bottom: 15%;
-      left: 23%;
-    }
-
-    @media (max-width: $breakpoint768) {
-      left: 20%;
-    }
-
-    @media (max-width: $breakpoint576) {
-      bottom: 10%;
-      left: 12%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      bottom: 7%;
-      left: 5%;
-    }
-  }
-
-  .icon-socket {
-    bottom: 9%;
-    left: 43%;
-
-    @media (max-width: $breakpoint992) {
-      bottom: 6%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      bottom: 5%;
-    }
-  }
-
-  .icon-git {
-    bottom: 20%;
-    right: 28%;
-
-    @media (max-width: $breakpoint992) {
-      bottom: 17%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      right: 30%;
-    }
-  }
-
-  .icon-bem {
-    right: 12%;
-    bottom: 24%;
-
-    @media (max-width: $breakpoint992) {
-      right: 10%;
-    }
-
-    @media (max-width: $breakpoint576) {
-      right: 6%;
-      bottom: 14%;
-    }
-
-    @media (max-width: $breakpoint420) {
-      right: 3%;
-      bottom: 13%;
+      @media (max-width: $breakpoint768) {
+        height: 22px;
+      }
     }
   }
 }
