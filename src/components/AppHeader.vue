@@ -16,17 +16,18 @@ const handleButtonClick = (str) => {
 
 <template>
   <header class="header">
-    <nav>
-      <RouterLink class="header__back" @click="handleButtonClick('back')" to="/" v-if="route.path !== '/'">
-        <Arrow />
+    <nav aria-label="Primary">
+      <RouterLink class="header__back" @click="handleButtonClick('back')" to="/" v-if="route.path !== '/'"
+        aria-label="Back to home page">
+        <Arrow aria-hidden="true" />
       </RouterLink>
 
       <div class="header__links text" v-else>
         <RouterLink @click="handleButtonClick('works')" to="/works">Works</RouterLink>
-        <span>/</span>
-        <button @click="handleButtonClick('about')">About</button>
-        <span>/</span>
-        <button @click="handleButtonClick('contacts')">Contact</button>
+        <span aria-hidden="true">/</span>
+        <a href="#about" @click.prevent="handleButtonClick('about')">About</a>
+        <span aria-hidden="true">/</span>
+        <a href="#contacts" @click.prevent="handleButtonClick('contacts')">Contact</a>
       </div>
     </nav>
   </header>

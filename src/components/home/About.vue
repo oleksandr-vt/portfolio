@@ -36,7 +36,7 @@ const stats = [
 
 const clusters = [
   {
-    title: 'Core Frontend',
+    title: 'Core Front-end',
     text: 'Vue & Nuxt applications — SPA, SSR, static — with typed, state-managed, localized code.',
     skills: [
       { key: 'vue', name: 'Vue.js', icon: VueIcon },
@@ -49,7 +49,7 @@ const clusters = [
   },
   {
     title: 'Markup & Styling',
-    text: 'Pixel-perfect, responsive, cross-browser builds with a methodical structure.',
+    text: 'Pixel-perfect, responsive, cross-browser layouts with a methodical structure.',
     skills: [
       { key: 'html', name: 'HTML5', icon: HtmlIcon },
       { key: 'css', name: 'CSS3', icon: CssIcon },
@@ -61,7 +61,7 @@ const clusters = [
   },
   {
     title: 'AI-Powered Workflow',
-    text: 'The editors and AI copilots I build with every day — to move fast and stay precise.',
+    text: 'Editors and AI copilots I use every day to move faster without cutting corners.',
     skills: [
       { key: 'claude', name: 'Claude', icon: ClaudeIcon },
       { key: 'codex', name: 'Codex', icon: CodexIcon },
@@ -72,7 +72,7 @@ const clusters = [
   },
   {
     title: 'Build & Tooling',
-    text: 'Design-to-code, fast bundling, and reliable version control.',
+    text: 'Figma-to-production: precise handoff, fast builds, and reliable version control.',
     skills: [
       { key: 'figma', name: 'Figma', icon: FigmaIcon },
       { key: 'vite', name: 'Vite', icon: ViteIcon },
@@ -143,14 +143,11 @@ onUnmounted(() => {
 
       <div class="about__intro" ref="aboutIntro">
         <p class="about__text text">
-          I'm a <b>Vue.js</b> &amp; <b>Nuxt.js</b> specialist with over 5 years of commercial freelance
-          experience and 70+ projects delivered for clients across the US, Europe, and beyond.
+          I'm Oleksandr Vintoniak, a <b>Vue.js</b> &amp; <b>Nuxt.js</b> specialist with 5+ years of freelance experience and 70+ projects delivered for clients across the US, Europe, and beyond.
         </p>
 
         <p class="about__text text">
-          My focus is building front-ends the right way the first time — pixel-precise, performant,
-          and easy to hand off. From complex Nuxt apps to real-time dashboards and MVPs, I bring the
-          same care to clean architecture and maintainable code.
+          My focus is building front-ends the right way the first time — pixel-precise, performant, and easy to hand off. Whether it's a complex Nuxt app, a real-time dashboard, or an MVP on a deadline, the code ships clean and stays that way.
         </p>
       </div>
 
@@ -169,7 +166,7 @@ onUnmounted(() => {
           <div class="about__skills">
             <div class="about__skill" v-for="skill in cluster.skills" :key="skill.key">
               <div class="about__skill-icon" :class="`about__skill-icon--${skill.key}`">
-                <component :is="skill.icon" />
+                <component :is="skill.icon" aria-hidden="true" />
               </div>
               <span class="about__skill-label">{{ skill.name }}</span>
             </div>

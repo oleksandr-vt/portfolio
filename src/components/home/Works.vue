@@ -7,9 +7,9 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { FreeMode, Pagination } from 'swiper/modules'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
-import { favouriteWorks } from '../../assets/js/data'
+import { works } from '../../assets/js/data'
 
-const slides = ref(favouriteWorks)
+const slides = ref(works.filter((work) => work.featured))
 
 const scrollTriggerRef = ref(null)
 const sectionWorks = ref(null)
@@ -45,7 +45,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  scrollTriggerRef.value.kill()
+  scrollTriggerRef.value?.kill()
+  scrollTriggerRef.value = null
 })
 </script>
 
@@ -57,29 +58,30 @@ onUnmounted(() => {
       </div>
 
       <div ref="worksSwiper">
-        <swiper id="worksSwiper" :slidesPerView="'auto'" :enabled="true" :pagination="{ clickable: true }"
-          :breakpoints="{ 992: { enabled: false } }" :modules="[FreeMode, Pagination]">
-          <swiper-slide v-for="(slide, index) in slides" :key="index">
-            <img class="swiper-slide-img" :src="slide.imagePath" :alt="slide.imageAlt">
-            <h4 class="swiper-slide-text text">
-              <span>{{ slide.title }}:</span>
-              {{ slide.text }}
-            </h4>
+        <swiper id="worksSwiper" :slidesPerView="'auto'" :enabled="true" :pagination="{ clickable: true }" :breakpoints="{ 992: { enabled: false } }" :modules="[FreeMode, Pagination]">
+          <swiper-slide v-for="(slide, index) in slides" :key="slide.title">
+            <img class="swiper-slide-img" :src="slide.imagePath" :alt="slide.imageAlt" loading="lazy" decoding="async">
 
-            <AppButton class="swiper-slide-btn" @click="handleButtonClick(`item${index + 1}`)" :text="'Open website'"
-              :href="slide.href" target="_blank">
+            <h3 class="swiper-slide-title">{{ slide.title }}</h3>
+            <p class="swiper-slide-text text">{{ slide.text }}</p>
+
+            <ul class="work-chips swiper-slide-chips">
+              <li class="work-chip" v-for="tech in slide.stack" :key="tech">{{ tech }}</li>
+            </ul>
+
+            <AppButton class="swiper-slide-btn" @click="handleButtonClick(`item${index + 1}`)" :text="'Visit site'" :href="slide.href" target="_blank" rel="noopener" :aria-label="`Visit the ${slide.title} website`">
               <template v-slot:icon>
-                <Arrow style="transform: rotate(-135deg); margin-bottom: 2px;" />
+                <Arrow style="transform: rotate(-135deg); margin-bottom: 2px;" aria-hidden="true" />
               </template>
             </AppButton>
           </swiper-slide>
 
           <swiper-slide>
-            <img :src="'img/last-slide-art.webp'" alt="img">
+            <img :src="'img/last-slide-art.webp'" alt="" aria-hidden="true">
 
-            <AppButton :text="'Check out more'" @click="handleButtonClick('last')" :href="'/works'" tag="RouterLink">
+            <AppButton :text="'See all works'" @click="handleButtonClick('last')" :href="'/works'" tag="RouterLink">
               <template v-slot:icon>
-                <Arrow style="transform: rotate(-90deg); margin-bottom: 2px;" />
+                <Arrow style="transform: rotate(-90deg); margin-bottom: 2px;" aria-hidden="true" />
               </template>
             </AppButton>
           </swiper-slide>
@@ -191,46 +193,58 @@ onUnmounted(() => {
       aspect-ratio: 16/9;
     }
 
-    &-text {
-      font-weight: 500;
-      padding: 18px 0 28px;
+    &-title {
+      padding-top: 18px;
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 700;
 
       @media (max-width: $breakpoint1680) {
-        padding: 16px 0 24px;
+        padding-top: 16px;
+        font-size: 34px;
+      }
+
+      @media (max-width: $breakpoint1200) {
+        font-size: 32px;
       }
 
       @media (max-width: $breakpoint992) {
-        padding: 14px 0 24px;
+        padding-top: 14px;
+        font-size: 30px;
+      }
+
+      @media (max-width: $breakpoint768) {
+        font-size: 28px;
       }
 
       @media (max-width: $breakpoint576) {
-        padding: 12px 0 20px;
+        padding-top: 12px;
+        font-size: 25px;
+      }
+    }
+
+    &-text {
+      font-weight: 500;
+      padding: 10px 0 18px;
+
+      @media (max-width: $breakpoint992) {
+        padding: 8px 0 16px;
       }
 
-      span {
-        font-size: 40px;
-        line-height: 1;
-        font-weight: 700;
+      @media (max-width: $breakpoint576) {
+        padding: 8px 0 14px;
+      }
+    }
 
-        @media (max-width: $breakpoint1680) {
-          font-size: 34px;
-        }
+    &-chips {
+      padding-bottom: 28px;
 
-        @media (max-width: $breakpoint1200) {
-          font-size: 32px;
-        }
+      @media (max-width: $breakpoint992) {
+        padding-bottom: 24px;
+      }
 
-        @media (max-width: $breakpoint992) {
-          font-size: 30px;
-        }
-
-        @media (max-width: $breakpoint768) {
-          font-size: 28px;
-        }
-
-        @media (max-width: $breakpoint576) {
-          font-size: 25px;
-        }
+      @media (max-width: $breakpoint576) {
+        padding-bottom: 20px;
       }
     }
 

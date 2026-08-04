@@ -4,9 +4,9 @@ import gsap from 'gsap'
 import { slideUp, staggerIn } from '../../assets/js/animations'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
-import { allWorks } from '../../assets/js/data'
+import { works } from '../../assets/js/data'
 
-const slides = ref(allWorks)
+const slides = ref(works)
 
 const worksTitle = ref(null)
 const sliderRefs = ref(null)
@@ -42,21 +42,27 @@ onMounted(() => {
   <section class="works section-padding">
     <div class="container">
       <div class="works__title title">
-        <h2 ref="worksTitle">Works</h2>
+        <h1 ref="worksTitle">Works</h1>
       </div>
 
+      <p class="works__intro text">Vue and Nuxt applications, crypto exchanges, job boards, CRM dashboards and marketing sites — front-ends I built end to end.</p>
+
       <div class="works__list">
-        <div class="works__block" v-for="(slide, index) in slides" :key="index" ref="sliderRefs">
-          <img class="works__block-img" :src="slide.imagePath" :alt="slide.imageAlt" loading="lazy">
+        <div class="works__block" v-for="(slide, index) in slides" :key="slide.title" ref="sliderRefs">
+          <img class="works__block-img" :src="slide.imagePath" :alt="slide.imageAlt" decoding="async"
+            :loading="index === 0 ? 'eager' : 'lazy'" :fetchpriority="index === 0 ? 'high' : null">
 
           <div class="works__block-inner">
-            <h4 class="works__block-title">{{ slide.title }}</h4>
+            <h2 class="works__block-title">{{ slide.title }}</h2>
             <p class="works__block-text text">{{ slide.text }}</p>
 
-            <AppButton class="works__block-btn" @click="handleButtonClick(slide.title)" :text="'Open website'"
-              :href="slide.href" target="_blank">
+            <ul class="work-chips works__block-chips">
+              <li class="work-chip" v-for="tech in slide.stack" :key="tech">{{ tech }}</li>
+            </ul>
+
+            <AppButton class="works__block-btn" @click="handleButtonClick(slide.title)" :text="'Visit site'" :href="slide.href" target="_blank" rel="noopener" :aria-label="`Visit the ${slide.title} website`">
               <template v-slot:icon>
-                <Arrow style="transform: rotate(-135deg); margin-bottom: 2px;" />
+                <Arrow style="transform: rotate(-135deg); margin-bottom: 2px;" aria-hidden="true" />
               </template>
             </AppButton>
           </div>
@@ -77,6 +83,33 @@ onMounted(() => {
 
     @media (max-width: $breakpoint1450) {
       padding-top: 20px;
+    }
+  }
+
+  .works__title {
+    margin-bottom: 24px;
+
+    @media (max-width: $breakpoint768) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__intro {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    font-weight: 500;
+
+    @media (max-width: $breakpoint1680) {
+      margin-bottom: 45px;
+    }
+
+    @media (max-width: $breakpoint1200) {
+      margin-bottom: 36px;
+    }
+
+    @media (max-width: $breakpoint768) {
+      margin-bottom: 28px;
     }
   }
 
@@ -217,22 +250,26 @@ onMounted(() => {
 
     &-text {
       font-weight: 500;
-      padding: 18px 0;
+      padding: 14px 0 18px;
 
       @media (max-width: $breakpoint1450) {
-        padding: 16px 0;
+        padding: 12px 0 16px;
       }
 
       @media (max-width: $breakpoint992) {
-        padding: 20px 0 32px;
-      }
-
-      @media (max-width: $breakpoint768) {
-        padding: 20px 0 32px;
+        padding: 16px 0 20px;
       }
 
       @media (max-width: $breakpoint420) {
-        padding: 16px 0 32px;
+        padding: 14px 0 18px;
+      }
+    }
+
+    &-chips {
+      margin-bottom: 24px;
+
+      @media (max-width: $breakpoint768) {
+        margin-bottom: 20px;
       }
     }
 
