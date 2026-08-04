@@ -7,10 +7,10 @@ import { slideUp, fadeIn, staggerIn } from '../../assets/js/animations'
 import { animationPlaceholderPX } from '../../assets/js/helpers'
 import TailwindIcon from '../icons/skills/TailwindIcon.vue'
 import ViteIcon from '../icons/skills/ViteIcon.vue'
-import GulpIcon from '../icons/skills/GulpIcon.vue'
 import HtmlIcon from '../icons/skills/HtmlIcon.vue'
 import WebpackIcon from '../icons/skills/WebpackIcon.vue'
 import NuxtIcon from '../icons/skills/NuxtIcon.vue'
+import I18nIcon from '../icons/skills/I18nIcon.vue'
 import CssIcon from '../icons/skills/CssIcon.vue'
 import VueIcon from '../icons/skills/VueIcon.vue'
 import BootstrapIcon from '../icons/skills/BootstrapIcon.vue'
@@ -24,6 +24,8 @@ import BemIcon from '../icons/skills/BemIcon.vue'
 import FigmaIcon from '../icons/skills/FigmaIcon.vue'
 import ClaudeIcon from '../icons/skills/ClaudeIcon.vue'
 import CodexIcon from '../icons/skills/CodexIcon.vue'
+import CursorIcon from '../icons/skills/CursorIcon.vue'
+import VscodeIcon from '../icons/skills/VscodeIcon.vue'
 
 const stats = [
   { num: '70+', label: 'Projects delivered' },
@@ -34,13 +36,14 @@ const stats = [
 const clusters = [
   {
     title: 'Core Frontend',
-    text: 'Vue & Nuxt applications — SPA, SSR, static — with typed, state-managed code.',
+    text: 'Vue & Nuxt applications — SPA, SSR, static — with typed, state-managed, localized code.',
     skills: [
       { name: 'Vue.js', icon: VueIcon },
       { name: 'Nuxt.js', icon: NuxtIcon },
       { name: 'JavaScript', icon: JSIcon },
       { name: 'TypeScript', icon: TSIcon },
       { name: 'Pinia', icon: PiniaIcon },
+      { name: 'i18n', icon: I18nIcon },
     ],
   },
   {
@@ -56,21 +59,22 @@ const clusters = [
     ],
   },
   {
-    title: 'AI-Assisted Development',
-    text: 'Modern AI tooling woven into my workflow to ship faster without cutting corners.',
+    title: 'AI-Powered Workflow',
+    text: 'The editors and AI copilots I build with every day — to move fast and stay precise.',
     skills: [
       { name: 'Claude', icon: ClaudeIcon },
       { name: 'Codex', icon: CodexIcon },
+      { name: 'Cursor', icon: CursorIcon },
+      { name: 'VS Code', icon: VscodeIcon },
     ],
   },
   {
     title: 'Build & Tooling',
-    text: 'Design-to-code, fast bundling, task automation, and reliable version control.',
+    text: 'Design-to-code, fast bundling, and reliable version control.',
     skills: [
       { name: 'Figma', icon: FigmaIcon },
       { name: 'Vite', icon: ViteIcon },
       { name: 'Webpack', icon: WebpackIcon },
-      { name: 'Gulp', icon: GulpIcon },
       { name: 'npm', icon: NpmIcon },
       { name: 'Git', icon: GitIcon },
     ],
@@ -252,10 +256,11 @@ onUnmounted(() => {
     padding: 28px 20px;
     border: 2px solid $color-aqua;
     background: $color-primary-hover;
-    box-shadow: $shadow-sm;
+    box-shadow: $shadow-md;
 
     @media (max-width: $breakpoint768) {
       padding: 20px 16px;
+      box-shadow: $shadow-sm;
     }
 
     &-num {
