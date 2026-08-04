@@ -26,6 +26,7 @@ import ClaudeIcon from '../icons/skills/ClaudeIcon.vue'
 import CodexIcon from '../icons/skills/CodexIcon.vue'
 import CursorIcon from '../icons/skills/CursorIcon.vue'
 import VscodeIcon from '../icons/skills/VscodeIcon.vue'
+import CopilotIcon from '../icons/skills/CopilotIcon.vue'
 
 const stats = [
   { num: '70+', label: 'Projects delivered' },
@@ -38,45 +39,46 @@ const clusters = [
     title: 'Core Frontend',
     text: 'Vue & Nuxt applications — SPA, SSR, static — with typed, state-managed, localized code.',
     skills: [
-      { name: 'Vue.js', icon: VueIcon },
-      { name: 'Nuxt.js', icon: NuxtIcon },
-      { name: 'JavaScript', icon: JSIcon },
-      { name: 'TypeScript', icon: TSIcon },
-      { name: 'Pinia', icon: PiniaIcon },
-      { name: 'i18n', icon: I18nIcon },
+      { key: 'vue', name: 'Vue.js', icon: VueIcon },
+      { key: 'nuxt', name: 'Nuxt.js', icon: NuxtIcon },
+      { key: 'javascript', name: 'JavaScript', icon: JSIcon },
+      { key: 'typescript', name: 'TypeScript', icon: TSIcon },
+      { key: 'pinia', name: 'Pinia', icon: PiniaIcon },
+      { key: 'i18n', name: 'i18n', icon: I18nIcon },
     ],
   },
   {
     title: 'Markup & Styling',
     text: 'Pixel-perfect, responsive, cross-browser builds with a methodical structure.',
     skills: [
-      { name: 'HTML5', icon: HtmlIcon },
-      { name: 'CSS3', icon: CssIcon },
-      { name: 'Sass', icon: SassIcon },
-      { name: 'Tailwind', icon: TailwindIcon },
-      { name: 'Bootstrap', icon: BootstrapIcon },
-      { name: 'BEM', icon: BemIcon },
+      { key: 'html', name: 'HTML5', icon: HtmlIcon },
+      { key: 'css', name: 'CSS3', icon: CssIcon },
+      { key: 'sass', name: 'Sass', icon: SassIcon },
+      { key: 'tailwind', name: 'Tailwind', icon: TailwindIcon },
+      { key: 'bootstrap', name: 'Bootstrap', icon: BootstrapIcon },
+      { key: 'bem', name: 'BEM', icon: BemIcon },
     ],
   },
   {
     title: 'AI-Powered Workflow',
     text: 'The editors and AI copilots I build with every day — to move fast and stay precise.',
     skills: [
-      { name: 'Claude', icon: ClaudeIcon },
-      { name: 'Codex', icon: CodexIcon },
-      { name: 'Cursor', icon: CursorIcon },
-      { name: 'VS Code', icon: VscodeIcon },
+      { key: 'claude', name: 'Claude', icon: ClaudeIcon },
+      { key: 'codex', name: 'Codex', icon: CodexIcon },
+      { key: 'vscode', name: 'VS Code', icon: VscodeIcon },
+      { key: 'cursor', name: 'Cursor', icon: CursorIcon },
+      { key: 'copilot', name: 'Copilot', icon: CopilotIcon },
     ],
   },
   {
     title: 'Build & Tooling',
     text: 'Design-to-code, fast bundling, and reliable version control.',
     skills: [
-      { name: 'Figma', icon: FigmaIcon },
-      { name: 'Vite', icon: ViteIcon },
-      { name: 'Webpack', icon: WebpackIcon },
-      { name: 'npm', icon: NpmIcon },
-      { name: 'Git', icon: GitIcon },
+      { key: 'figma', name: 'Figma', icon: FigmaIcon },
+      { key: 'vite', name: 'Vite', icon: ViteIcon },
+      { key: 'webpack', name: 'Webpack', icon: WebpackIcon },
+      { key: 'npm', name: 'npm', icon: NpmIcon },
+      { key: 'git', name: 'Git', icon: GitIcon },
     ],
   },
 ]
@@ -165,8 +167,8 @@ onUnmounted(() => {
           <p class="about__cluster-text">{{ cluster.text }}</p>
 
           <div class="about__skills">
-            <div class="about__skill" v-for="skill in cluster.skills" :key="skill.name">
-              <div class="about__skill-icon">
+            <div class="about__skill" v-for="skill in cluster.skills" :key="skill.key">
+              <div class="about__skill-icon" :class="`about__skill-icon--${skill.key}`">
                 <component :is="skill.icon" />
               </div>
               <span class="about__skill-label">{{ skill.name }}</span>
@@ -310,6 +312,7 @@ onUnmounted(() => {
     @media (max-width: $breakpoint768) {
       grid-template-columns: 1fr;
       gap: 16px;
+      margin-top: 24px;
     }
   }
 
@@ -369,7 +372,7 @@ onUnmounted(() => {
   &__skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 26px 30px;
+    gap: 24px 30px;
     margin-top: auto;
     padding-top: 32px;
 
@@ -387,12 +390,15 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
     width: 74px;
+    height: 68px;
     transition: transform 0.25s ease;
 
     @media (max-width: $breakpoint768) {
       width: 64px;
+      height: 64px;
       gap: 8px;
     }
 
@@ -407,13 +413,30 @@ onUnmounted(() => {
       height: 40px;
 
       @media (max-width: $breakpoint768) {
-        height: 34px;
+        scale: 0.85;
       }
 
       :deep(svg) {
         width: auto;
         max-width: 100%;
         height: 100%;
+      }
+
+      &--sass,
+      &--bem {
+        height: 36px;
+        margin-top: 2px;
+      }
+
+      &--tailwind {
+        height: 30px;
+        margin-top: 5px;
+      }
+
+      &--i18n,
+      &--npm {
+        height: 26px;
+        margin-top: 7px;
       }
     }
 
