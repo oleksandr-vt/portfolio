@@ -11,7 +11,6 @@ import GulpIcon from '../icons/skills/GulpIcon.vue'
 import HtmlIcon from '../icons/skills/HtmlIcon.vue'
 import WebpackIcon from '../icons/skills/WebpackIcon.vue'
 import NuxtIcon from '../icons/skills/NuxtIcon.vue'
-import I18nIcon from '../icons/skills/I18nIcon.vue'
 import CssIcon from '../icons/skills/CssIcon.vue'
 import VueIcon from '../icons/skills/VueIcon.vue'
 import BootstrapIcon from '../icons/skills/BootstrapIcon.vue'
@@ -19,11 +18,12 @@ import TSIcon from '../icons/skills/TSIcon.vue'
 import JSIcon from '../icons/skills/JSIcon.vue'
 import SassIcon from '../icons/skills/SassIcon.vue'
 import NpmIcon from '../icons/skills/NpmIcon.vue'
-import GsapIcon from '../icons/skills/GsapIcon.vue'
 import PiniaIcon from '../icons/skills/PiniaIcon.vue'
-import SocketIcon from '../icons/skills/SocketIcon.vue'
 import GitIcon from '../icons/skills/GitIcon.vue'
 import BemIcon from '../icons/skills/BemIcon.vue'
+import FigmaIcon from '../icons/skills/FigmaIcon.vue'
+import ClaudeIcon from '../icons/skills/ClaudeIcon.vue'
+import CodexIcon from '../icons/skills/CodexIcon.vue'
 
 const stats = [
   { num: '70+', label: 'Projects delivered' },
@@ -50,29 +50,29 @@ const clusters = [
       { name: 'HTML5', icon: HtmlIcon },
       { name: 'CSS3', icon: CssIcon },
       { name: 'Sass', icon: SassIcon },
-      { name: 'Tailwind CSS', icon: TailwindIcon },
+      { name: 'Tailwind', icon: TailwindIcon },
       { name: 'Bootstrap', icon: BootstrapIcon },
       { name: 'BEM', icon: BemIcon },
     ],
   },
   {
-    title: 'Build & Tooling',
-    text: 'Fast, reliable bundling, task automation, and version control.',
+    title: 'AI-Assisted Development',
+    text: 'Modern AI tooling woven into my workflow to ship faster without cutting corners.',
     skills: [
+      { name: 'Claude', icon: ClaudeIcon },
+      { name: 'Codex', icon: CodexIcon },
+    ],
+  },
+  {
+    title: 'Build & Tooling',
+    text: 'Design-to-code, fast bundling, task automation, and reliable version control.',
+    skills: [
+      { name: 'Figma', icon: FigmaIcon },
       { name: 'Vite', icon: ViteIcon },
       { name: 'Webpack', icon: WebpackIcon },
       { name: 'Gulp', icon: GulpIcon },
       { name: 'npm', icon: NpmIcon },
       { name: 'Git', icon: GitIcon },
-    ],
-  },
-  {
-    title: 'Motion & Integrations',
-    text: 'Animation, real-time features, and internationalization when projects call for it.',
-    skills: [
-      { name: 'GSAP', icon: GsapIcon },
-      { name: 'Socket.io', icon: SocketIcon },
-      { name: 'i18n', icon: I18nIcon },
     ],
   },
 ]
@@ -161,8 +161,11 @@ onUnmounted(() => {
           <p class="about__cluster-text">{{ cluster.text }}</p>
 
           <div class="about__skills">
-            <div class="about__skill" v-for="skill in cluster.skills" :key="skill.name" :title="skill.name">
-              <component :is="skill.icon" class="about__skill-icon" />
+            <div class="about__skill" v-for="skill in cluster.skills" :key="skill.name">
+              <div class="about__skill-icon">
+                <component :is="skill.icon" />
+              </div>
+              <span class="about__skill-label">{{ skill.name }}</span>
             </div>
           </div>
         </div>
@@ -361,43 +364,63 @@ onUnmounted(() => {
   &__skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 28px;
+    gap: 26px 30px;
+    margin-top: auto;
+    padding-top: 32px;
+
+    @media (max-width: $breakpoint1450) {
+      gap: 24px;
+    }
 
     @media (max-width: $breakpoint768) {
-      gap: 10px;
-      margin-top: 22px;
+      gap: 20px 24px;
+      padding-top: 26px;
     }
   }
 
   &__skill {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 58px;
-    padding: 0 18px;
-    border: 1px solid rgba($color-aqua, 0.4);
-    background: rgba($color-white, 0.04);
-    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+    gap: 10px;
+    width: 74px;
+    transition: transform 0.25s ease;
 
     @media (max-width: $breakpoint768) {
-      height: 50px;
-      padding: 0 14px;
+      width: 64px;
+      gap: 8px;
     }
 
     &:hover {
-      border-color: $color-aqua;
-      background: rgba($color-aqua, 0.12);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
     &-icon {
-      width: auto;
-      max-width: 130px;
-      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
 
       @media (max-width: $breakpoint768) {
-        height: 22px;
+        height: 34px;
+      }
+
+      :deep(svg) {
+        width: auto;
+        max-width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-label {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.2;
+      text-align: center;
+      color: rgba($color-white, 0.8);
+
+      @media (max-width: $breakpoint768) {
+        font-size: 13px;
       }
     }
   }
