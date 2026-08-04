@@ -88,6 +88,8 @@ const setPageHeight = () => {
   appliedMinHeight = totalHeight
   mainWrapper.value.style.minHeight = `${totalHeight}px`
 
+  window.lenis?.resize()
+
   handleScroll()
 }
 
@@ -147,6 +149,7 @@ const disableDesktopScroll = () => {
   appliedMinHeight = null
   if (mainWrapper.value) mainWrapper.value.style.minHeight = ''
   if (pageWrapper.value) pageWrapper.value.style.transform = ''
+  window.lenis?.resize()
 
   const els = getSwiperEls()
   if (els) els.swiperTrack.style.transform = ''
