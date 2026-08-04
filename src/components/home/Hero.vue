@@ -88,12 +88,12 @@ onMounted(() => {
           </div>
         </h1>
 
-        <h4 class="hero__text text" ref="heroName">Oleksandr Vintoniak</h4>
+        <p class="hero__text text" ref="heroName">Oleksandr Vintoniak — freelance Vue &amp; Nuxt developer</p>
 
         <div ref="heroBtn">
-          <AppButton :text="'Explore more'" @click="handleButtonClick()" tag="button">
+          <AppButton :text="'See what I do'" @click="handleButtonClick()" tag="button">
             <template v-slot:icon>
-              <Arrow />
+              <Arrow aria-hidden="true" />
             </template>
           </AppButton>
         </div>
@@ -229,6 +229,10 @@ onMounted(() => {
     span {
       display: inline-block;
     }
+  }
+
+  &__text {
+    text-align: center;
   }
 
   &__art {

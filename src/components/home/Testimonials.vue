@@ -67,7 +67,7 @@ onUnmounted(() => {
       <div class="testimonials__title title">
         <h2 ref="testimonialsTitle">
           Testimonials&nbsp;
-          <Feather class="testimonials__title-icon" />
+          <Feather class="testimonials__title-icon" aria-hidden="true" />
         </h2>
       </div>
 
@@ -80,19 +80,21 @@ onUnmounted(() => {
             <h3 class="swiper-slide-title">{{ slide.title }}</h3>
             <p class="swiper-slide-text text">{{ slide.text }}</p>
 
-            <div class="swiper-slide-stars">
-              <Star v-for="i in 5" />
+            <div class="swiper-slide-stars" role="img" aria-label="Rated 5 out of 5">
+              <Star v-for="i in 5" :key="i" aria-hidden="true" />
             </div>
 
-            <h5 class="swiper-slide-author text">{{ slide.author }}</h5>
+            <p class="swiper-slide-author text">{{ slide.author }}</p>
           </swiper-slide>
 
-          <div class="swiper-button-prev" @click="handleButtonClick()">
-            <Arrow style="transform: rotate(90deg);" />
-          </div>
-          <div class="swiper-button-next" @click="handleButtonClick()">
-            <Arrow style="transform: rotate(-90deg);" />
-          </div>
+          <button type="button" class="swiper-button-prev" aria-label="Previous testimonial"
+            @click="handleButtonClick()">
+            <Arrow style="transform: rotate(90deg);" aria-hidden="true" />
+          </button>
+          <button type="button" class="swiper-button-next" aria-label="Next testimonial"
+            @click="handleButtonClick()">
+            <Arrow style="transform: rotate(-90deg);" aria-hidden="true" />
+          </button>
         </swiper>
       </div>
     </div>

@@ -11,15 +11,29 @@ import Contacts from '../components/Contacts.vue'
 const mainWrapper = ref(null)
 const pageWrapper = ref(null)
 
-const destructureScrollOffset = (currentScrollPosition) => {
-  if (!pageWrapper.value) return
+let mediaQuery = null
+let resizeObserver = null
+let syncFrameId = null
+let appliedMinHeight = null
+let isDesktop = false
 
+const getSwiperEls = () => {
   const swiperWrapper = document.getElementById('worksSwiper')
-  const swiperTrack = swiperWrapper.querySelector('.swiper-wrapper')
+  const swiperTrack = swiperWrapper?.querySelector('.swiper-wrapper')
 
-  const swiperPlaceholderPX = swiperTrack.scrollWidth - swiperWrapper.clientWidth
+  return swiperTrack ? { swiperWrapper, swiperTrack } : null
+}
 
-  const { top: sliderTop, height: sliderHeight } = swiperWrapper.getBoundingClientRect()
+const getSwiperPlaceholderPX = (els) => {
+  if (!els) return 0
+
+  return Math.max(0, els.swiperTrack.scrollWidth - els.swiperWrapper.clientWidth)
+}
+
+const destructureScrollOffset = (currentScrollPosition, els) => {
+  const swiperPlaceholderPX = getSwiperPlaceholderPX(els)
+
+  const { top: sliderTop, height: sliderHeight } = els.swiperWrapper.getBoundingClientRect()
   const { top: pageTop } = pageWrapper.value.getBoundingClientRect()
   const screenHeight = window.innerHeight
 
@@ -48,32 +62,42 @@ const destructureScrollOffset = (currentScrollPosition) => {
 const handleScroll = () => {
   if (!pageWrapper.value) return
 
-  const swiperWrapper = document.getElementById('worksSwiper')
-  const swiperTrack = swiperWrapper.querySelector('.swiper-wrapper')
+  const els = getSwiperEls()
+  if (!els) return
+
   const currentScrollPosition = document.documentElement.scrollTop
 
   const {
     pageOffset,
     slideOffset,
-  } = destructureScrollOffset(currentScrollPosition)
+  } = destructureScrollOffset(currentScrollPosition, els)
 
   pageWrapper.value.style.transform = `translate3d(0px, ${-pageOffset}px, 0px)`
-  swiperTrack.style.transform = `translate3d(${-slideOffset}px, 0px, 0px)`
+  els.swiperTrack.style.transform = `translate3d(${-slideOffset}px, 0px, 0px)`
 }
 
 const setPageHeight = () => {
-  if (pageWrapper.value) {
-    const pageWrapperHeight = pageWrapper.value.getBoundingClientRect().height
+  if (!isDesktop || !mainWrapper.value || !pageWrapper.value) return
 
-    const swiperWrapper = document.getElementById('worksSwiper')
-    const swiperTrack = swiperWrapper.querySelector('.swiper-wrapper')
+  const pageWrapperHeight = pageWrapper.value.getBoundingClientRect().height
 
-    const swiperPlaceholderPX = swiperTrack.scrollWidth - swiperWrapper.clientWidth
+  const totalHeight = Math.ceil(pageWrapperHeight + getSwiperPlaceholderPX(getSwiperEls()))
 
-    const totalHeight = pageWrapperHeight + swiperPlaceholderPX
+  if (totalHeight === appliedMinHeight) return
 
-    mainWrapper.value.style.minHeight = `${totalHeight}px`
-  }
+  appliedMinHeight = totalHeight
+  mainWrapper.value.style.minHeight = `${totalHeight}px`
+
+  handleScroll()
+}
+
+const scheduleSetPageHeight = () => {
+  if (syncFrameId !== null) return
+
+  syncFrameId = requestAnimationFrame(() => {
+    syncFrameId = null
+    setPageHeight()
+  })
 }
 
 const animateEllipses = () => {
@@ -89,29 +113,63 @@ const animateEllipses = () => {
   })
 }
 
-onMounted(() => {
-  const mediaQuery = window.matchMedia('(max-width: 991.98px)')
+const enableDesktopScroll = () => {
+  if (isDesktop || !pageWrapper.value) return
 
-  if (!mediaQuery.matches) {
-    setPageHeight()
-    animateEllipses()
-    window.addEventListener('scroll', handleScroll, { passive: false })
+  isDesktop = true
+  animateEllipses()
+
+  resizeObserver = new ResizeObserver(scheduleSetPageHeight)
+  resizeObserver.observe(pageWrapper.value)
+
+  const els = getSwiperEls()
+  if (els) resizeObserver.observe(els.swiperTrack)
+
+  window.addEventListener('scroll', handleScroll, { passive: true })
+
+  setPageHeight()
+}
+
+const disableDesktopScroll = () => {
+  if (!isDesktop) return
+
+  isDesktop = false
+  window.removeEventListener('scroll', handleScroll)
+
+  resizeObserver?.disconnect()
+  resizeObserver = null
+
+  if (syncFrameId !== null) {
+    cancelAnimationFrame(syncFrameId)
+    syncFrameId = null
   }
 
-  window.addEventListener('resize', () => {
-    if (mediaQuery.matches) {
-      window.removeEventListener('scroll', handleScroll)
-      return
-    }
+  appliedMinHeight = null
+  if (mainWrapper.value) mainWrapper.value.style.minHeight = ''
+  if (pageWrapper.value) pageWrapper.value.style.transform = ''
 
-    setPageHeight()
-    animateEllipses()
-    window.addEventListener('scroll', handleScroll, { passive: false })
-  })
+  const els = getSwiperEls()
+  if (els) els.swiperTrack.style.transform = ''
+}
+
+const handleMediaChange = (event) => {
+  if (event.matches) {
+    disableDesktopScroll()
+  } else {
+    enableDesktopScroll()
+  }
+}
+
+onMounted(() => {
+  mediaQuery = window.matchMedia('(max-width: 991.98px)')
+  mediaQuery.addEventListener('change', handleMediaChange)
+
+  if (!mediaQuery.matches) enableDesktopScroll()
 })
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
+  mediaQuery?.removeEventListener('change', handleMediaChange)
+  disableDesktopScroll()
 })
 </script>
 

@@ -53,13 +53,12 @@ onUnmounted(() => {
   <section class="interest section-padding">
     <div class="container">
       <div class="interest__block" ref="interestBlock">
-        <h3 class="interest__title">Interested in collaborating with me?</h3>
-        <p class="interest__text text">I am always open to discussing projects, ideas, and things we can arrange to ensure
-          your success.</p>
+        <h2 class="interest__title">Have a project in mind?</h2>
+        <p class="interest__text text">I'm always open to discussing new projects, ideas, and ways we can work together to bring them to life.</p>
 
         <AppButton :text="'Contact me'" @click="handleButtonClick()" tag="button">
           <template v-slot:icon>
-            <Arrow />
+            <Arrow aria-hidden="true" />
           </template>
         </AppButton>
       </div>

@@ -17,6 +17,6 @@ const app = createApp(App)
 
 app.use(router).use(VueGtag, {
   config: { id: import.meta.env.VITE_GTAG_TOKEN },
-})
+}, router)
 
 app.mount('#app')

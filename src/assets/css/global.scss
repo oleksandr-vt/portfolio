@@ -224,3 +224,23 @@ section {
 .swiper-button-next {
   right: 0;
 }
+
+.work-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.work-chip {
+  padding: 7px 12px;
+  border: 2px solid rgba($color-aqua, 0.4);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba($color-white, 0.8);
+
+  @media (max-width: $breakpoint768) {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}
