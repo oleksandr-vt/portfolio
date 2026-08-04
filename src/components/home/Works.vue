@@ -240,7 +240,7 @@ onUnmounted(() => {
     &-chips {
       padding-bottom: 28px;
 
-      @media (max-width: $breakpoint992) {
+      @media (max-width: $breakpoint1200) {
         padding-bottom: 24px;
       }
 
