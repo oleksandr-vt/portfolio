@@ -159,6 +159,7 @@ onUnmounted(() => {
       img {
         height: 100%;
         max-height: 450px;
+        margin-top: 10%;
 
         @media (max-width: $breakpoint1680) {
           max-height: 420px;
