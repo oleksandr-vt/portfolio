@@ -1,37 +1,45 @@
-export const animationPlaceholderPX = () => {
-  const mediaQuery = window.matchMedia('(max-width: 991.98px)')
-  const currentRoute = new URL(window.location.href).pathname
+const getPinnedSlider = () => {
+  if (window.matchMedia('(max-width: 991.98px)').matches) return null
 
-  if (currentRoute === import.meta.env.BASE_URL && !mediaQuery.matches) {
-    const swiperWrapper = document.getElementById('worksSwiper')
-    const swiperTrack = swiperWrapper.querySelector('.swiper-wrapper')
-    return swiperTrack.scrollWidth - swiperWrapper.clientWidth
+  const pageWrapper = document.querySelector('.page__wrapper')
+  const swiperWrapper = document.getElementById('worksSwiper')
+  const swiperTrack = swiperWrapper?.querySelector('.swiper-wrapper')
+
+  if (!pageWrapper || !swiperTrack) return null
+
+  const { top: sliderTop, height: sliderHeight } = swiperWrapper.getBoundingClientRect()
+  const { top: pageTop } = pageWrapper.getBoundingClientRect()
+
+  return {
+    pageTop,
+    threshold: sliderTop - pageTop - window.innerHeight / 2 + sliderHeight / 2,
+    placeholderPX: Math.max(0, swiperTrack.scrollWidth - swiperWrapper.clientWidth),
   }
-
-  return 0
 }
+
+export const animationPlaceholderPX = () => getPinnedSlider()?.placeholderPX ?? 0
 
 export const scrollToElementById = (id) => {
   const element = document.getElementById(id)
   if (!element) return
 
-  const elementTop = element.getBoundingClientRect().top
+  const slider = getPinnedSlider()
+  let target
 
-  const mediaQuery = window.matchMedia('(max-width: 991.98px)')
-  const currentRoute = new URL(window.location.href).pathname
+  if (slider) {
+    const elementOffset = element.getBoundingClientRect().top - slider.pageTop
 
-  if (currentRoute === import.meta.env.BASE_URL && !mediaQuery.matches) {
-    const swiperWrapper = document.getElementById('worksSwiper')
-    const swiperTop = swiperWrapper.getBoundingClientRect().top
-    const currentScrollPosition = document.documentElement.scrollTop
-
-    if (elementTop > swiperTop && currentScrollPosition < swiperTop) {
-      const swiperTrack = swiperWrapper.querySelector('.swiper-wrapper')
-      const placeholderPX = swiperTrack.scrollWidth - swiperWrapper.clientWidth
-      window.scrollBy(0, elementTop + placeholderPX)
-      return
-    }
+    target = elementOffset + (elementOffset >= slider.threshold ? slider.placeholderPX : 0)
+  } else {
+    target = element.getBoundingClientRect().top + window.scrollY
   }
 
-  window.scrollBy(0, elementTop)
+  target = Math.max(0, target)
+
+  if (window.lenis) {
+    window.lenis.resize()
+    window.lenis.scrollTo(target)
+  } else {
+    window.scrollTo({ top: target, behavior: 'smooth' })
+  }
 }

@@ -109,6 +109,8 @@ const handleButtonClick = (str) => {
       line-height: 1;
       font-weight: 500;
       cursor: pointer;
+      padding: 13px 0;
+      margin: -13px 0;
 
       &:hover {
         text-decoration: underline;
