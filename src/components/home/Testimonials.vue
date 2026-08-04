@@ -22,6 +22,21 @@ const testimonialsSwiper = ref(null)
 
 const timeline = ref(null)
 
+const swiperInstance = ref(null)
+let autoplayStarted = false
+
+const onSwiper = (swiper) => {
+  swiperInstance.value = swiper
+  swiper.autoplay?.stop()
+}
+
+const startAutoplay = () => {
+  if (autoplayStarted) return
+
+  autoplayStarted = true
+  swiperInstance.value?.autoplay?.start()
+}
+
 const killScrollTrigger = () => {
   if (!scrollTriggerRef.value) return
   scrollTriggerRef.value.kill()
@@ -34,7 +49,10 @@ const updateScrollTrigger = () => {
     trigger: sectionTestimonials.value,
     start: `top 70%-=${animationPlaceholderPX()}`,
     animation: timeline.value,
+    onEnter: startAutoplay,
   })
+
+  if (scrollTriggerRef.value.progress > 0) startAutoplay()
 }
 
 const debouncedUpdateScrollTrigger = debounce(updateScrollTrigger, 100)
@@ -75,7 +93,7 @@ onUnmounted(() => {
         <swiper id="testimonialsSwiper" :slidesPerView="1" :pagination="{ clickable: true }"
           :navigation="{ clickable: true, nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }" :loop="true"
           :autoplay="{ delay: 6000, pauseOnMouseEnter: true }" :spaceBetween="230"
-          :modules="[Pagination, Navigation, Autoplay]">
+          :modules="[Pagination, Navigation, Autoplay]" @swiper="onSwiper">
           <swiper-slide v-for="(slide, index) in slides" :key="index">
             <h3 class="swiper-slide-title">{{ slide.title }}</h3>
             <p class="swiper-slide-text text">{{ slide.text }}</p>
