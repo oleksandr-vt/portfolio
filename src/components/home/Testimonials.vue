@@ -136,18 +136,14 @@ onUnmounted(() => {
 
     &-icon {
       width: 100%;
-      max-width: 65px;
+      max-width: 52px;
       height: auto;
 
       @media (max-width: $breakpoint1680) {
-        max-width: 55px;
+        max-width: 46px;
       }
 
       @media (max-width: $breakpoint1200) {
-        max-width: 48px;
-      }
-
-      @media (max-width: $breakpoint992) {
         max-width: 42px;
       }
 
@@ -167,14 +163,14 @@ onUnmounted(() => {
 
   .swiper {
     overflow: visible;
-    padding: 30px 160px 80px;
+    padding: 26px 140px 66px;
 
     @media (max-width: $breakpoint1680) {
-      padding: 30px 90px 75px;
+      padding: 26px 80px 62px;
     }
 
     @media (max-width: $breakpoint1200) {
-      padding: 20px 90px 70px;
+      padding: 18px 80px 58px;
     }
 
     @media (max-width: $breakpoint992) {
@@ -190,23 +186,15 @@ onUnmounted(() => {
     user-select: none;
 
     &-title {
-      font-size: 54px;
+      font-size: 42px;
       font-weight: 700;
       padding-bottom: 30px;
 
-      @media (max-width: $breakpoint1450) {
-        font-size: 48px;
-      }
-
-      @media (max-width: $breakpoint1200) {
-        font-size: 44px;
+      @media (max-width: $breakpoint1680) {
+        font-size: 38px;
       }
 
       @media (max-width: $breakpoint992) {
-        font-size: 40px;
-      }
-
-      @media (max-width: $breakpoint768) {
         font-size: 32px;
         padding-bottom: 25px;
       }

@@ -96,8 +96,8 @@ onMounted(() => {
 
   &__intro {
     width: 100%;
-    max-width: 1100px;
-    margin: 0 auto 60px;
+    max-width: 920px;
+    margin: 0 auto 48px;
     font-weight: 500;
 
     @media (max-width: $breakpoint1680) {
@@ -122,7 +122,7 @@ onMounted(() => {
     background: $color-primary-hover;
     box-shadow: $shadow-xl;
     padding: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 42px;
     text-align: left;
 
     @media (max-width: $breakpoint1450) {
@@ -215,20 +215,20 @@ onMounted(() => {
     }
 
     &-title {
-      font-size: 40px;
+      font-size: 32px;
       line-height: 1;
       font-weight: 700;
 
       @media (max-width: $breakpoint1680) {
-        font-size: 36px;
+        font-size: 30px;
       }
 
       @media (max-width: $breakpoint1450) {
-        font-size: 34px;
+        font-size: 29px;
       }
 
       @media (max-width: $breakpoint1200) {
-        font-size: 32px;
+        font-size: 28px;
       }
 
       @media (max-width: $breakpoint992) {

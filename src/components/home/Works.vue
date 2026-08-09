@@ -195,21 +195,16 @@ onUnmounted(() => {
     }
 
     &-title {
-      padding-top: 18px;
-      font-size: 40px;
+      padding-top: 16px;
+      font-size: 34px;
       line-height: 1;
       font-weight: 700;
 
       @media (max-width: $breakpoint1680) {
-        padding-top: 16px;
-        font-size: 34px;
-      }
-
-      @media (max-width: $breakpoint1200) {
         font-size: 32px;
       }
 
-      @media (max-width: $breakpoint992) {
+      @media (max-width: $breakpoint1200) {
         padding-top: 14px;
         font-size: 30px;
       }
@@ -226,11 +221,7 @@ onUnmounted(() => {
 
     &-text {
       font-weight: 500;
-      padding: 10px 0 18px;
-
-      @media (max-width: $breakpoint992) {
-        padding: 8px 0 16px;
-      }
+      padding: 9px 0 16px;
 
       @media (max-width: $breakpoint576) {
         padding: 8px 0 14px;
@@ -238,11 +229,7 @@ onUnmounted(() => {
     }
 
     &-chips {
-      padding-bottom: 28px;
-
-      @media (max-width: $breakpoint1200) {
-        padding-bottom: 24px;
-      }
+      padding-bottom: 24px;
 
       @media (max-width: $breakpoint576) {
         padding-bottom: 20px;

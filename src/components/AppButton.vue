@@ -36,14 +36,14 @@ const props = defineProps({
 
 .app-button {
   display: inline-block;
-  padding: 10px 25px;
+  padding: 10px 22px;
   background-color: $color-primary;
   border: 2px solid $color-white;
   font-weight: 500;
   line-height: 1.3;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   cursor: pointer;
   transition: 0.3s all ease;
 

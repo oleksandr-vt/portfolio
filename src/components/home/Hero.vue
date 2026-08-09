@@ -112,20 +112,20 @@ onMounted(() => {
 .hero {
   .container {
     padding-top: 125px;
-    padding-bottom: 455px;
+    padding-bottom: 470.6px;
 
     @media (max-width: $breakpoint1680) {
       padding-top: 75px;
-      padding-bottom: 390px;
+      padding-bottom: 400.4px;
     }
 
     @media (max-width: $breakpoint1450) {
-      padding-bottom: 360px;
+      padding-bottom: 370.4px;
     }
 
     @media (max-width: $breakpoint1200) {
       padding-top: 65px;
-      padding-bottom: 330px;
+      padding-bottom: 335.2px;
     }
 
     @media (max-width: $breakpoint992) {
@@ -150,14 +150,14 @@ onMounted(() => {
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 1220px;
+    max-width: 1130px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 60px;
 
     @media (max-width: $breakpoint1680) {
-      max-width: 1120px;
+      max-width: 1050px;
       gap: 50px;
     }
 
@@ -187,13 +187,13 @@ onMounted(() => {
 
   &__title {
     font-weight: 800;
-    font-size: 110px;
+    font-size: 102px;
     line-height: 110%;
     display: flex;
     flex-wrap: wrap;
 
     @media (max-width: $breakpoint1680) {
-      font-size: 100px;
+      font-size: 94px;
     }
 
     @media (max-width: $breakpoint1450) {
