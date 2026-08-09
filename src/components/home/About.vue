@@ -195,15 +195,11 @@ onUnmounted(() => {
 
   &__intro {
     width: 100%;
-    max-width: 1050px;
+    max-width: 915px;
     margin: 0 auto;
 
     @media (max-width: $breakpoint1680) {
-      max-width: 980px;
-    }
-
-    @media (max-width: $breakpoint1200) {
-      max-width: 910px;
+      max-width: 845px;
     }
   }
 
@@ -226,8 +222,8 @@ onUnmounted(() => {
   &__stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 70px;
+    gap: 26px;
+    margin-top: 56px;
 
     @media (max-width: $breakpoint1450) {
       gap: 24px;
@@ -263,13 +259,13 @@ onUnmounted(() => {
     }
 
     &-num {
-      font-size: 46px;
+      font-size: 38px;
       font-weight: 700;
       line-height: 1;
       color: $color-aqua;
 
       @media (max-width: $breakpoint1450) {
-        font-size: 40px;
+        font-size: 36px;
       }
 
       @media (max-width: $breakpoint1200) {
@@ -299,7 +295,7 @@ onUnmounted(() => {
   &__clusters {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 26px;
     margin-top: 30px;
 
     @media (max-width: $breakpoint1450) {
@@ -316,7 +312,7 @@ onUnmounted(() => {
   &__cluster {
     display: flex;
     flex-direction: column;
-    padding: 36px;
+    padding: 30px;
     text-align: left;
     border: 2px solid $color-aqua;
     background: $color-primary-hover;
@@ -336,7 +332,7 @@ onUnmounted(() => {
     }
 
     &-title {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 700;
       line-height: 1.1;
 

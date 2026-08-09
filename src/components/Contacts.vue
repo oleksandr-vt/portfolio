@@ -156,7 +156,7 @@ onUnmounted(() => {
 
   &__text {
     font-weight: 500;
-    margin-bottom: 80px;
+    margin-bottom: 64px;
 
     @media (max-width: $breakpoint1680) {
       margin-bottom: 60px;
@@ -245,10 +245,10 @@ onUnmounted(() => {
     }
 
     &-resume {
-      margin: 140px auto;
+      margin: 105px auto;
 
       @media (max-width: $breakpoint1680) {
-        margin: 120px auto;
+        margin: 95px auto;
       }
 
       @media (max-width: $breakpoint768) {

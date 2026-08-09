@@ -72,27 +72,25 @@ onUnmounted(() => {
 .interest {
   &__block {
     width: 100%;
-    max-width: 1264px;
+    max-width: 1150px;
     margin: 0 auto;
     border: 2px solid $color-aqua;
     box-shadow: $shadow-xl;
-    padding: 50px;
+    padding: 42px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 
     @media (max-width: $breakpoint1680) {
-      max-width: 1120px;
+      max-width: 1050px;
     }
 
     @media (max-width: $breakpoint1450) {
-      max-width: 1050px;
-      padding: 40px;
+      padding: 36px;
     }
 
     @media (max-width: $breakpoint992) {
-      padding: 35px;
       box-shadow: $shadow-md;
     }
 
@@ -102,22 +100,18 @@ onUnmounted(() => {
   }
 
   &__title {
-    font-size: 62px;
+    font-size: 52px;
     font-weight: 700;
 
     @media (max-width: $breakpoint1680) {
-      font-size: 54px;
-    }
-
-    @media (max-width: $breakpoint1450) {
-      font-size: 50px;
-    }
-
-    @media (max-width: $breakpoint1200) {
       font-size: 46px;
     }
 
-    @media (max-width: $breakpoint992) {
+    @media (max-width: $breakpoint1450) {
+      font-size: 44px;
+    }
+
+    @media (max-width: $breakpoint1200) {
       font-size: 42px;
     }
 
@@ -135,17 +129,13 @@ onUnmounted(() => {
   }
 
   &__text {
-    padding: 30px 80px 50px;
+    padding: 26px 70px 42px;
 
     @media (max-width: $breakpoint1450) {
-      padding: 30px 60px 50px;
+      padding: 26px 55px 42px;
     }
 
     @media (max-width: $breakpoint1200) {
-      padding: 30px 0 50px;
-    }
-
-    @media (max-width: $breakpoint992) {
       padding: 25px 0 40px;
     }
 
