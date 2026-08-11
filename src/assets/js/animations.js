@@ -24,7 +24,7 @@ export const staggerIn = ({ el, index, duration = 0.6, delay = 0 }) => {
         duration: duration,
         opacity: 0,
         ease: 'Power2.in',
-        delay: index * 0.2,
+        delay: index * 0.18,
       })
 
     return tl

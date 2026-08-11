@@ -120,7 +120,7 @@ onMounted(() => {
     .add(tlTitle, 0)
     .add(tlIntro, 0.25)
     .add(tlStats, 0.50)
-    .add(tlClusters, 1.1)
+    .add(tlClusters, 1.04)
 
   updateScrollTrigger()
   window.addEventListener("resize", debouncedUpdateScrollTrigger)
