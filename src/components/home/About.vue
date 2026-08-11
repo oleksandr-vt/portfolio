@@ -119,8 +119,8 @@ onMounted(() => {
   timeline.value = gsap.timeline({ paused: true })
     .add(tlTitle, 0)
     .add(tlIntro, 0.25)
-    .add(tlStats, 0.55)
-    .add(tlClusters, 0.7)
+    .add(tlStats, 0.50)
+    .add(tlClusters, 1.1)
 
   updateScrollTrigger()
   window.addEventListener("resize", debouncedUpdateScrollTrigger)
