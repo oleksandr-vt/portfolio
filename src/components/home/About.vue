@@ -26,6 +26,8 @@ import ViteIcon from '../icons/skills/ViteIcon.vue'
 import WebpackIcon from '../icons/skills/WebpackIcon.vue'
 import GitIcon from '../icons/skills/GitIcon.vue'
 import VitestIcon from '../icons/skills/VitestIcon.vue'
+import TestingLibraryIcon from '../icons/skills/TestingLibraryIcon.vue'
+import GithubActionsIcon from '../icons/skills/GithubActionsIcon.vue'
 import PlaywrightIcon from '../icons/skills/PlaywrightIcon.vue'
 import VercelIcon from '../icons/skills/VercelIcon.vue'
 import CloudflareIcon from '../icons/skills/CloudflareIcon.vue'
@@ -88,12 +90,14 @@ const clusters = [
   },
   {
     title: 'Testing & Deployment',
-    text: 'Unit and end-to-end testing, plus fast, reliable deploys to Vercel, Cloudflare, or any other platform.',
+    text: 'Unit, component, and end-to-end tests, CI pipelines, and fast, reliable deploys to Vercel, Cloudflare, or any other platform.',
     skills: [
       { key: 'vitest', name: 'Vitest', icon: VitestIcon },
+      { key: 'testing-library', name: 'RTL', icon: TestingLibraryIcon },
       { key: 'playwright', name: 'Playwright', icon: PlaywrightIcon },
       { key: 'vercel', name: 'Vercel', icon: VercelIcon },
       { key: 'cloudflare', name: 'Cloudflare', icon: CloudflareIcon },
+      { key: 'github-actions', name: 'GitHub Actions', icon: GithubActionsIcon },
     ],
   },
   {
@@ -278,6 +282,10 @@ onUnmounted(() => {
     background: $color-primary-hover;
     box-shadow: $shadow-md;
 
+    @media (max-width: $breakpoint992) {
+      padding: 28px 16px;
+    }
+
     @media (max-width: $breakpoint768) {
       padding: 20px 16px;
       box-shadow: $shadow-sm;
@@ -348,8 +356,11 @@ onUnmounted(() => {
       padding: 30px;
     }
 
-    @media (max-width: $breakpoint768) {
+    @media (max-width: $breakpoint992) {
       padding: 24px;
+    }
+
+    @media (max-width: $breakpoint768) {
       box-shadow: $shadow-sm;
     }
 
@@ -391,12 +402,16 @@ onUnmounted(() => {
   &__skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px 30px;
+    gap: 24px 26px;
     margin-top: auto;
     padding-top: 32px;
 
     @media (max-width: $breakpoint1450) {
-      gap: 24px;
+      gap: 24px 20px;
+    }
+
+    @media (max-width: $breakpoint992) {
+      gap: 24px 16px;
     }
 
     @media (max-width: $breakpoint768) {
@@ -412,6 +427,7 @@ onUnmounted(() => {
     justify-content: space-between;
     gap: 10px;
     width: 74px;
+    min-width: max-content;
     height: 68px;
     transition: transform 0.25s ease;
 
@@ -468,6 +484,7 @@ onUnmounted(() => {
       font-weight: 500;
       line-height: 1.2;
       text-align: center;
+      white-space: nowrap;
       color: rgba($color-white, 0.8);
 
       @media (max-width: $breakpoint768) {
