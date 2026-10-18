@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "resume": "node resume/render.mjs"
   },
   "dependencies": {
     "debounce": "^1.2.1",

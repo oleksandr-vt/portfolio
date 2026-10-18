@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Oleksandr Vintoniak — Front-end Developer</title>
+  <meta name="author" content="Oleksandr Vintoniak">
+
+  <style>
+    @font-face {
+      font-family: 'Inconsolata';
+      font-weight: 800;
+      src: url('../src/assets/fonts/Inconsolata-ExtraBold.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Inconsolata';
+      font-weight: 600;
+      src: url('../src/assets/fonts/Inconsolata-SemiBold.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Inter';
+      font-weight: 400;
+      src: url('fonts/inter-latin-400-normal.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Inter';
+      font-weight: 600;
+      src: url('fonts/inter-latin-600-normal.woff2') format('woff2');
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    :root {
+      --navy: #030470;
+      --ink: #1b1d2e;
+      --muted: #5a5f73;
+      --rule: #c9d6ee;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 15mm 16mm 13mm;
+      font: 400 9.6pt/1.42 'Inter', sans-serif;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    .role {
+      font-family: 'Inconsolata', monospace;
+    }
+
+    h1 {
+      font-size: 27pt;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--navy);
+    }
+
+    .headline {
+      margin-top: 5pt;
+      font: 600 12.5pt/1.2 'Inconsolata', monospace;
+      color: var(--navy);
+    }
+
+    .contacts {
+      margin-top: 7pt;
+      color: var(--muted);
+      font-size: 8.8pt;
+    }
+
+    .contacts span {
+      white-space: nowrap;
+    }
+
+    .contacts span:not(:last-child)::after {
+      content: '·';
+      margin: 0 5pt;
+      color: var(--rule);
+    }
+
+    section {
+      margin-top: 12pt;
+    }
+
+    h2 {
+      font-size: 11.5pt;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      padding-bottom: 3pt;
+      margin-bottom: 6pt;
+      border-bottom: 1.2pt solid var(--rule);
+    }
+
+    .job + .job {
+      margin-top: 9pt;
+    }
+
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12pt;
+    }
+
+    .role {
+      font-size: 11pt;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .dates {
+      flex-shrink: 0;
+      font-size: 8.8pt;
+      color: var(--muted);
+    }
+
+    ul {
+      margin-top: 4pt;
+      padding-left: 12pt;
+    }
+
+    li + li {
+      margin-top: 2.6pt;
+    }
+
+    li::marker {
+      color: var(--navy);
+    }
+
+    .stack {
+      color: var(--muted);
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 3pt 12pt;
+    }
+
+    .skills dt {
+      font-weight: 600;
+    }
+
+    b {
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Oleksandr Vintoniak</h1>
+    <p class="headline">Front-end Developer · React, Next.js, Vue, Nuxt</p>
+    <p class="contacts">
+      <span>Ivano-Frankivsk, Ukraine (remote, UTC+2/+3)</span>
+      <span><a href="tel:+380500671924">+380 50 067 19 24</a></span>
+      <span><a href="mailto:vintoniakoleksandr12@gmail.com">vintoniakoleksandr12@gmail.com</a></span>
+    </p>
+    <p class="contacts">
+      <span><a href="https://oleksandrvintoniak.com">oleksandrvintoniak.com</a></span>
+      <span><a href="https://www.linkedin.com/in/oleksandr-vintoniak-091b23230/">linkedin.com/in/oleksandr-vintoniak-091b23230</a></span>
+      <span><a href="https://github.com/oleksandr-vt">github.com/oleksandr-vt</a></span>
+      <span><a href="https://www.upwork.com/freelancers/oleksandrvintoniak">Upwork</a></span>
+    </p>
+  </header>
+
+  <section>
+    <h2>Summary</h2>
+    <p>
+      Front-end developer with 5+ years of freelance experience and 70+ projects delivered for clients across the US and
+      Europe. I build <b>React / Next.js</b> and <b>Vue / Nuxt</b> applications end to end — from the Figma file to a
+      tested, live deploy on Vercel or Cloudflare — with clean, typed code that is easy to hand off. I work daily with
+      AI agents (Claude Code, Codex, Cursor) to move faster, while owning the architecture and reviewing every line.
+    </p>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="role">Front-end Developer (Freelance) — Upwork</span>
+        <span class="dates">May 2022 – Present</span>
+      </div>
+      <ul>
+        <li>Delivered 70+ projects for clients in the US and Europe: product front-ends, dashboards, crypto exchanges, job
+          boards and marketing sites, from MVPs on a deadline to long-running platforms.</li>
+        <li><b>Attachd</b> — built an attachment-style test with a personal result for each partner and a couples report
+          comparing both. <span class="stack">Next.js, React, TypeScript, Tailwind CSS, Vercel.</span></li>
+        <li><b>WeCash</b> — built the front-end of a rewards platform where users earn payouts for playing games, trying apps
+          and completing surveys. <span class="stack">Nuxt 3, Vue 3, Pinia, SCSS.</span></li>
+        <li><b>Kraudcloud</b> — built a CRM dashboard for managed Kubernetes, where teams provision, monitor and manage
+          clusters in one place. <span class="stack">Nuxt 3, Vue 3, TypeScript, Pinia.</span></li>
+        <li><b>Fuchsjobs</b> — built a German job board where companies post vacancies and candidates search, filter and
+          apply in a few steps. <span class="stack">Vue 3, Tailwind CSS, i18n.</span></li>
+        <li><b>WinEXa, Eunobit</b> — built multi-language crypto exchange flows that take users from a live quote to a
+          completed swap. <span class="stack">Nuxt, Vue, SCSS, i18n.</span></li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="role">Web Developer (Freelance) — Weblancer.net</span>
+        <span class="dates">Nov 2021 – Apr 2022</span>
+      </div>
+      <ul>
+        <li>Built and updated client websites from design mockups, integrated REST APIs, and handled hosting and
+          deployment.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>Frameworks</dt>
+      <dd>React, Next.js, Vue 3, Nuxt 3</dd>
+      <dt>Languages</dt>
+      <dd>TypeScript, JavaScript, HTML5, CSS3, Sass/SCSS</dd>
+      <dt>State &amp; data</dt>
+      <dd>Zustand, TanStack Query, Pinia, REST APIs, i18n</dd>
+      <dt>UI &amp; styling</dt>
+      <dd>Tailwind CSS, shadcn/ui, responsive and cross-browser layouts, BEM</dd>
+      <dt>Backend &amp; deploy</dt>
+      <dd>Node.js, server-side Next.js, Supabase, PostgreSQL, Vercel, Cloudflare</dd>
+      <dt>Testing &amp; tooling</dt>
+      <dd>Vitest, Playwright, Vite, Git, GitHub Actions, Figma</dd>
+      <dt>AI workflow</dt>
+      <dd>Claude Code, Codex, Cursor, GitHub Copilot</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="job-head">
+      <span><b>Bachelor's degree in Computer Engineering</b> — Ivano-Frankivsk National Technical University of Oil and Gas</span>
+      <span class="dates">2017 – 2021</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Languages</h2>
+    <p>Ukrainian (native) · English (professional working proficiency)</p>
+  </section>
+</body>
+
+</html>
