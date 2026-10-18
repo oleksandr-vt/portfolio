@@ -45,7 +45,7 @@ onMounted(() => {
         <h1 ref="worksTitle">Works</h1>
       </div>
 
-      <p class="works__intro text">Front-ends I built end to end — Next.js and Nuxt apps, crypto exchanges, job boards, CRM dashboards, and marketing sites.</p>
+      <p class="works__intro text">Front-ends I built end to end — Next.js and Nuxt.js apps, crypto exchanges, job boards, CRM dashboards, and marketing sites.</p>
 
       <div class="works__list">
         <div class="works__block" v-for="(slide, index) in slides" :key="slide.title" ref="sliderRefs">

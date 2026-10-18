@@ -19,8 +19,8 @@ export const works = [
   },
   {
     title: 'Attachd',
-    text: 'An attachment-style test for couples: a personal result for each partner, then a report comparing both.',
-    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    text: "An attachment-style test for couples that shows each partner's style and how the two fit together.",
+    stack: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS'],
     featured: true,
     imagePath: 'img/attachd.webp',
     imageAlt: 'Attachd attachment style test homepage',

@@ -88,7 +88,7 @@ onMounted(() => {
           </div>
         </h1>
 
-        <p class="hero__text text" ref="heroName">Oleksandr Vintoniak — freelance React &amp; Vue developer</p>
+        <p class="hero__text text" ref="heroName">Oleksandr Vintoniak — React &amp; Vue developer</p>
 
         <div ref="heroBtn">
           <AppButton :text="'See what I do'" @click="handleButtonClick()" tag="button">
