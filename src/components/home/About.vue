@@ -17,6 +17,7 @@ import TailwindIcon from '../icons/skills/TailwindIcon.vue'
 import BootstrapIcon from '../icons/skills/BootstrapIcon.vue'
 import ShadcnIcon from '../icons/skills/ShadcnIcon.vue'
 import ReduxIcon from '../icons/skills/ReduxIcon.vue'
+import ZustandIcon from '../icons/skills/ZustandIcon.vue'
 import PiniaIcon from '../icons/skills/PiniaIcon.vue'
 import VuexIcon from '../icons/skills/VuexIcon.vue'
 import I18nIcon from '../icons/skills/I18nIcon.vue'
@@ -65,13 +66,34 @@ const clusters = [
     ],
   },
   {
+    title: 'AI-Powered Workflow',
+    text: 'Agentic workflows and spec-driven development: I write the spec and acceptance criteria, AI agents help build, test, and refactor.',
+    skills: [
+      { key: 'claude', name: 'Claude', icon: ClaudeIcon },
+      { key: 'codex', name: 'Codex', icon: CodexIcon },
+      { key: 'cursor', name: 'Cursor', icon: CursorIcon },
+      { key: 'vscode', name: 'VS Code', icon: VscodeIcon },
+    ],
+  },
+  {
     title: 'State & Localization',
     text: 'Predictable app state with Redux, Zustand, Pinia or Vuex, and multi-language interfaces with i18n.',
     skills: [
       { key: 'redux', name: 'Redux', icon: ReduxIcon },
+      { key: 'zustand', name: 'Zustand', icon: ZustandIcon },
       { key: 'pinia', name: 'Pinia', icon: PiniaIcon },
       { key: 'vuex', name: 'Vuex', icon: VuexIcon },
       { key: 'i18n', name: 'i18n', icon: I18nIcon },
+    ],
+  },
+  {
+    title: 'Testing & Deployment',
+    text: 'Unit and end-to-end testing, plus fast, reliable deploys to Vercel, Cloudflare, or any other platform.',
+    skills: [
+      { key: 'vitest', name: 'Vitest', icon: VitestIcon },
+      { key: 'playwright', name: 'Playwright', icon: PlaywrightIcon },
+      { key: 'vercel', name: 'Vercel', icon: VercelIcon },
+      { key: 'cloudflare', name: 'Cloudflare', icon: CloudflareIcon },
     ],
   },
   {
@@ -82,26 +104,6 @@ const clusters = [
       { key: 'vite', name: 'Vite', icon: ViteIcon },
       { key: 'webpack', name: 'Webpack', icon: WebpackIcon },
       { key: 'git', name: 'Git', icon: GitIcon },
-    ],
-  },
-  {
-    title: 'Testing & Deployment',
-    text: 'Unit and end-to-end tests before every release, then fast, reliable deploys to Vercel or Cloudflare.',
-    skills: [
-      { key: 'vitest', name: 'Vitest', icon: VitestIcon },
-      { key: 'playwright', name: 'Playwright', icon: PlaywrightIcon },
-      { key: 'vercel', name: 'Vercel', icon: VercelIcon },
-      { key: 'cloudflare', name: 'Cloudflare', icon: CloudflareIcon },
-    ],
-  },
-  {
-    title: 'AI-Powered Workflow',
-    text: 'Agentic workflows and spec-driven development: clear specs first, then AI agents to build, test, and refactor faster.',
-    skills: [
-      { key: 'claude', name: 'Claude', icon: ClaudeIcon },
-      { key: 'codex', name: 'Codex', icon: CodexIcon },
-      { key: 'cursor', name: 'Cursor', icon: CursorIcon },
-      { key: 'vscode', name: 'VS Code', icon: VscodeIcon },
     ],
   },
 ]
@@ -170,7 +172,7 @@ onUnmounted(() => {
         </p>
 
         <p class="about__text text">
-          My focus is building front-ends the right way the first time — pixel-precise, performant, and easy to hand off. Whether it's a complex Next.js app, a real-time Nuxt.js dashboard, or an MVP on a deadline, the code ships clean and stays that way.
+          My focus is building front-ends the right way the first time — pixel-precise, performant, and easy to hand off. Whether it's a complex Next.js app, a real-time Nuxt dashboard, or an MVP on a deadline, the code ships clean and stays that way.
         </p>
       </div>
 
@@ -453,6 +455,11 @@ onUnmounted(() => {
       &--vercel {
         height: 32px;
         margin-top: 4px;
+      }
+
+      &--zustand {
+        height: 34px;
+        margin-top: 3px;
       }
 
       &--cloudflare {

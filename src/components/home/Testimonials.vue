@@ -145,10 +145,10 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 16px;
+    margin-bottom: 26px;
 
     @media (max-width: $breakpoint768) {
-      margin-bottom: 12px;
+      margin-bottom: 18px;
     }
 
     &-icon {
@@ -180,9 +180,18 @@ onUnmounted(() => {
 
   &__badge {
     display: inline-block;
+    margin-bottom: 30px;
     font-size: 20px;
     font-weight: 500;
     color: $color-aqua;
+
+    @media (max-width: $breakpoint1680) {
+      margin-bottom: 26px;
+    }
+
+    @media (max-width: $breakpoint768) {
+      margin-bottom: 20px;
+    }
 
     &:hover {
       text-decoration: underline;
