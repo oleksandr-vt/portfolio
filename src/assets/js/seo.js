@@ -1,6 +1,6 @@
 export const SITE_URL = 'https://oleksandrvintoniak.com'
 export const SITE_NAME = 'Oleksandr Vintoniak'
-export const OG_IMAGE = `${SITE_URL}/og-image.png`
+export const OG_IMAGE = `${SITE_URL}/og-image-v2.png`
 
 export const HEAD_START = '<!--seo:start-->'
 export const HEAD_END = '<!--seo:end-->'
@@ -14,18 +14,31 @@ const PERSON = {
   jobTitle: 'Front-end Developer',
   email: 'mailto:vintoniakoleksandr12@gmail.com',
   description:
-    'Freelance front-end developer specializing in Vue.js and Nuxt.js, with 5+ years of commercial experience and 70+ delivered projects.',
+    'Front-end developer working with React.js, Next.js, Vue.js and Nuxt.js, with 5+ years of commercial experience.',
   knowsAbout: [
+    'React.js',
+    'Next.js',
     'Vue.js',
     'Nuxt.js',
-    'JavaScript',
     'TypeScript',
+    'JavaScript',
     'HTML',
     'CSS',
     'Sass',
     'Tailwind CSS',
+    'Bootstrap',
+    'shadcn/ui',
+    'Redux',
+    'Zustand',
     'Pinia',
+    'Vuex',
+    'i18n',
     'Vite',
+    'Webpack',
+    'Vitest',
+    'Playwright',
+    'Vercel',
+    'Cloudflare',
   ],
   address: {
     '@type': 'PostalAddress',
@@ -42,9 +55,9 @@ export const pages = {
   home: {
     file: 'index.html',
     path: '/',
-    title: 'Oleksandr Vintoniak | Front-end Developer (Vue & Nuxt)',
+    title: 'Oleksandr Vintoniak | Front-end Developer (React & Vue)',
     description:
-      'Front-end developer with 5+ years of freelance experience and 70+ projects. Specialized in Vue, Nuxt, HTML, CSS & JavaScript. Open to collaborations.',
+      'Front-end developer with 5+ years of experience and 70+ delivered projects. Builds with React.js, Next.js, Vue.js and Nuxt.js. Open to collaborations.',
     schema: [
       PERSON,
       {
@@ -61,7 +74,7 @@ export const pages = {
     path: '/works',
     title: 'Works | Oleksandr Vintoniak, Front-end Developer',
     description:
-      'Selected front-end projects by Oleksandr Vintoniak — Vue, Nuxt, TypeScript and JavaScript builds ranging from crypto exchanges and job boards to Kubernetes dashboards.',
+      'Selected front-end projects by Oleksandr Vintoniak — React.js, Next.js, Vue.js and Nuxt.js apps, from crypto exchanges to job boards and dashboards.',
   },
   notFound: {
     file: '404.html',

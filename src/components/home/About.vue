@@ -4,47 +4,53 @@ import { gsap } from 'gsap'
 import debounce from "debounce"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { slideUp, fadeIn, staggerIn } from '../../assets/js/animations'
-import { animationPlaceholderPX } from '../../assets/js/helpers'
-import TailwindIcon from '../icons/skills/TailwindIcon.vue'
-import ViteIcon from '../icons/skills/ViteIcon.vue'
-import HtmlIcon from '../icons/skills/HtmlIcon.vue'
-import WebpackIcon from '../icons/skills/WebpackIcon.vue'
-import NuxtIcon from '../icons/skills/NuxtIcon.vue'
-import I18nIcon from '../icons/skills/I18nIcon.vue'
-import CssIcon from '../icons/skills/CssIcon.vue'
+import ReactIcon from '../icons/skills/ReactIcon.vue'
+import NextIcon from '../icons/skills/NextIcon.vue'
 import VueIcon from '../icons/skills/VueIcon.vue'
-import BootstrapIcon from '../icons/skills/BootstrapIcon.vue'
+import NuxtIcon from '../icons/skills/NuxtIcon.vue'
 import TSIcon from '../icons/skills/TSIcon.vue'
 import JSIcon from '../icons/skills/JSIcon.vue'
+import HtmlIcon from '../icons/skills/HtmlIcon.vue'
+import CssIcon from '../icons/skills/CssIcon.vue'
 import SassIcon from '../icons/skills/SassIcon.vue'
-import NpmIcon from '../icons/skills/NpmIcon.vue'
+import TailwindIcon from '../icons/skills/TailwindIcon.vue'
+import BootstrapIcon from '../icons/skills/BootstrapIcon.vue'
+import ShadcnIcon from '../icons/skills/ShadcnIcon.vue'
+import ReduxIcon from '../icons/skills/ReduxIcon.vue'
+import ZustandIcon from '../icons/skills/ZustandIcon.vue'
 import PiniaIcon from '../icons/skills/PiniaIcon.vue'
-import GitIcon from '../icons/skills/GitIcon.vue'
-import BemIcon from '../icons/skills/BemIcon.vue'
+import VuexIcon from '../icons/skills/VuexIcon.vue'
+import I18nIcon from '../icons/skills/I18nIcon.vue'
 import FigmaIcon from '../icons/skills/FigmaIcon.vue'
+import ViteIcon from '../icons/skills/ViteIcon.vue'
+import WebpackIcon from '../icons/skills/WebpackIcon.vue'
+import GitIcon from '../icons/skills/GitIcon.vue'
+import VitestIcon from '../icons/skills/VitestIcon.vue'
+import PlaywrightIcon from '../icons/skills/PlaywrightIcon.vue'
+import VercelIcon from '../icons/skills/VercelIcon.vue'
+import CloudflareIcon from '../icons/skills/CloudflareIcon.vue'
 import ClaudeIcon from '../icons/skills/ClaudeIcon.vue'
 import CodexIcon from '../icons/skills/CodexIcon.vue'
 import CursorIcon from '../icons/skills/CursorIcon.vue'
 import VscodeIcon from '../icons/skills/VscodeIcon.vue'
-import CopilotIcon from '../icons/skills/CopilotIcon.vue'
 
 const stats = [
   { num: '70+', label: 'Projects delivered' },
-  { num: '5+', label: 'Years freelancing' },
-  { num: 'Vue / Nuxt', label: 'Core stack' },
+  { num: '5+', label: 'Years of experience' },
+  { num: 'React / Vue', label: 'Core stack' },
 ]
 
 const clusters = [
   {
     title: 'Core Front-end',
-    text: 'Vue & Nuxt applications — SPA, SSR, static — with typed, state-managed, localized code.',
+    text: 'React.js and Vue.js applications — SPA, SSR, static — built on Next.js and Nuxt.js with typed, maintainable code.',
     skills: [
+      { key: 'react', name: 'React.js', icon: ReactIcon },
+      { key: 'next', name: 'Next.js', icon: NextIcon },
       { key: 'vue', name: 'Vue.js', icon: VueIcon },
       { key: 'nuxt', name: 'Nuxt.js', icon: NuxtIcon },
-      { key: 'javascript', name: 'JavaScript', icon: JSIcon },
       { key: 'typescript', name: 'TypeScript', icon: TSIcon },
-      { key: 'pinia', name: 'Pinia', icon: PiniaIcon },
-      { key: 'i18n', name: 'i18n', icon: I18nIcon },
+      { key: 'javascript', name: 'JavaScript', icon: JSIcon },
     ],
   },
   {
@@ -56,18 +62,38 @@ const clusters = [
       { key: 'sass', name: 'Sass', icon: SassIcon },
       { key: 'tailwind', name: 'Tailwind', icon: TailwindIcon },
       { key: 'bootstrap', name: 'Bootstrap', icon: BootstrapIcon },
-      { key: 'bem', name: 'BEM', icon: BemIcon },
+      { key: 'shadcn', name: 'shadcn/ui', icon: ShadcnIcon },
     ],
   },
   {
     title: 'AI-Powered Workflow',
-    text: 'Editors and AI copilots I use every day to move faster without cutting corners.',
+    text: 'Agentic workflows and spec-driven development: I write the spec and acceptance criteria, AI agents help build, test, and refactor.',
     skills: [
       { key: 'claude', name: 'Claude', icon: ClaudeIcon },
       { key: 'codex', name: 'Codex', icon: CodexIcon },
-      { key: 'vscode', name: 'VS Code', icon: VscodeIcon },
       { key: 'cursor', name: 'Cursor', icon: CursorIcon },
-      { key: 'copilot', name: 'Copilot', icon: CopilotIcon },
+      { key: 'vscode', name: 'VS Code', icon: VscodeIcon },
+    ],
+  },
+  {
+    title: 'State & Localization',
+    text: 'Predictable app state with Redux, Zustand, Pinia or Vuex, and multi-language interfaces with i18n.',
+    skills: [
+      { key: 'redux', name: 'Redux', icon: ReduxIcon },
+      { key: 'zustand', name: 'Zustand', icon: ZustandIcon },
+      { key: 'pinia', name: 'Pinia', icon: PiniaIcon },
+      { key: 'vuex', name: 'Vuex', icon: VuexIcon },
+      { key: 'i18n', name: 'i18n', icon: I18nIcon },
+    ],
+  },
+  {
+    title: 'Testing & Deployment',
+    text: 'Unit and end-to-end testing, plus fast, reliable deploys to Vercel, Cloudflare, or any other platform.',
+    skills: [
+      { key: 'vitest', name: 'Vitest', icon: VitestIcon },
+      { key: 'playwright', name: 'Playwright', icon: PlaywrightIcon },
+      { key: 'vercel', name: 'Vercel', icon: VercelIcon },
+      { key: 'cloudflare', name: 'Cloudflare', icon: CloudflareIcon },
     ],
   },
   {
@@ -77,7 +103,6 @@ const clusters = [
       { key: 'figma', name: 'Figma', icon: FigmaIcon },
       { key: 'vite', name: 'Vite', icon: ViteIcon },
       { key: 'webpack', name: 'Webpack', icon: WebpackIcon },
-      { key: 'npm', name: 'npm', icon: NpmIcon },
       { key: 'git', name: 'Git', icon: GitIcon },
     ],
   },
@@ -143,11 +168,11 @@ onUnmounted(() => {
 
       <div class="about__intro" ref="aboutIntro">
         <p class="about__text text">
-          I'm Oleksandr Vintoniak, a <b>Vue.js</b> &amp; <b>Nuxt.js</b> specialist with 5+ years of freelance experience and 70+ projects delivered for clients across the US, Europe, and beyond.
+          I'm Oleksandr Vintoniak, a front-end developer with 5+ years of experience building web apps with <b>React.js</b>, <b>Next.js</b>, <b>Vue.js</b> and <b>Nuxt.js</b> for clients across the US, Europe, and beyond.
         </p>
 
         <p class="about__text text">
-          My focus is building front-ends the right way the first time — pixel-precise, performant, and easy to hand off. Whether it's a complex Nuxt app, a real-time dashboard, or an MVP on a deadline, the code ships clean and stays that way.
+          My focus is building front-ends the right way the first time — pixel-precise, performant, and easy to hand off. Whether it's a complex Next.js app, a real-time Nuxt dashboard, or an MVP on a deadline, the code ships clean and stays that way.
         </p>
       </div>
 
@@ -263,6 +288,7 @@ onUnmounted(() => {
       font-weight: 700;
       line-height: 1;
       color: $color-aqua;
+      white-space: nowrap;
 
       @media (max-width: $breakpoint1450) {
         font-size: 36px;
@@ -273,7 +299,7 @@ onUnmounted(() => {
       }
 
       @media (max-width: $breakpoint768) {
-        font-size: 30px;
+        font-size: 28px;
       }
     }
 
@@ -409,14 +435,14 @@ onUnmounted(() => {
         scale: 0.85;
       }
 
-      :deep(svg) {
+      :deep(svg),
+      :deep(img) {
         width: auto;
         max-width: 100%;
         height: 100%;
       }
 
-      &--sass,
-      &--bem {
+      &--sass {
         height: 36px;
         margin-top: 2px;
       }
@@ -426,8 +452,12 @@ onUnmounted(() => {
         margin-top: 5px;
       }
 
-      &--i18n,
-      &--npm {
+      &--cloudflare {
+        height: 28px;
+        margin-top: 6px;
+      }
+
+      &--i18n {
         height: 26px;
         margin-top: 7px;
       }

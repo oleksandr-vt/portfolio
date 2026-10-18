@@ -18,6 +18,7 @@ const scrollTriggerRef = ref(null)
 const sectionTestimonials = ref(null)
 
 const testimonialsTitle = ref(null)
+const testimonialsBadge = ref(null)
 const testimonialsSwiper = ref(null)
 
 const timeline = ref(null)
@@ -61,12 +62,18 @@ const handleButtonClick = () => {
   gtag('event', `testimonials_slider_buttons`)
 }
 
+const handleBadgeClick = () => {
+  gtag('event', `testimonials_upwork_badge`)
+}
+
 onMounted(() => {
   const tlTitle = slideUp({ el: testimonialsTitle.value })
+  const tlBadge = fadeIn({ el: testimonialsBadge.value })
   const tlSwiper = fadeIn({ el: testimonialsSwiper.value })
 
   timeline.value = gsap.timeline({ paused: true })
     .add(tlTitle, 0)
+    .add(tlBadge, 0.15)
     .add(tlSwiper, 0.25)
 
   updateScrollTrigger()
@@ -88,6 +95,11 @@ onUnmounted(() => {
           <Feather class="testimonials__title-icon" aria-hidden="true" />
         </h2>
       </div>
+
+      <a class="testimonials__badge" ref="testimonialsBadge" @click="handleBadgeClick()"
+        href="https://www.upwork.com/freelancers/oleksandrvintoniak" target="_blank" rel="noopener">
+        <span>Top Rated on Upwork</span> · <span>100% Job Success</span>
+      </a>
 
       <div ref="testimonialsSwiper">
         <swiper id="testimonialsSwiper" :slidesPerView="1" :pagination="{ clickable: true }"
@@ -133,6 +145,11 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 26px;
+
+    @media (max-width: $breakpoint768) {
+      margin-bottom: 18px;
+    }
 
     &-icon {
       width: 100%;
@@ -158,6 +175,38 @@ onUnmounted(() => {
       @media (max-width: $breakpoint420) {
         max-width: 26px;
       }
+    }
+  }
+
+  &__badge {
+    display: inline-block;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    color: $color-aqua;
+
+    @media (max-width: $breakpoint1680) {
+      margin-bottom: 26px;
+    }
+
+    @media (max-width: $breakpoint768) {
+      margin-bottom: 20px;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    span {
+      white-space: nowrap;
+    }
+
+    @media (max-width: $breakpoint1200) {
+      font-size: 18px;
+    }
+
+    @media (max-width: $breakpoint768) {
+      font-size: 16px;
     }
   }
 

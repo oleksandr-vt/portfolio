@@ -54,7 +54,7 @@ onUnmounted(() => {
     <div class="container">
       <div class="interest__block" ref="interestBlock">
         <h2 class="interest__title">Have a project in mind?</h2>
-        <p class="interest__text text">I'm always open to discussing new projects, ideas, and ways we can work together to bring them to life.</p>
+        <p class="interest__text text">I'm always open to discussing new projects and ideas — tell me what you're building, and let's see how I can help.</p>
 
         <AppButton :text="'Contact me'" @click="handleButtonClick()" tag="button">
           <template v-slot:icon>
