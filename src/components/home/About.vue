@@ -435,7 +435,8 @@ onUnmounted(() => {
         scale: 0.85;
       }
 
-      :deep(svg) {
+      :deep(svg),
+      :deep(img) {
         width: auto;
         max-width: 100%;
         height: 100%;
@@ -455,11 +456,6 @@ onUnmounted(() => {
       &--vercel {
         height: 32px;
         margin-top: 4px;
-      }
-
-      &--zustand {
-        height: 34px;
-        margin-top: 3px;
       }
 
       &--cloudflare {
