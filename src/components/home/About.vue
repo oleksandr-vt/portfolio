@@ -442,8 +442,7 @@ onUnmounted(() => {
         height: 100%;
       }
 
-      &--sass,
-      &--vuex {
+      &--sass {
         height: 36px;
         margin-top: 2px;
       }
@@ -451,11 +450,6 @@ onUnmounted(() => {
       &--tailwind {
         height: 30px;
         margin-top: 5px;
-      }
-
-      &--vercel {
-        height: 32px;
-        margin-top: 4px;
       }
 
       &--cloudflare {

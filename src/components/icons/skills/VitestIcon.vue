@@ -1,52 +1,7 @@
 <template>
-  <svg width="45" height="43" viewBox="0 0 45 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill="#22ff84" d="M21.266 42.207a1.13 1.13 0 0 1-1.652.36L.465 28.64A1.13 1.13 0 0 1 0 27.724V10.94c0-.924 1.05-1.458 1.797-.915l11.712 8.517a2.262 2.262 0 0 0 3.302-.72l9.7-17.244c.2-.355.578-.577.987-.577h15.575c.865 0 1.41.933.986 1.687L21.266 42.205z"/>
-    <mask id="vitest_mask0_2002_17204" width="45" height="43" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha">
-    <path fill="#000" d="M21.266 42.207a1.13 1.13 0 0 1-1.652.36L.465 28.64A1.13 1.13 0 0 1 0 27.724V10.94c0-.924 1.05-1.459 1.797-.916l11.712 8.518a2.262 2.262 0 0 0 3.302-.72l9.7-17.244c.2-.355.578-.577.987-.577h15.575c.865 0 1.41.933.986 1.687L21.266 42.204z"/>
-    </mask>
-    <g mask="url(#vitest_mask0_2002_17204)">
-    <g filter="url(#vitest_filter0_f_2002_17204)">
-    <ellipse cx="14.031" cy="3.391" fill="#00ccc6" rx="14.031" ry="3.391" transform="rotate(130.547 17.088 5.676)scale(1 -1)"/>
-    </g>
-    <g filter="url(#vitest_filter1_f_2002_17204)">
-    <ellipse cx="14.031" cy="6.087" fill="#00ccc6" rx="14.031" ry="6.087" transform="rotate(53.967 -28.777 34.573)scale(-1 1)"/>
-    </g>
-    <g filter="url(#vitest_filter2_f_2002_17204)">
-    <ellipse cx="6.443" cy="12.195" fill="#7f0" rx="6.374" ry="5.551" transform="rotate(23.13 6.443 12.195)"/>
-    </g>
-    <g filter="url(#vitest_filter3_f_2002_17204)">
-    <ellipse cx="40.775" cy="15.951" fill="#7f0" rx="5.615" ry="24.534" transform="rotate(23.13 40.775 15.95)"/>
-    </g>
-    <g filter="url(#vitest_filter4_f_2002_17204)">
-    <ellipse cx="4.985" cy="10.069" fill="#97ffe2" rx="4.985" ry="10.069" transform="rotate(135 17.458 13.64)scale(-1 1)"/>
-    </g>
-    </g>
-    <defs>
-    <filter id="vitest_filter0_f_2002_17204" width="37.343" height="40.162" x="7.293" y="-10.833" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-    <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-    <feGaussianBlur result="effect1_foregroundBlur_2002_17204" stdDeviation="4.596"/>
-    </filter>
-    <filter id="vitest_filter1_f_2002_17204" width="37.605" height="42.185" x="-15.869" y="8.648" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-    <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-    <feGaussianBlur result="effect1_foregroundBlur_2002_17204" stdDeviation="4.596"/>
-    </filter>
-    <filter id="vitest_filter2_f_2002_17204" width="30.894" height="29.756" x="-9.004" y="-2.683" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-    <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-    <feGaussianBlur result="effect1_foregroundBlur_2002_17204" stdDeviation="4.596"/>
-    </filter>
-    <filter id="vitest_filter3_f_2002_17204" width="40.253" height="63.725" x="20.648" y="-15.912" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-    <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-    <feGaussianBlur result="effect1_foregroundBlur_2002_17204" stdDeviation="4.596"/>
-    </filter>
-    <filter id="vitest_filter4_f_2002_17204" width="34.276" height="34.275" x="18.716" y="-16.841" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-    <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-    <feGaussianBlur result="effect1_foregroundBlur_2002_17204" stdDeviation="4.596"/>
-    </filter>
-    </defs>
+  <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M44.7132 19.4526L30.6681 39.7599C30.5193 39.9752 30.3039 40.1365 30.0548 40.2192C29.8056 40.3021 29.5363 40.3012 29.2877 40.2181C29.0391 40.1346 28.8248 39.9724 28.6771 39.7567C28.5296 39.5407 28.4568 39.2826 28.4699 39.0218L29.032 27.8101L19.9574 25.8856C19.7635 25.8445 19.5828 25.7564 19.4313 25.6291C19.2799 25.5019 19.1623 25.3393 19.0891 25.1559C19.0159 24.9725 18.9893 24.7739 19.0116 24.5777C19.0339 24.3815 19.1044 24.1937 19.2169 24.031L33.2622 3.72367C33.4111 3.50823 33.6264 3.34698 33.8756 3.26432C34.1248 3.18165 34.3941 3.18208 34.6427 3.2656C34.8913 3.34908 35.1057 3.51107 35.2533 3.727C35.4008 3.9429 35.4736 4.20093 35.4604 4.46195L34.8983 15.6738L43.9728 17.5981C44.1668 17.6392 44.3474 17.7273 44.4991 17.8546C44.6506 17.9819 44.768 18.1444 44.8411 18.3278C44.9145 18.5112 44.9409 18.7098 44.9188 18.906C44.8966 19.1022 44.8259 19.2899 44.7132 19.4526Z" fill="#FCC72B"/>
+    <path d="M30.0051 56.797C29.6315 56.7974 29.2616 56.7243 28.9164 56.5812C28.5713 56.4382 28.2578 56.2284 27.9941 55.9641L14.723 42.694C14.1921 42.1604 13.8946 41.4379 13.8955 40.685C13.8965 39.9322 14.196 39.2101 14.7284 38.678C15.2607 38.1456 15.9825 37.8459 16.7353 37.8448C17.4883 37.844 18.2108 38.1414 18.7446 38.6722L30.0051 49.9314L54.5361 25.4016C55.0709 24.8754 55.7918 24.5819 56.5419 24.585C57.2924 24.588 58.011 24.8874 58.5411 25.4179C59.0716 25.9484 59.3713 26.667 59.3744 27.4172C59.3771 28.1674 59.0837 28.8884 58.5574 29.4232L32.0156 55.9641C31.7519 56.2287 31.4384 56.4382 31.0934 56.5812C30.7484 56.7243 30.3786 56.7974 30.0051 56.797Z" fill="#729B1B"/>
+    <path d="M29.9942 56.797C30.3677 56.7974 30.7377 56.7243 31.0829 56.5812C31.428 56.4382 31.7414 56.2284 32.0052 55.9641L45.2763 42.694C45.8072 42.1604 46.1049 41.4379 46.1037 40.685C46.1029 39.9322 45.8032 39.2101 45.2708 38.678C44.7384 38.1456 44.0166 37.8459 43.2638 37.8448C42.511 37.844 41.7885 38.1414 41.2545 38.6722L29.9942 49.9314L5.46322 25.4016C4.92844 24.8754 4.20742 24.5819 3.45724 24.585C2.70703 24.588 1.98841 24.8874 1.45795 25.4179C0.927467 25.9484 0.628098 26.667 0.625023 27.4172C0.62199 28.1674 0.915498 28.8884 1.44164 29.4232L27.9836 55.9641C28.2474 56.2287 28.5608 56.4382 28.9058 56.5812C29.2509 56.7243 29.6207 56.7974 29.9942 56.797Z" fill="#729B1B" fill-opacity="0.5"/>
   </svg>
 </template>
