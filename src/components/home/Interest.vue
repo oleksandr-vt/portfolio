@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { scaleUp } from '../../assets/js/animations'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
-import { scrollToElementById, animationPlaceholderPX } from '../../assets/js/helpers'
+import { scrollToElementById, animationPlaceholderPX, onFirstScroll } from '../../assets/js/helpers'
 
 const scrollTriggerRef = ref(null)
 const interestBlock = ref(null)
@@ -35,15 +35,20 @@ const handleButtonClick = () => {
   scrollToElementById('contacts')
 }
 
+let cancelFirstScroll = null
+
 onMounted(() => {
   const tlBlock = scaleUp({ el: interestBlock.value })
   timeline.value = gsap.timeline({ paused: true }).add(tlBlock, 0)
 
-  updateScrollTrigger()
-  window.addEventListener("resize", debouncedUpdateScrollTrigger)
+  cancelFirstScroll = onFirstScroll(() => {
+    updateScrollTrigger()
+    window.addEventListener("resize", debouncedUpdateScrollTrigger)
+  })
 })
 
 onUnmounted(() => {
+  cancelFirstScroll?.()
   window.removeEventListener("resize", debouncedUpdateScrollTrigger)
   killScrollTrigger()
 })

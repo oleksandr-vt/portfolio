@@ -19,6 +19,24 @@ const getPinnedSlider = () => {
 
 export const animationPlaceholderPX = () => getPinnedSlider()?.placeholderPX ?? 0
 
+export const onFirstScroll = (callback) => {
+  if (window.scrollY > 0) {
+    callback()
+    return () => {}
+  }
+
+  const handleScroll = () => {
+    if (window.scrollY <= 0) return
+
+    window.removeEventListener('scroll', handleScroll)
+    callback()
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true })
+
+  return () => window.removeEventListener('scroll', handleScroll)
+}
+
 export const scrollToElementById = (id) => {
   const element = document.getElementById(id)
   if (!element) return

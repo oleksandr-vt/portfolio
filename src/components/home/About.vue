@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import debounce from "debounce"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { slideUp, fadeIn, staggerIn } from '../../assets/js/animations'
+import { onFirstScroll } from '../../assets/js/helpers'
 import ReactIcon from '../icons/skills/ReactIcon.vue'
 import NextIcon from '../icons/skills/NextIcon.vue'
 import VueIcon from '../icons/skills/VueIcon.vue'
@@ -139,6 +140,8 @@ const updateScrollTrigger = () => {
 
 const debouncedUpdateScrollTrigger = debounce(updateScrollTrigger, 100)
 
+let cancelFirstScroll = null
+
 onMounted(() => {
   const tlTitle = slideUp({ el: aboutTitle.value })
   const tlIntro = fadeIn({ el: aboutIntro.value })
@@ -151,11 +154,14 @@ onMounted(() => {
     .add(tlStats, 0.50)
     .add(tlClusters, 1.04)
 
-  updateScrollTrigger()
-  window.addEventListener("resize", debouncedUpdateScrollTrigger)
+  cancelFirstScroll = onFirstScroll(() => {
+    updateScrollTrigger()
+    window.addEventListener("resize", debouncedUpdateScrollTrigger)
+  })
 })
 
 onUnmounted(() => {
+  cancelFirstScroll?.()
   window.removeEventListener("resize", debouncedUpdateScrollTrigger)
   killScrollTrigger()
 })

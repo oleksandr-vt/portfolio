@@ -8,6 +8,7 @@ import { FreeMode, Pagination } from 'swiper/modules'
 import AppButton from '../AppButton.vue'
 import Arrow from '../icons/Arrow.vue'
 import { works } from '../../assets/js/data'
+import { onFirstScroll } from '../../assets/js/helpers'
 
 const slides = ref(works.filter((work) => work.featured))
 
@@ -17,6 +18,8 @@ const sectionWorks = ref(null)
 const worksTitle = ref(null)
 const worksSwiper = ref(null)
 
+let cancelFirstScroll = null
+
 const worksAnimation = () => {
   const tlTitle = slideUp({ el: worksTitle.value })
   const tlSwiper = fadeIn({ el: worksSwiper.value, duration: 0.8 })
@@ -25,14 +28,16 @@ const worksAnimation = () => {
     .add(tlTitle, 0)
     .add(tlSwiper, 0.25)
 
-  if (scrollTriggerRef.value) {
-    scrollTriggerRef.value.kill()
-  }
+  cancelFirstScroll = onFirstScroll(() => {
+    if (scrollTriggerRef.value) {
+      scrollTriggerRef.value.kill()
+    }
 
-  scrollTriggerRef.value = ScrollTrigger.create({
-    trigger: sectionWorks.value,
-    start: 'top 70%',
-    animation: timeline,
+    scrollTriggerRef.value = ScrollTrigger.create({
+      trigger: sectionWorks.value,
+      start: 'top 70%',
+      animation: timeline,
+    })
   })
 }
 
@@ -45,6 +50,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  cancelFirstScroll?.()
   scrollTriggerRef.value?.kill()
   scrollTriggerRef.value = null
 })

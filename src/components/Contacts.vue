@@ -4,7 +4,7 @@ import { gsap } from 'gsap'
 import debounce from "debounce"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { slideUp, fadeIn } from '../assets/js/animations'
-import { animationPlaceholderPX } from '../assets/js/helpers'
+import { animationPlaceholderPX, onFirstScroll } from '../assets/js/helpers'
 import Upwork from './icons/contacts/Upwork.vue'
 import Gmail from './icons/contacts/Gmail.vue'
 import LinkedIn from './icons/contacts/LinkedIn.vue'
@@ -39,6 +39,8 @@ const updateScrollTrigger = () => {
 
 const debouncedUpdateScrollTrigger = debounce(updateScrollTrigger, 100)
 
+let cancelFirstScroll = null
+
 const handleButtonClick = (str) => {
   gtag('event', `contacts_${str}_button`)
 }
@@ -63,11 +65,14 @@ onMounted(() => {
     .add(tlLink5, 0.95)
     .add(tlPeace, 1.1)
 
-  updateScrollTrigger()
-  window.addEventListener("resize", debouncedUpdateScrollTrigger)
+  cancelFirstScroll = onFirstScroll(() => {
+    updateScrollTrigger()
+    window.addEventListener("resize", debouncedUpdateScrollTrigger)
+  })
 })
 
 onUnmounted(() => {
+  cancelFirstScroll?.()
   window.removeEventListener("resize", debouncedUpdateScrollTrigger)
   killScrollTrigger()
 })

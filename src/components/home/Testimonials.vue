@@ -10,7 +10,7 @@ import Star from '../icons/Star.vue'
 import Feather from '../icons/Feather.vue'
 import Arrow from '../icons/Arrow.vue'
 import { testimonials } from '../../assets/js/data'
-import { animationPlaceholderPX } from '../../assets/js/helpers'
+import { animationPlaceholderPX, onFirstScroll } from '../../assets/js/helpers'
 
 const slides = ref(testimonials)
 
@@ -66,6 +66,8 @@ const handleBadgeClick = () => {
   gtag('event', `testimonials_upwork_badge`)
 }
 
+let cancelFirstScroll = null
+
 onMounted(() => {
   const tlTitle = slideUp({ el: testimonialsTitle.value })
   const tlBadge = fadeIn({ el: testimonialsBadge.value })
@@ -76,11 +78,14 @@ onMounted(() => {
     .add(tlBadge, 0.15)
     .add(tlSwiper, 0.25)
 
-  updateScrollTrigger()
-  window.addEventListener("resize", debouncedUpdateScrollTrigger)
+  cancelFirstScroll = onFirstScroll(() => {
+    updateScrollTrigger()
+    window.addEventListener("resize", debouncedUpdateScrollTrigger)
+  })
 })
 
 onUnmounted(() => {
+  cancelFirstScroll?.()
   window.removeEventListener("resize", debouncedUpdateScrollTrigger)
   killScrollTrigger()
 })
