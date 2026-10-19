@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import { slideUp, fadeIn } from '../../assets/js/animations'
 import HeroArt from '../icons/HeroArt.vue'
@@ -22,6 +22,19 @@ const titleDone = ref(null)
 const heroName = ref(null)
 const heroBtn = ref(null)
 const heroArt = ref(null)
+
+const TITLE = 'Front-end developer who gets the job done.'
+const titleText = ref(null)
+const isTranslated = ref(false)
+let translateObserver = null
+
+const syncTranslated = () => {
+  const { classList } = document.documentElement
+
+  isTranslated.value = classList.contains('translated-ltr')
+    || classList.contains('translated-rtl')
+    || titleText.value?.textContent.trim() !== TITLE
+}
 
 const heroAnimation = () => {
   const tlTitleFront = slideUp({ el: titleFront.value, duration: 0.75 })
@@ -51,6 +64,15 @@ const heroAnimation = () => {
 
 onMounted(() => {
   heroAnimation()
+
+  syncTranslated()
+  translateObserver = new MutationObserver(syncTranslated)
+  translateObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+  translateObserver.observe(titleText.value, { childList: true, characterData: true, subtree: true })
+})
+
+onUnmounted(() => {
+  translateObserver?.disconnect()
 })
 </script>
 
@@ -58,34 +80,38 @@ onMounted(() => {
   <section class="hero">
     <div class="container">
       <div class="hero__block">
-        <h1 class="hero__title">
-          <div class="hero__title-limiter">
-            <span ref="titleFront">Front-end&nbsp;</span>
-          </div>
+        <h1 class="hero__title" :class="{ 'hero__title--translated': isTranslated }">
+          <span class="hero__title-text" ref="titleText">Front-end developer who gets the job done.</span>
 
-          <div class="hero__title-limiter">
-            <span ref="titleDev">developer&nbsp;</span>
-          </div>
+          <span class="hero__title-words notranslate" aria-hidden="true" translate="no">
+            <span class="hero__title-limiter">
+              <span ref="titleFront">Front-end&nbsp;</span>
+            </span>
 
-          <div class="hero__title-limiter">
-            <span ref="titleWho">who&nbsp;</span>
-          </div>
+            <span class="hero__title-limiter">
+              <span ref="titleDev">developer&nbsp;</span>
+            </span>
 
-          <div class="hero__title-limiter">
-            <span ref="titleGets">gets&nbsp;</span>
-          </div>
+            <span class="hero__title-limiter">
+              <span ref="titleWho">who&nbsp;</span>
+            </span>
 
-          <div class="hero__title-limiter">
-            <span ref="titleThe">the&nbsp;</span>
-          </div>
+            <span class="hero__title-limiter">
+              <span ref="titleGets">gets&nbsp;</span>
+            </span>
 
-          <div class="hero__title-limiter">
-            <span ref="titleJob">job&nbsp;</span>
-          </div>
+            <span class="hero__title-limiter">
+              <span ref="titleThe">the&nbsp;</span>
+            </span>
 
-          <div class="hero__title-limiter">
-            <span ref="titleDone">done.</span>
-          </div>
+            <span class="hero__title-limiter">
+              <span ref="titleJob">job&nbsp;</span>
+            </span>
+
+            <span class="hero__title-limiter">
+              <span ref="titleDone">done.</span>
+            </span>
+          </span>
         </h1>
 
         <p class="hero__text text" ref="heroName">Oleksandr Vintoniak — React &amp; Vue developer</p>
@@ -186,11 +212,10 @@ onMounted(() => {
   }
 
   &__title {
+    position: relative;
     font-weight: 800;
     font-size: 102px;
     line-height: 110%;
-    display: flex;
-    flex-wrap: wrap;
 
     @media (max-width: $breakpoint1680) {
       font-size: 94px;
@@ -206,7 +231,7 @@ onMounted(() => {
 
     @media (max-width: $breakpoint992) {
       font-size: 64px;
-      justify-content: center;
+      text-align: center;
       margin-right: -1rem;
     }
 
@@ -222,12 +247,50 @@ onMounted(() => {
       font-size: 32px;
     }
 
-    &-limiter {
+    &-text {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
       overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+      font-weight: 700;
     }
 
-    span {
-      display: inline-block;
+    &-words {
+      display: flex;
+      flex-wrap: wrap;
+
+      @media (max-width: $breakpoint992) {
+        justify-content: center;
+      }
+    }
+
+    &-limiter {
+      overflow: hidden;
+
+      span {
+        display: inline-block;
+      }
+    }
+
+    &--translated {
+      .hero__title-text {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+      }
+
+      .hero__title-words {
+        display: none;
+      }
     }
   }
 
